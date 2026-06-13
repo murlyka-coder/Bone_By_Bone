@@ -21,50 +21,6 @@ namespace Bone_By_Bone
         private int selectedLevel = 1; // какой уровень сейчас выбран?
         LevelConfig levelConfig = new LevelConfig();
 
-
-        // Метод удаления костей с экрана при возврате в меню
-        private void ClearActiveLevel()
-        {
-            foreach (var b in activeBones) panelGame.Controls.Remove(b);
-            foreach (var t in activeTargets) panelGame.Controls.Remove(t);
-            activeBones.Clear();
-            activeTargets.Clear();
-        }
-
-        // Метод проверки: установлены ли все кости на свои цели
-        private void CheckVictory()
-        {
-            bool allSnapped = true;
-            foreach (var bone in activeBones)
-            {
-                PictureBox target = (PictureBox)bone.Tag;
-                if (bone.Location != target.Location)
-                {
-                    allSnapped = false;
-                    break;
-                }
-            }
-
-            // Если все кости на местах — это победа!
-            if (allSnapped)
-            {
-                timerGame.Stop();
-
-                int stars = 3;
-                var thresholds = levelConfig.GetStarThresholds(selectedLevel);
-                int timeFor3Stars = thresholds.timeFor3Stars;
-                int timeFor2Stars = thresholds.timeFor2Stars;
-
-                if (secondsPassed >= timeFor2Stars || mistakesCount > 3) stars = 1;
-                else if (secondsPassed >= timeFor3Stars || mistakesCount > 1) stars = 2;
-
-                string starRating = new string('★', stars) + new string('☆', 3 - stars);
-                MessageBox.Show($"Уровень пройден!\n\nВремя: {secondsPassed} сек.\nОшибок: {mistakesCount}\nОценка: {starRating}", "Победа!");
-
-                btnBackToMenu.Visible = true;
-            }
-        }
-
         public Form1()
         {
             InitializeComponent();
@@ -75,10 +31,7 @@ namespace Bone_By_Bone
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -89,6 +42,42 @@ namespace Bone_By_Bone
             // Показываем панель выбора уровней
             panelLevelSelect.Visible = true;
         }
+
+
+        private void btnBackToMenu_Click(object sender, EventArgs e)
+        {
+            label1.Visible = true;
+            button1.Visible = true;
+            panelGame.Visible = false;
+            btnBackToMenu.Visible = false;
+
+            // Очищаем динамические кости и цели с экрана
+            ClearActiveLevel();
+
+            secondsPassed = 0;
+            mistakesCount = 0;
+
+            lblTime.Text = "Время: 0 сек";
+            lblMistakes.Text = "Ошибки: 0";
+        }
+
+
+        private void btnLevel1_Click(object sender, EventArgs e)
+        {
+            StartLevel(1);
+        }
+
+        private void btnLevel2_Click(object sender, EventArgs e)
+        {
+            StartLevel(2);
+        }
+
+        private void btnLevel3_Click(object sender, EventArgs e)
+        {
+            StartLevel(3);
+        }
+
+
 
         private void StartLevel(int level)
         {
@@ -150,6 +139,76 @@ namespace Bone_By_Bone
             timerGame.Start();
         }
 
+
+        // Метод удаления костей с экрана при возврате в меню
+        private void ClearActiveLevel()
+        {
+            foreach (var b in activeBones) panelGame.Controls.Remove(b);
+            foreach (var t in activeTargets) panelGame.Controls.Remove(t);
+            activeBones.Clear();
+            activeTargets.Clear();
+        }
+
+
+
+        // Метод проверки: установлены ли все кости на свои цели
+        private void CheckVictory()
+        {
+            bool allSnapped = true;
+            foreach (var bone in activeBones)
+            {
+                PictureBox target = (PictureBox)bone.Tag;
+                if (bone.Location != target.Location)
+                {
+                    allSnapped = false;
+                    break;
+                }
+            }
+
+            // Если все кости на местах — это победа!
+            if (allSnapped)
+            {
+                timerGame.Stop();
+
+                int stars = 3;
+                var thresholds = levelConfig.GetStarThresholds(selectedLevel);
+                int timeFor3Stars = thresholds.timeFor3Stars;
+                int timeFor2Stars = thresholds.timeFor2Stars;
+
+                if (secondsPassed >= timeFor2Stars || mistakesCount > 3) stars = 1;
+                else if (secondsPassed >= timeFor3Stars || mistakesCount > 1) stars = 2;
+
+                string starRating = new string('★', stars) + new string('☆', 3 - stars);
+                MessageBox.Show($"Уровень пройден!\n\nВремя: {secondsPassed} сек.\nОшибок: {mistakesCount}\nОценка: {starRating}", "Победа!");
+
+                btnBackToMenu.Visible = true;
+            }
+        }
+
+
+
+        private void timerGame_Tick(object sender, EventArgs e)
+        {
+            secondsPassed++;
+            lblTime.Text = "Время: " + secondsPassed + " сек";
+        }
+
+
+        private void btnRestart_Click(object sender, EventArgs e)
+        {
+            // Сбрасываем время и ошибки
+            secondsPassed = 0;
+            mistakesCount = 0;
+            lblTime.Text = "Время: 0 сек";
+            lblMistakes.Text = "Ошибки: 0";
+
+            // Перезапускаем текущий выбранный уровень
+            StartLevel(selectedLevel);
+        }
+
+
+
+
         private void DynamicBone_MouseDown(object sender, MouseEventArgs e)
         {
             PictureBox bone = (PictureBox)sender;
@@ -203,59 +262,6 @@ namespace Bone_By_Bone
             }
         }
 
-        private void timerGame_Tick(object sender, EventArgs e)
-        {
-            secondsPassed++;
-            lblTime.Text = "Время: " + secondsPassed + " сек";
-        }
 
-        private void btnBackToMenu_Click(object sender, EventArgs e)
-        {
-            label1.Visible = true;
-            button1.Visible = true;
-            panelGame.Visible = false;
-            btnBackToMenu.Visible = false;
-
-            // Очищаем динамические кости и цели с экрана
-            ClearActiveLevel();
-
-            secondsPassed = 0;
-            mistakesCount = 0;
-
-            lblTime.Text = "Время: 0 сек";
-            lblMistakes.Text = "Ошибки: 0";
-        }
-
-        private void btnLevel1_Click(object sender, EventArgs e)
-        {
-            StartLevel(1);
-        }
-
-        private void btnLevel2_Click(object sender, EventArgs e)
-        {
-            StartLevel(2);
-        }
-
-        private void btnLevel3_Click(object sender, EventArgs e)
-        {
-            StartLevel(3);
-        }
-
-        private void panelGame_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void btnRestart_Click(object sender, EventArgs e)
-        {
-            // Сбрасываем время и ошибки
-            secondsPassed = 0;
-            mistakesCount = 0;
-            lblTime.Text = "Время: 0 сек";
-            lblMistakes.Text = "Ошибки: 0";
-
-            // Перезапускаем текущий выбранный уровень
-            StartLevel(selectedLevel);
-        }
     }
 }
