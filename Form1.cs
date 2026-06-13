@@ -19,6 +19,7 @@ namespace Bone_By_Bone
         private List<PictureBox> activeTargets = new List<PictureBox>();
         private int mistakesCount = 0; // количество ошибок
         private int selectedLevel = 1; // какой уровень сейчас выбран?
+        LevelConfig levelConfig = new LevelConfig();
 
 
         // Метод удаления костей с экрана при возврате в меню
@@ -93,25 +94,10 @@ namespace Bone_By_Bone
             selectedLevel = level;
 
             ClearActiveLevel();
+            var data = levelConfig.GetLevel(level);
+            int boneCount = data.boneCount;
+            Size boneSize = data.boneSize;
 
-            int boneCount = 0;
-            Size boneSize = new Size(50, 40);
-
-            if (level == 1)
-            {
-                boneCount = 8;
-                boneSize = new Size(60, 40);
-            }
-            else if (level == 2)
-            {
-                boneCount = 12;
-                boneSize = new Size(45, 35);
-            }
-            else if (level == 3)
-            {
-                boneCount = 21;
-                boneSize = new Size(30, 25);
-            }
 
             // --- УМНЫЙ РАСЧЕТ ШАГА ---
             // Нам нужно распределить кости в пределах ширины панели (700 пикселей)
