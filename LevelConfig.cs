@@ -34,5 +34,12 @@ namespace Bone_By_Bone
 
             return (boneCount, boneSize);
         }
+
+        public (int timeFor3Stars, int timeFor2Stars) GetStarThresholds(int level)
+        {
+            int timeFor3Stars = level == 1 ? 15 : (level == 2 ? 10 : 6);
+            int timeFor2Stars = level == 1 ? 30 : (level == 2 ? 20 : 12);
+            return (timeFor3Stars, timeFor2Stars);
+        }
     }
 }

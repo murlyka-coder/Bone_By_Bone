@@ -51,8 +51,9 @@ namespace Bone_By_Bone
                 timerGame.Stop();
 
                 int stars = 3;
-                int timeFor3Stars = selectedLevel == 1 ? 15 : (selectedLevel == 2 ? 10 : 6);
-                int timeFor2Stars = selectedLevel == 1 ? 30 : (selectedLevel == 2 ? 20 : 12);
+                var thresholds = levelConfig.GetStarThresholds(selectedLevel);
+                int timeFor3Stars = thresholds.timeFor3Stars;
+                int timeFor2Stars = thresholds.timeFor2Stars;
 
                 if (secondsPassed >= timeFor2Stars || mistakesCount > 3) stars = 1;
                 else if (secondsPassed >= timeFor3Stars || mistakesCount > 1) stars = 2;
