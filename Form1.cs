@@ -61,11 +61,5 @@ namespace Bone_By_Bone
             lblTime.Text = "Время: 0 сек";
             lblMistakes.Text = "Ошибки: 0";
         }
-
-
-
-
-
-
     }
 }

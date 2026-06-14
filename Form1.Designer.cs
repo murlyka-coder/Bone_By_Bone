@@ -89,7 +89,7 @@
             this.panelGame.Location = new System.Drawing.Point(9, 10);
             this.panelGame.Margin = new System.Windows.Forms.Padding(2);
             this.panelGame.Name = "panelGame";
-            this.panelGame.Size = new System.Drawing.Size(682, 366);
+            this.panelGame.Size = new System.Drawing.Size(682, 421);
             this.panelGame.TabIndex = 2;
             this.panelGame.Visible = false;
             // 
@@ -143,7 +143,7 @@
             this.panelDock.Location = new System.Drawing.Point(0, 252);
             this.panelDock.Margin = new System.Windows.Forms.Padding(2);
             this.panelDock.Name = "panelDock";
-            this.panelDock.Size = new System.Drawing.Size(682, 114);
+            this.panelDock.Size = new System.Drawing.Size(682, 167);
             this.panelDock.TabIndex = 5;
             // 
             // timerGame
@@ -299,12 +299,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(699, 449);
-            this.Controls.Add(this.panelSettings);
             this.Controls.Add(this.btnSettings);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.panelSettings);
             this.Controls.Add(this.panelGame);
             this.Controls.Add(this.panelLevelSelect);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Game";
