@@ -58,8 +58,8 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.label1.Location = new System.Drawing.Point(245, 91);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F);
+            this.label1.Location = new System.Drawing.Point(200, 91);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 13);
@@ -67,11 +67,12 @@
             this.label1.Text = "Bone by Bone";
             // 
             // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(204, 148);
+            //
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.button1.Location = new System.Drawing.Point(220, 148);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(162, 53);
+            this.button1.Size = new System.Drawing.Size(200, 53);
             this.button1.TabIndex = 1;
             this.button1.Text = " Начать игру";
             this.button1.UseVisualStyleBackColor = true;
