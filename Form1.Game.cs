@@ -11,6 +11,21 @@ namespace Bone_By_Bone
     public partial class Form1
     {
 
+        private void btnLevel1_Click(object sender, EventArgs e)
+        {
+            StartLevel(1);
+        }
+
+        private void btnLevel2_Click(object sender, EventArgs e)
+        {
+            StartLevel(2);
+        }
+
+        private void btnLevel3_Click(object sender, EventArgs e)
+        {
+            StartLevel(3);
+        }
+
 
         private void StartLevel(int level)
         {

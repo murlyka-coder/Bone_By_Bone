@@ -62,44 +62,8 @@ namespace Bone_By_Bone
         }
 
 
-        private void btnSettings_Click(object sender, EventArgs e)
-        {
-            label1.Visible = false;
-            button1.Visible = false;
-            btnSettings.Visible = false;
-            panelSettings.Visible = true;
-        }
 
 
-        private void btnFromSettings_Click(object sender, EventArgs e)
-        {
-            panelSettings.Visible = false;
-            label1.Visible = true;
-            button1.Visible = true;
-            btnSettings.Visible = true;
-        }
-
-
-        private void btnSendFeedback_Click(object sender, EventArgs e)
-        {
-            txtFeedback.Clear();
-        }
-
-
-        private void btnLevel1_Click(object sender, EventArgs e)
-        {
-            StartLevel(1);
-        }
-
-        private void btnLevel2_Click(object sender, EventArgs e)
-        {
-            StartLevel(2);
-        }
-
-        private void btnLevel3_Click(object sender, EventArgs e)
-        {
-            StartLevel(3);
-        }
 
 
     }

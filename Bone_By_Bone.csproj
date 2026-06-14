@@ -49,6 +49,9 @@
     <Compile Include="Form1.Game.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form1.Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="LevelConfig.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
