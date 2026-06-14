@@ -58,7 +58,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.label1.Location = new System.Drawing.Point(245, 91);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
@@ -69,7 +69,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(204, 148);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(162, 53);
             this.button1.TabIndex = 1;
@@ -86,7 +86,7 @@
             this.panelGame.Controls.Add(this.lblMistakes);
             this.panelGame.Controls.Add(this.panelDock);
             this.panelGame.Location = new System.Drawing.Point(9, 10);
-            this.panelGame.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelGame.Margin = new System.Windows.Forms.Padding(2);
             this.panelGame.Name = "panelGame";
             this.panelGame.Size = new System.Drawing.Size(682, 366);
             this.panelGame.TabIndex = 2;
@@ -96,7 +96,7 @@
             // 
             this.btnRestart.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnRestart.Location = new System.Drawing.Point(626, 4);
-            this.btnRestart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRestart.Margin = new System.Windows.Forms.Padding(2);
             this.btnRestart.Name = "btnRestart";
             this.btnRestart.Size = new System.Drawing.Size(49, 37);
             this.btnRestart.TabIndex = 6;
@@ -107,7 +107,7 @@
             // 
             this.btnBackToMenu.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnBackToMenu.Location = new System.Drawing.Point(209, 12);
-            this.btnBackToMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBackToMenu.Margin = new System.Windows.Forms.Padding(2);
             this.btnBackToMenu.Name = "btnBackToMenu";
             this.btnBackToMenu.Size = new System.Drawing.Size(115, 19);
             this.btnBackToMenu.TabIndex = 4;
@@ -140,7 +140,7 @@
             // 
             this.panelDock.BackColor = System.Drawing.Color.SandyBrown;
             this.panelDock.Location = new System.Drawing.Point(0, 252);
-            this.panelDock.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelDock.Margin = new System.Windows.Forms.Padding(2);
             this.panelDock.Name = "panelDock";
             this.panelDock.Size = new System.Drawing.Size(682, 114);
             this.panelDock.TabIndex = 5;
@@ -157,7 +157,7 @@
             this.panelLevelSelect.Controls.Add(this.btnLevel2);
             this.panelLevelSelect.Controls.Add(this.btnLevel1);
             this.panelLevelSelect.Location = new System.Drawing.Point(9, 69);
-            this.panelLevelSelect.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelLevelSelect.Margin = new System.Windows.Forms.Padding(2);
             this.panelLevelSelect.Name = "panelLevelSelect";
             this.panelLevelSelect.Size = new System.Drawing.Size(682, 306);
             this.panelLevelSelect.TabIndex = 6;
@@ -167,7 +167,7 @@
             // 
             this.btnLevel3.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnLevel3.Location = new System.Drawing.Point(188, 162);
-            this.btnLevel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLevel3.Margin = new System.Windows.Forms.Padding(2);
             this.btnLevel3.Name = "btnLevel3";
             this.btnLevel3.Size = new System.Drawing.Size(150, 41);
             this.btnLevel3.TabIndex = 2;
@@ -179,7 +179,7 @@
             // 
             this.btnLevel2.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnLevel2.Location = new System.Drawing.Point(188, 106);
-            this.btnLevel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLevel2.Margin = new System.Windows.Forms.Padding(2);
             this.btnLevel2.Name = "btnLevel2";
             this.btnLevel2.Size = new System.Drawing.Size(150, 41);
             this.btnLevel2.TabIndex = 1;
@@ -191,7 +191,7 @@
             // 
             this.btnLevel1.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnLevel1.Location = new System.Drawing.Point(188, 49);
-            this.btnLevel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLevel1.Margin = new System.Windows.Forms.Padding(2);
             this.btnLevel1.Name = "btnLevel1";
             this.btnLevel1.Size = new System.Drawing.Size(150, 41);
             this.btnLevel1.TabIndex = 0;
@@ -202,7 +202,7 @@
             // btnSettings
             // 
             this.btnSettings.Location = new System.Drawing.Point(592, 16);
-            this.btnSettings.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSettings.Margin = new System.Windows.Forms.Padding(2);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(90, 33);
             this.btnSettings.TabIndex = 7;
@@ -219,7 +219,7 @@
             this.panelSettings.Controls.Add(this.chkPlayMusic);
             this.panelSettings.Controls.Add(this.label2);
             this.panelSettings.Location = new System.Drawing.Point(9, 65);
-            this.panelSettings.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelSettings.Margin = new System.Windows.Forms.Padding(2);
             this.panelSettings.Name = "panelSettings";
             this.panelSettings.Size = new System.Drawing.Size(682, 366);
             this.panelSettings.TabIndex = 9;
@@ -228,7 +228,7 @@
             // btnFromSettings
             // 
             this.btnFromSettings.Location = new System.Drawing.Point(275, 325);
-            this.btnFromSettings.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnFromSettings.Margin = new System.Windows.Forms.Padding(2);
             this.btnFromSettings.Name = "btnFromSettings";
             this.btnFromSettings.Size = new System.Drawing.Size(98, 19);
             this.btnFromSettings.TabIndex = 5;
@@ -238,7 +238,7 @@
             // btnSendFeedback
             // 
             this.btnSendFeedback.Location = new System.Drawing.Point(387, 178);
-            this.btnSendFeedback.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSendFeedback.Margin = new System.Windows.Forms.Padding(2);
             this.btnSendFeedback.Name = "btnSendFeedback";
             this.btnSendFeedback.Size = new System.Drawing.Size(66, 71);
             this.btnSendFeedback.TabIndex = 4;
@@ -248,7 +248,7 @@
             // txtFeedback
             // 
             this.txtFeedback.Location = new System.Drawing.Point(195, 178);
-            this.txtFeedback.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFeedback.Margin = new System.Windows.Forms.Padding(2);
             this.txtFeedback.Multiline = true;
             this.txtFeedback.Name = "txtFeedback";
             this.txtFeedback.Size = new System.Drawing.Size(179, 71);
@@ -272,7 +272,7 @@
             this.chkPlayMusic.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkPlayMusic.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.chkPlayMusic.Location = new System.Drawing.Point(224, 85);
-            this.chkPlayMusic.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkPlayMusic.Margin = new System.Windows.Forms.Padding(2);
             this.chkPlayMusic.Name = "chkPlayMusic";
             this.chkPlayMusic.Size = new System.Drawing.Size(205, 21);
             this.chkPlayMusic.TabIndex = 1;
@@ -295,13 +295,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(699, 449);
-            this.Controls.Add(this.panelSettings);
             this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.panelLevelSelect);
             this.Controls.Add(this.panelGame);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Controls.Add(this.panelSettings);
+            this.Controls.Add(this.panelLevelSelect);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
