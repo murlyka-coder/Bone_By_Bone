@@ -62,12 +62,12 @@
             this.label1.Location = new System.Drawing.Point(200, 91);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 13);
+            this.label1.Size = new System.Drawing.Size(255, 44);
             this.label1.TabIndex = 0;
             this.label1.Text = "Bone by Bone";
             // 
             // button1
-            //
+            // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.button1.Location = new System.Drawing.Point(220, 148);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
@@ -209,6 +209,7 @@
             this.btnSettings.TabIndex = 7;
             this.btnSettings.Text = "Настройки";
             this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // panelSettings
             // 
@@ -219,10 +220,10 @@
             this.panelSettings.Controls.Add(this.label3);
             this.panelSettings.Controls.Add(this.chkPlayMusic);
             this.panelSettings.Controls.Add(this.label2);
-            this.panelSettings.Location = new System.Drawing.Point(9, 65);
+            this.panelSettings.Location = new System.Drawing.Point(9, 10);
             this.panelSettings.Margin = new System.Windows.Forms.Padding(2);
             this.panelSettings.Name = "panelSettings";
-            this.panelSettings.Size = new System.Drawing.Size(682, 366);
+            this.panelSettings.Size = new System.Drawing.Size(682, 421);
             this.panelSettings.TabIndex = 9;
             this.panelSettings.Visible = false;
             // 
@@ -235,6 +236,7 @@
             this.btnFromSettings.TabIndex = 5;
             this.btnFromSettings.Text = "В главное меню";
             this.btnFromSettings.UseVisualStyleBackColor = true;
+            this.btnFromSettings.Click += new System.EventHandler(this.btnFromSettings_Click);
             // 
             // btnSendFeedback
             // 
@@ -245,6 +247,7 @@
             this.btnSendFeedback.TabIndex = 4;
             this.btnSendFeedback.Text = "Отправить отзыв";
             this.btnSendFeedback.UseVisualStyleBackColor = true;
+            this.btnSendFeedback.Click += new System.EventHandler(this.btnSendFeedback_Click);
             // 
             // txtFeedback
             // 
@@ -296,11 +299,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(699, 449);
+            this.Controls.Add(this.panelSettings);
             this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panelGame);
-            this.Controls.Add(this.panelSettings);
             this.Controls.Add(this.panelLevelSelect);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";

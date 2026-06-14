@@ -76,6 +76,7 @@ namespace Bone_By_Bone
             panelSettings.Visible = false;
             label1.Visible = true;
             button1.Visible = true;
+            btnSettings.Visible = true;
         }
 
 
