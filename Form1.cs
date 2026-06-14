@@ -20,6 +20,7 @@ namespace Bone_By_Bone
         private int mistakesCount = 0; // количество ошибок
         private int selectedLevel = 1; // какой уровень сейчас выбран?
         LevelConfig levelConfig = new LevelConfig();
+        private string previousPanel = "menu";
 
         public Form1()
         {

@@ -14,15 +14,33 @@ namespace Bone_By_Bone
             button1.Visible = false;
             btnSettings.Visible = false;
             panelSettings.Visible = true;
+
+
+
+            // запоминание предыдущего меню
+            if (panelGame.Visible) previousPanel = "game";
+            else if (panelLevelSelect.Visible) previousPanel = "levels";
+            else previousPanel = "menu";
+
         }
 
 
         private void btnFromSettings_Click(object sender, EventArgs e)
         {
             panelSettings.Visible = false;
-            label1.Visible = true;
-            button1.Visible = true;
             btnSettings.Visible = true;
+
+
+            // возврат к сохранённой предыдущей панели
+            if (previousPanel == "game") panelGame.Visible = true;
+            else if (previousPanel == "levels") panelLevelSelect.Visible = true;
+            else
+            {
+                label1.Visible = true;
+                button1.Visible = true;
+            }
+
+
         }
 
 

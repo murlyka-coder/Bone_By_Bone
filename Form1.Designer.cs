@@ -234,7 +234,7 @@
             this.btnFromSettings.Name = "btnFromSettings";
             this.btnFromSettings.Size = new System.Drawing.Size(98, 19);
             this.btnFromSettings.TabIndex = 5;
-            this.btnFromSettings.Text = "В главное меню";
+            this.btnFromSettings.Text = "Назад";
             this.btnFromSettings.UseVisualStyleBackColor = true;
             this.btnFromSettings.Click += new System.EventHandler(this.btnFromSettings_Click);
             // 
