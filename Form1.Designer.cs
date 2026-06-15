@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.panelGame = new System.Windows.Forms.Panel();
+            this.btnRestart = new System.Windows.Forms.Button();
             this.btnBackToMenu = new System.Windows.Forms.Button();
             this.lblTime = new System.Windows.Forms.Label();
             this.lblMistakes = new System.Windows.Forms.Label();
@@ -41,15 +42,14 @@
             this.btnLevel3 = new System.Windows.Forms.Button();
             this.btnLevel2 = new System.Windows.Forms.Button();
             this.btnLevel1 = new System.Windows.Forms.Button();
-            this.btnRestart = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
             this.panelSettings = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.chkPlayMusic = new System.Windows.Forms.CheckBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtFeedback = new System.Windows.Forms.TextBox();
-            this.btnSendFeedback = new System.Windows.Forms.Button();
             this.btnFromSettings = new System.Windows.Forms.Button();
+            this.btnSendFeedback = new System.Windows.Forms.Button();
+            this.txtFeedback = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.chkPlayMusic = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.panelGame.SuspendLayout();
             this.panelLevelSelect.SuspendLayout();
             this.panelSettings.SuspendLayout();
@@ -58,19 +58,21 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label1.Location = new System.Drawing.Point(327, 112);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F);
+            this.label1.Location = new System.Drawing.Point(200, 91);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 17);
+            this.label1.Size = new System.Drawing.Size(255, 44);
             this.label1.TabIndex = 0;
             this.label1.Text = "Bone by Bone";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(272, 182);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.button1.Location = new System.Drawing.Point(220, 148);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(216, 65);
+            this.button1.Size = new System.Drawing.Size(200, 53);
             this.button1.TabIndex = 1;
             this.button1.Text = " Начать игру";
             this.button1.UseVisualStyleBackColor = true;
@@ -84,19 +86,31 @@
             this.panelGame.Controls.Add(this.lblTime);
             this.panelGame.Controls.Add(this.lblMistakes);
             this.panelGame.Controls.Add(this.panelDock);
-            this.panelGame.Location = new System.Drawing.Point(12, 12);
+            this.panelGame.Location = new System.Drawing.Point(9, 10);
+            this.panelGame.Margin = new System.Windows.Forms.Padding(2);
             this.panelGame.Name = "panelGame";
-            this.panelGame.Size = new System.Drawing.Size(910, 450);
+            this.panelGame.Size = new System.Drawing.Size(682, 421);
             this.panelGame.TabIndex = 2;
             this.panelGame.Visible = false;
-            this.panelGame.Paint += new System.Windows.Forms.PaintEventHandler(this.panelGame_Paint);
+            // 
+            // btnRestart
+            // 
+            this.btnRestart.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnRestart.Location = new System.Drawing.Point(626, 4);
+            this.btnRestart.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRestart.Name = "btnRestart";
+            this.btnRestart.Size = new System.Drawing.Size(49, 37);
+            this.btnRestart.TabIndex = 6;
+            this.btnRestart.Text = "Начать заново";
+            this.btnRestart.UseVisualStyleBackColor = false;
             // 
             // btnBackToMenu
             // 
             this.btnBackToMenu.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.btnBackToMenu.Location = new System.Drawing.Point(279, 15);
+            this.btnBackToMenu.Location = new System.Drawing.Point(209, 12);
+            this.btnBackToMenu.Margin = new System.Windows.Forms.Padding(2);
             this.btnBackToMenu.Name = "btnBackToMenu";
-            this.btnBackToMenu.Size = new System.Drawing.Size(153, 23);
+            this.btnBackToMenu.Size = new System.Drawing.Size(115, 19);
             this.btnBackToMenu.TabIndex = 4;
             this.btnBackToMenu.Text = "В главное меню";
             this.btnBackToMenu.UseVisualStyleBackColor = false;
@@ -106,27 +120,30 @@
             // lblTime
             // 
             this.lblTime.AutoSize = true;
-            this.lblTime.Location = new System.Drawing.Point(15, 33);
+            this.lblTime.Location = new System.Drawing.Point(11, 27);
+            this.lblTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(89, 16);
+            this.lblTime.Size = new System.Drawing.Size(76, 13);
             this.lblTime.TabIndex = 3;
             this.lblTime.Text = "Время: 0 сек.";
             // 
             // lblMistakes
             // 
             this.lblMistakes.AutoSize = true;
-            this.lblMistakes.Location = new System.Drawing.Point(15, 15);
+            this.lblMistakes.Location = new System.Drawing.Point(11, 12);
+            this.lblMistakes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMistakes.Name = "lblMistakes";
-            this.lblMistakes.Size = new System.Drawing.Size(70, 16);
+            this.lblMistakes.Size = new System.Drawing.Size(59, 13);
             this.lblMistakes.TabIndex = 2;
             this.lblMistakes.Text = "Ошибки: 0";
             // 
             // panelDock
             // 
             this.panelDock.BackColor = System.Drawing.Color.SandyBrown;
-            this.panelDock.Location = new System.Drawing.Point(0, 310);
+            this.panelDock.Location = new System.Drawing.Point(0, 252);
+            this.panelDock.Margin = new System.Windows.Forms.Padding(2);
             this.panelDock.Name = "panelDock";
-            this.panelDock.Size = new System.Drawing.Size(910, 140);
+            this.panelDock.Size = new System.Drawing.Size(682, 167);
             this.panelDock.TabIndex = 5;
             // 
             // timerGame
@@ -140,18 +157,20 @@
             this.panelLevelSelect.Controls.Add(this.btnLevel3);
             this.panelLevelSelect.Controls.Add(this.btnLevel2);
             this.panelLevelSelect.Controls.Add(this.btnLevel1);
-            this.panelLevelSelect.Location = new System.Drawing.Point(12, 85);
+            this.panelLevelSelect.Location = new System.Drawing.Point(9, 69);
+            this.panelLevelSelect.Margin = new System.Windows.Forms.Padding(2);
             this.panelLevelSelect.Name = "panelLevelSelect";
-            this.panelLevelSelect.Size = new System.Drawing.Size(910, 377);
+            this.panelLevelSelect.Size = new System.Drawing.Size(682, 306);
             this.panelLevelSelect.TabIndex = 6;
             this.panelLevelSelect.Visible = false;
             // 
             // btnLevel3
             // 
             this.btnLevel3.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.btnLevel3.Location = new System.Drawing.Point(250, 200);
+            this.btnLevel3.Location = new System.Drawing.Point(188, 162);
+            this.btnLevel3.Margin = new System.Windows.Forms.Padding(2);
             this.btnLevel3.Name = "btnLevel3";
-            this.btnLevel3.Size = new System.Drawing.Size(200, 50);
+            this.btnLevel3.Size = new System.Drawing.Size(150, 41);
             this.btnLevel3.TabIndex = 2;
             this.btnLevel3.Text = "Уровень 3";
             this.btnLevel3.UseVisualStyleBackColor = false;
@@ -160,9 +179,10 @@
             // btnLevel2
             // 
             this.btnLevel2.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.btnLevel2.Location = new System.Drawing.Point(250, 130);
+            this.btnLevel2.Location = new System.Drawing.Point(188, 106);
+            this.btnLevel2.Margin = new System.Windows.Forms.Padding(2);
             this.btnLevel2.Name = "btnLevel2";
-            this.btnLevel2.Size = new System.Drawing.Size(200, 50);
+            this.btnLevel2.Size = new System.Drawing.Size(150, 41);
             this.btnLevel2.TabIndex = 1;
             this.btnLevel2.Text = "Уровень 2";
             this.btnLevel2.UseVisualStyleBackColor = false;
@@ -171,32 +191,25 @@
             // btnLevel1
             // 
             this.btnLevel1.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.btnLevel1.Location = new System.Drawing.Point(250, 60);
+            this.btnLevel1.Location = new System.Drawing.Point(188, 49);
+            this.btnLevel1.Margin = new System.Windows.Forms.Padding(2);
             this.btnLevel1.Name = "btnLevel1";
-            this.btnLevel1.Size = new System.Drawing.Size(200, 50);
+            this.btnLevel1.Size = new System.Drawing.Size(150, 41);
             this.btnLevel1.TabIndex = 0;
             this.btnLevel1.Text = "Уровень 1";
             this.btnLevel1.UseVisualStyleBackColor = false;
             this.btnLevel1.Click += new System.EventHandler(this.btnLevel1_Click);
             // 
-            // btnRestart
-            // 
-            this.btnRestart.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.btnRestart.Location = new System.Drawing.Point(835, 5);
-            this.btnRestart.Name = "btnRestart";
-            this.btnRestart.Size = new System.Drawing.Size(65, 46);
-            this.btnRestart.TabIndex = 6;
-            this.btnRestart.Text = "Начать заново";
-            this.btnRestart.UseVisualStyleBackColor = false;
-            // 
             // btnSettings
             // 
-            this.btnSettings.Location = new System.Drawing.Point(790, 20);
+            this.btnSettings.Location = new System.Drawing.Point(592, 16);
+            this.btnSettings.Margin = new System.Windows.Forms.Padding(2);
             this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(120, 41);
+            this.btnSettings.Size = new System.Drawing.Size(90, 33);
             this.btnSettings.TabIndex = 7;
             this.btnSettings.Text = "Настройки";
             this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // panelSettings
             // 
@@ -207,21 +220,54 @@
             this.panelSettings.Controls.Add(this.label3);
             this.panelSettings.Controls.Add(this.chkPlayMusic);
             this.panelSettings.Controls.Add(this.label2);
-            this.panelSettings.Location = new System.Drawing.Point(12, 80);
+            this.panelSettings.Location = new System.Drawing.Point(9, 10);
+            this.panelSettings.Margin = new System.Windows.Forms.Padding(2);
             this.panelSettings.Name = "panelSettings";
-            this.panelSettings.Size = new System.Drawing.Size(910, 450);
+            this.panelSettings.Size = new System.Drawing.Size(682, 421);
             this.panelSettings.TabIndex = 9;
             this.panelSettings.Visible = false;
             // 
-            // label2
+            // btnFromSettings
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(301, 32);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(239, 32);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Настройки игры";
+            this.btnFromSettings.Location = new System.Drawing.Point(275, 325);
+            this.btnFromSettings.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFromSettings.Name = "btnFromSettings";
+            this.btnFromSettings.Size = new System.Drawing.Size(98, 19);
+            this.btnFromSettings.TabIndex = 5;
+            this.btnFromSettings.Text = "Назад";
+            this.btnFromSettings.UseVisualStyleBackColor = true;
+            this.btnFromSettings.Click += new System.EventHandler(this.btnFromSettings_Click);
+            // 
+            // btnSendFeedback
+            // 
+            this.btnSendFeedback.Location = new System.Drawing.Point(387, 178);
+            this.btnSendFeedback.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSendFeedback.Name = "btnSendFeedback";
+            this.btnSendFeedback.Size = new System.Drawing.Size(66, 71);
+            this.btnSendFeedback.TabIndex = 4;
+            this.btnSendFeedback.Text = "Отправить отзыв";
+            this.btnSendFeedback.UseVisualStyleBackColor = true;
+            this.btnSendFeedback.Click += new System.EventHandler(this.btnSendFeedback_Click);
+            // 
+            // txtFeedback
+            // 
+            this.txtFeedback.Location = new System.Drawing.Point(195, 178);
+            this.txtFeedback.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFeedback.Multiline = true;
+            this.txtFeedback.Name = "txtFeedback";
+            this.txtFeedback.Size = new System.Drawing.Size(179, 71);
+            this.txtFeedback.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(206, 144);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(257, 20);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Обратная связь (Напишите нам)";
             // 
             // chkPlayMusic
             // 
@@ -229,62 +275,39 @@
             this.chkPlayMusic.Checked = true;
             this.chkPlayMusic.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkPlayMusic.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.chkPlayMusic.Location = new System.Drawing.Point(298, 105);
+            this.chkPlayMusic.Location = new System.Drawing.Point(224, 85);
+            this.chkPlayMusic.Margin = new System.Windows.Forms.Padding(2);
             this.chkPlayMusic.Name = "chkPlayMusic";
-            this.chkPlayMusic.Size = new System.Drawing.Size(260, 24);
+            this.chkPlayMusic.Size = new System.Drawing.Size(205, 21);
             this.chkPlayMusic.TabIndex = 1;
             this.chkPlayMusic.Text = "Включить фоновую музыку";
             this.chkPlayMusic.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // label2
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(274, 177);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(317, 25);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Обратная связь (Напишите нам)";
-            // 
-            // txtFeedback
-            // 
-            this.txtFeedback.Location = new System.Drawing.Point(260, 219);
-            this.txtFeedback.Multiline = true;
-            this.txtFeedback.Name = "txtFeedback";
-            this.txtFeedback.Size = new System.Drawing.Size(237, 87);
-            this.txtFeedback.TabIndex = 3;
-            // 
-            // btnSendFeedback
-            // 
-            this.btnSendFeedback.Location = new System.Drawing.Point(516, 219);
-            this.btnSendFeedback.Name = "btnSendFeedback";
-            this.btnSendFeedback.Size = new System.Drawing.Size(88, 87);
-            this.btnSendFeedback.TabIndex = 4;
-            this.btnSendFeedback.Text = "Отправить отзыв";
-            this.btnSendFeedback.UseVisualStyleBackColor = true;
-            // 
-            // btnFromSettings
-            // 
-            this.btnFromSettings.Location = new System.Drawing.Point(367, 400);
-            this.btnFromSettings.Name = "btnFromSettings";
-            this.btnFromSettings.Size = new System.Drawing.Size(130, 23);
-            this.btnFromSettings.TabIndex = 5;
-            this.btnFromSettings.Text = "В главное меню";
-            this.btnFromSettings.UseVisualStyleBackColor = true;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(226, 26);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(188, 26);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Настройки игры";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(932, 553);
+            this.ClientSize = new System.Drawing.Size(699, 449);
             this.Controls.Add(this.panelSettings);
+            this.Controls.Add(this.panelLevelSelect);
             this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.panelLevelSelect);
             this.Controls.Add(this.panelGame);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Game";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panelGame.ResumeLayout(false);
             this.panelGame.PerformLayout();
