@@ -12,6 +12,9 @@ namespace Bone_By_Bone
 {
     public partial class MainMenuForm : UserControl
     {
+
+        public event EventHandler StartGameClicked;
+
         public MainMenuForm()
         {
             InitializeComponent();
@@ -19,6 +22,13 @@ namespace Bone_By_Bone
 
         private void MainMenuForm_Load(object sender, EventArgs e)
         {
+
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            StartGameClicked?.Invoke(this, EventArgs.Empty);
 
         }
     }
