@@ -12,9 +12,30 @@ namespace Bone_By_Bone
 {
     public partial class FormSetting : UserControl
     {
+        public event EventHandler BackClicked;
+        public event EventHandler SettingsClicked;
+
         public FormSetting()
         {
             InitializeComponent();
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            panelSettings.Visible = true;
+            btnSettings.Visible = false;
+        }
+
+        private void btnFromSettings_Click(object sender, EventArgs e)
+        {
+            panelSettings.Visible = false;
+            btnSettings.Visible = true;
+            BackClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void btnSendFeedback_Click(object sender, EventArgs e)
+        {
+            txtFeedback.Clear();
         }
     }
 }
