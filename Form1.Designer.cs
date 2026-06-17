@@ -38,14 +38,14 @@
             // 
             this.mainMenuForm1.Location = new System.Drawing.Point(31, 12);
             this.mainMenuForm1.Name = "mainMenuForm1";
-            this.mainMenuForm1.Size = new System.Drawing.Size(618, 444);
+            this.mainMenuForm1.Size = new System.Drawing.Size(546, 444);
             this.mainMenuForm1.TabIndex = 0;
             // 
             // levelSekectForm1
             // 
             this.levelSekectForm1.Location = new System.Drawing.Point(7, -11);
             this.levelSekectForm1.Name = "levelSekectForm1";
-            this.levelSekectForm1.Size = new System.Drawing.Size(697, 535);
+            this.levelSekectForm1.Size = new System.Drawing.Size(570, 535);
             this.levelSekectForm1.TabIndex = 1;
             // 
             // gameForm1
@@ -57,9 +57,9 @@
             // 
             // formSetting1
             // 
-            this.formSetting1.Location = new System.Drawing.Point(7, -20);
+            this.formSetting1.Location = new System.Drawing.Point(-1, -11);
             this.formSetting1.Name = "formSetting1";
-            this.formSetting1.Size = new System.Drawing.Size(696, 525);
+            this.formSetting1.Size = new System.Drawing.Size(705, 525);
             this.formSetting1.TabIndex = 3;
             // 
             // Form1
@@ -68,9 +68,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(716, 468);
             this.Controls.Add(this.mainMenuForm1);
+            this.Controls.Add(this.levelSekectForm1);
             this.Controls.Add(this.formSetting1);
             this.Controls.Add(this.gameForm1);
-            this.Controls.Add(this.levelSekectForm1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Game";
