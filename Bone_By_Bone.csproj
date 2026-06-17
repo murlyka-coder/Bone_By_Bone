@@ -52,12 +52,36 @@
     <Compile Include="Form1.Settings.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormSetting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormSetting.Designer.cs">
+      <DependentUpon>FormSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GameForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GameForm.Designer.cs">
+      <DependentUpon>GameForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LevelConfig.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LevelSekectForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LevelSekectForm.Designer.cs">
+      <DependentUpon>LevelSekectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenuForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainMenuForm.Designer.cs">
+      <DependentUpon>MainMenuForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
