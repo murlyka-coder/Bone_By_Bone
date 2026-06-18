@@ -19,7 +19,6 @@ namespace Bone_By_Bone
         {
             mainMenuForm1.Visible = false;
             levelSekectForm1.Visible = true;
-            levelSekectForm1.BringToFront();
         }
 
         private void Form1_Load(object sender, EventArgs e)
