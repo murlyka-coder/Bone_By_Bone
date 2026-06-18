@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace Bone_By_Bone
 {
-    public partial class FormSetting : UserControl
+    public partial class SettingForm : UserControl
     {
         public event EventHandler BackClicked;
         public event EventHandler SettingsClicked;
 
-        public FormSetting()
+        public SettingForm()
         {
             InitializeComponent();
         }

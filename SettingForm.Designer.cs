@@ -1,6 +1,6 @@
 ﻿namespace Bone_By_Bone
 {
-    partial class FormSetting
+    partial class SettingForm
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -139,7 +139,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.panelSettings);
-            this.Name = "FormSetting";
+            this.Name = "SettingForm";
             this.Size = new System.Drawing.Size(696, 525);
             this.panelSettings.ResumeLayout(false);
             this.panelSettings.PerformLayout();

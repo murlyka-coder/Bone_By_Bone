@@ -31,7 +31,7 @@
             this.mainMenuForm1 = new Bone_By_Bone.MainMenuForm();
             this.levelSekectForm1 = new Bone_By_Bone.LevelSekectForm();
             this.gameForm1 = new Bone_By_Bone.GameForm();
-            this.formSetting1 = new Bone_By_Bone.FormSetting();
+            this.settingForm1 = new Bone_By_Bone.SettingForm();
             this.SuspendLayout();
             // 
             // mainMenuForm1
@@ -55,12 +55,12 @@
             this.gameForm1.Size = new System.Drawing.Size(719, 544);
             this.gameForm1.TabIndex = 2;
             // 
-            // formSetting1
+            // settingForm1
             // 
-            this.formSetting1.Location = new System.Drawing.Point(-1, -11);
-            this.formSetting1.Name = "formSetting1";
-            this.formSetting1.Size = new System.Drawing.Size(705, 525);
-            this.formSetting1.TabIndex = 3;
+            this.settingForm1.Location = new System.Drawing.Point(-1, -11);
+            this.settingForm1.Name = "settingForm1";
+            this.settingForm1.Size = new System.Drawing.Size(705, 525);
+            this.settingForm1.TabIndex = 3;
             // 
             // Form1
             // 
@@ -69,7 +69,7 @@
             this.ClientSize = new System.Drawing.Size(716, 468);
             this.Controls.Add(this.mainMenuForm1);
             this.Controls.Add(this.levelSekectForm1);
-            this.Controls.Add(this.formSetting1);
+            this.Controls.Add(this.settingForm1);
             this.Controls.Add(this.gameForm1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
@@ -84,7 +84,7 @@
         private MainMenuForm mainMenuForm1;
         private LevelSekectForm levelSekectForm1;
         private GameForm gameForm1;
-        private FormSetting formSetting1;
+        private SettingForm settingForm1;
     }
 }
 

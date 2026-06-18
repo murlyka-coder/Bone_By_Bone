@@ -46,17 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.Game.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Settings.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormSetting.cs">
+    <Compile Include="SettingForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FormSetting.Designer.cs">
-      <DependentUpon>FormSetting.cs</DependentUpon>
+    <Compile Include="SettingForm.Designer.cs">
+      <DependentUpon>SettingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GameForm.cs">
       <SubType>UserControl</SubType>
@@ -88,8 +82,8 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormSetting.resx">
-      <DependentUpon>FormSetting.cs</DependentUpon>
+    <EmbeddedResource Include="SettingForm.resx">
+      <DependentUpon>SettingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GameForm.resx">
       <DependentUpon>GameForm.cs</DependentUpon>
