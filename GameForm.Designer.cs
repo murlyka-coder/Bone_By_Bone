@@ -81,7 +81,7 @@
             this.Controls.Add(this.btnBackToMenu);
             this.Controls.Add(this.lblMistakes);
             this.Name = "GameForm";
-            this.Size = new System.Drawing.Size(670, 544);
+            this.Size = new System.Drawing.Size(670, 368);
             this.ResumeLayout(false);
             this.PerformLayout();
 

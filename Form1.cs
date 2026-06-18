@@ -22,7 +22,6 @@ namespace Bone_By_Bone
         {
             mainMenuForm1.Visible = false;
             levelSekectForm1.Visible = true;
-
         }
 
         private void LevelSekectForm1_LevelSelected(object sender, int level)
@@ -31,6 +30,12 @@ namespace Bone_By_Bone
             levelSekectForm1.Visible = false;
             gameForm1.Visible = true;
             gameForm1.StartLevel(level);
+        }
+
+        private void GameForm1_BackToMenuClicked(object sender, EventArgs e)
+        {
+            gameForm1.Visible = false;
+            mainMenuForm1.Visible = true;
         }
 
 
@@ -54,14 +59,6 @@ namespace Bone_By_Bone
             else if (previousPanel == "levels") levelSekectForm1.Visible = true;
             else mainMenuForm1.Visible = true;
         }
-
-        private void GameForm1_BackToMenuClicked(object sender, EventArgs e)
-        {
-            gameForm1.Visible = false;
-            mainMenuForm1.Visible = true;
-        }
-
-
 
         private void Form1_Load(object sender, EventArgs e)
         {
