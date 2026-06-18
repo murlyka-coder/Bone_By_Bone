@@ -30,30 +30,24 @@
         {
             this.mainMenuForm1 = new Bone_By_Bone.MainMenuForm();
             this.levelSekectForm1 = new Bone_By_Bone.LevelSekectForm();
-            this.gameForm1 = new Bone_By_Bone.GameForm();
             this.settingForm1 = new Bone_By_Bone.SettingForm();
+            this.gameForm1 = new Bone_By_Bone.GameForm();
             this.SuspendLayout();
             // 
             // mainMenuForm1
             // 
-            this.mainMenuForm1.Location = new System.Drawing.Point(31, 12);
+            this.mainMenuForm1.Location = new System.Drawing.Point(7, 12);
             this.mainMenuForm1.Name = "mainMenuForm1";
-            this.mainMenuForm1.Size = new System.Drawing.Size(546, 444);
+            this.mainMenuForm1.Size = new System.Drawing.Size(692, 444);
             this.mainMenuForm1.TabIndex = 0;
             // 
             // levelSekectForm1
             // 
             this.levelSekectForm1.Location = new System.Drawing.Point(7, -11);
             this.levelSekectForm1.Name = "levelSekectForm1";
-            this.levelSekectForm1.Size = new System.Drawing.Size(570, 535);
+            this.levelSekectForm1.Size = new System.Drawing.Size(677, 535);
             this.levelSekectForm1.TabIndex = 1;
-            // 
-            // gameForm1
-            // 
-            this.gameForm1.Location = new System.Drawing.Point(7, -20);
-            this.gameForm1.Name = "gameForm1";
-            this.gameForm1.Size = new System.Drawing.Size(719, 544);
-            this.gameForm1.TabIndex = 2;
+            this.levelSekectForm1.Visible = false;
             // 
             // settingForm1
             // 
@@ -61,6 +55,15 @@
             this.settingForm1.Name = "settingForm1";
             this.settingForm1.Size = new System.Drawing.Size(705, 525);
             this.settingForm1.TabIndex = 3;
+            this.settingForm1.Visible = false;
+            // 
+            // gameForm1
+            // 
+            this.gameForm1.Location = new System.Drawing.Point(7, -20);
+            this.gameForm1.Name = "gameForm1";
+            this.gameForm1.Size = new System.Drawing.Size(719, 544);
+            this.gameForm1.TabIndex = 2;
+            this.gameForm1.Visible = false;
             // 
             // Form1
             // 

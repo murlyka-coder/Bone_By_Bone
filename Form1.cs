@@ -11,6 +11,8 @@ namespace Bone_By_Bone
         {
             InitializeComponent();
             mainMenuForm1.StartGameClicked += MainMenu_StartGameClicked;
+            mainMenuForm1.SettingsClicked += (s, e) => OpenSettings();
+            settingForm1.BackClicked += SettingsForm1_BackClicked;
 
 
         }
@@ -19,7 +21,9 @@ namespace Bone_By_Bone
         {
             mainMenuForm1.Visible = false;
             levelSekectForm1.Visible = true;
+
         }
+
 
         private void OpenSettings()
         {

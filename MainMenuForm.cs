@@ -14,6 +14,7 @@ namespace Bone_By_Bone
     {
 
         public event EventHandler StartGameClicked;
+        public event EventHandler SettingsClicked;
 
         public MainMenuForm()
         {
@@ -30,6 +31,11 @@ namespace Bone_By_Bone
         {
             StartGameClicked?.Invoke(this, EventArgs.Empty);
 
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            SettingsClicked?.Invoke(this, EventArgs.Empty);
         }
     }
 }
