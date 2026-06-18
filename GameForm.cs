@@ -48,7 +48,7 @@ namespace Bone_By_Bone
             // --- УМНЫЙ РАСЧЕТ ШАГА ---
             // Нам нужно распределить кости в пределах ширины панели (700 пикселей)
             int margin = 20; // отступ от левого и правого краев панели
-            int availableWidth = panelGame.Width - (margin * 2) - boneSize.Width; // доступная ширина для шага
+            int availableWidth = this.Width - (margin * 2) - boneSize.Width; // доступная ширина для шага
             float step = (float)availableWidth / (boneCount - 1); // расстояние между левыми краями соседних костей
 
             for (int i = 0; i < boneCount; i++)
@@ -66,7 +66,7 @@ namespace Bone_By_Bone
                 target.BorderStyle = BorderStyle.FixedSingle; // ДОБАВИТЬ ЭТУ СТРОКУ
                 target.Location = new Point(posX, 80);
 
-                panelGame.Controls.Add(target);
+                this.Controls.Add(target);
                 activeTargets.Add(target);
 
                 // 2. Создаем кость
@@ -84,13 +84,12 @@ namespace Bone_By_Bone
                 bone.MouseMove += DynamicBone_MouseMove;
                 bone.MouseUp += DynamicBone_MouseUp;
 
-                panelGame.Controls.Add(bone);
+                this.Controls.Add(bone);
                 activeBones.Add(bone);
 
                 bone.BringToFront();
             }
 
-            panelGame.Visible = true;
             TimerGame.Start();
         }
 
@@ -137,8 +136,8 @@ namespace Bone_By_Bone
         private void ClearActiveLevel()
         {
             btnBackToMenu.Visible = false;
-            foreach (var b in activeBones) panelGame.Controls.Remove(b);
-            foreach (var t in activeTargets) panelGame.Controls.Remove(t);
+            foreach (var b in activeBones) this.Controls.Remove(b);
+            foreach (var t in activeTargets) this.Controls.Remove(t);
             activeBones.Clear();
             activeTargets.Clear();
         }

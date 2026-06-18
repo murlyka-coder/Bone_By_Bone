@@ -13,7 +13,6 @@ namespace Bone_By_Bone
     public partial class SettingForm : UserControl
     {
         public event EventHandler BackClicked;
-        public event EventHandler SettingsClicked;
 
         public SettingForm()
         {

@@ -33,15 +33,12 @@
             this.btnBackToMenu = new System.Windows.Forms.Button();
             this.lblMistakes = new System.Windows.Forms.Label();
             this.TimerGame = new System.Windows.Forms.Timer(this.components);
-            this.panelDock = new System.Windows.Forms.Panel();
-            this.panelGame = new System.Windows.Forms.Panel();
-            this.panelGame.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTime
             // 
             this.lblTime.AutoSize = true;
-            this.lblTime.Location = new System.Drawing.Point(11, 27);
+            this.lblTime.Location = new System.Drawing.Point(12, 66);
             this.lblTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(76, 13);
@@ -51,7 +48,7 @@
             // btnBackToMenu
             // 
             this.btnBackToMenu.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.btnBackToMenu.Location = new System.Drawing.Point(209, 12);
+            this.btnBackToMenu.Location = new System.Drawing.Point(239, 63);
             this.btnBackToMenu.Margin = new System.Windows.Forms.Padding(2);
             this.btnBackToMenu.Name = "btnBackToMenu";
             this.btnBackToMenu.Size = new System.Drawing.Size(115, 19);
@@ -64,7 +61,7 @@
             // lblMistakes
             // 
             this.lblMistakes.AutoSize = true;
-            this.lblMistakes.Location = new System.Drawing.Point(11, 12);
+            this.lblMistakes.Location = new System.Drawing.Point(12, 48);
             this.lblMistakes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMistakes.Name = "lblMistakes";
             this.lblMistakes.Size = new System.Drawing.Size(59, 13);
@@ -76,38 +73,17 @@
             this.TimerGame.Interval = 1000;
             this.TimerGame.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // panelDock
-            // 
-            this.panelDock.BackColor = System.Drawing.Color.SandyBrown;
-            this.panelDock.Location = new System.Drawing.Point(0, 252);
-            this.panelDock.Margin = new System.Windows.Forms.Padding(2);
-            this.panelDock.Name = "panelDock";
-            this.panelDock.Size = new System.Drawing.Size(682, 167);
-            this.panelDock.TabIndex = 5;
-            // 
-            // panelGame
-            // 
-            this.panelGame.BackColor = System.Drawing.Color.BurlyWood;
-            this.panelGame.Controls.Add(this.btnBackToMenu);
-            this.panelGame.Controls.Add(this.lblTime);
-            this.panelGame.Controls.Add(this.lblMistakes);
-            this.panelGame.Controls.Add(this.panelDock);
-            this.panelGame.Location = new System.Drawing.Point(18, 62);
-            this.panelGame.Margin = new System.Windows.Forms.Padding(2);
-            this.panelGame.Name = "panelGame";
-            this.panelGame.Size = new System.Drawing.Size(682, 421);
-            this.panelGame.TabIndex = 3;
-            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panelGame);
+            this.Controls.Add(this.lblTime);
+            this.Controls.Add(this.btnBackToMenu);
+            this.Controls.Add(this.lblMistakes);
             this.Name = "GameForm";
-            this.Size = new System.Drawing.Size(719, 544);
-            this.panelGame.ResumeLayout(false);
-            this.panelGame.PerformLayout();
+            this.Size = new System.Drawing.Size(670, 544);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -117,7 +93,5 @@
         private System.Windows.Forms.Button btnBackToMenu;
         private System.Windows.Forms.Label lblMistakes;
         private System.Windows.Forms.Timer TimerGame;
-        private System.Windows.Forms.Panel panelDock;
-        private System.Windows.Forms.Panel panelGame;
     }
 }
