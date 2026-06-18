@@ -6,6 +6,7 @@ namespace Bone_By_Bone
     public partial class Form1 : Form
     {
         private string previousPanel = "menu";
+        private int selectedLevel = 1;
 
         public Form1()
         {
@@ -13,8 +14,8 @@ namespace Bone_By_Bone
             mainMenuForm1.StartGameClicked += MainMenu_StartGameClicked;
             mainMenuForm1.SettingsClicked += (s, e) => OpenSettings();
             settingForm1.BackClicked += SettingsForm1_BackClicked;
-
-
+            levelSekectForm1.LevelSelected += LevelSekectForm1_LevelSelected;
+            gameForm1.BackToMenuClicked += GameForm1_BackToMenuClicked;
         }
 
         private void MainMenu_StartGameClicked(object sender, EventArgs e)
@@ -22,6 +23,14 @@ namespace Bone_By_Bone
             mainMenuForm1.Visible = false;
             levelSekectForm1.Visible = true;
 
+        }
+
+        private void LevelSekectForm1_LevelSelected(object sender, int level)
+        {
+            selectedLevel = level;
+            levelSekectForm1.Visible = false;
+            gameForm1.Visible = true;
+            gameForm1.StartLevel(level);
         }
 
 
@@ -45,6 +54,14 @@ namespace Bone_By_Bone
             else if (previousPanel == "levels") levelSekectForm1.Visible = true;
             else mainMenuForm1.Visible = true;
         }
+
+        private void GameForm1_BackToMenuClicked(object sender, EventArgs e)
+        {
+            gameForm1.Visible = false;
+            mainMenuForm1.Visible = true;
+        }
+
+
 
         private void Form1_Load(object sender, EventArgs e)
         {

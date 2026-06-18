@@ -35,7 +35,7 @@ namespace Bone_By_Bone
         }
 
 
-        private void StartLevel(int level)
+        public void StartLevel(int level)
         {
             selectedLevel = level;
 
@@ -136,6 +136,7 @@ namespace Bone_By_Bone
         // Метод удаления костей с экрана при возврате в меню
         private void ClearActiveLevel()
         {
+            btnBackToMenu.Visible = false;
             foreach (var b in activeBones) panelGame.Controls.Remove(b);
             foreach (var t in activeTargets) panelGame.Controls.Remove(t);
             activeBones.Clear();

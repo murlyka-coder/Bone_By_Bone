@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.lblTime = new System.Windows.Forms.Label();
-            this.panelGame = new System.Windows.Forms.Panel();
             this.btnBackToMenu = new System.Windows.Forms.Button();
             this.lblMistakes = new System.Windows.Forms.Label();
-            this.panelDock = new System.Windows.Forms.Panel();
             this.TimerGame = new System.Windows.Forms.Timer(this.components);
+            this.panelDock = new System.Windows.Forms.Panel();
+            this.panelGame = new System.Windows.Forms.Panel();
             this.panelGame.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,20 +47,6 @@
             this.lblTime.Size = new System.Drawing.Size(76, 13);
             this.lblTime.TabIndex = 3;
             this.lblTime.Text = "Время: 0 сек.";
-            // 
-            // panelGame
-            // 
-            this.panelGame.BackColor = System.Drawing.Color.BurlyWood;
-            this.panelGame.Controls.Add(this.btnBackToMenu);
-            this.panelGame.Controls.Add(this.lblTime);
-            this.panelGame.Controls.Add(this.lblMistakes);
-            this.panelGame.Controls.Add(this.panelDock);
-            this.panelGame.Location = new System.Drawing.Point(18, 62);
-            this.panelGame.Margin = new System.Windows.Forms.Padding(2);
-            this.panelGame.Name = "panelGame";
-            this.panelGame.Size = new System.Drawing.Size(682, 421);
-            this.panelGame.TabIndex = 3;
-            this.panelGame.Visible = false;
             // 
             // btnBackToMenu
             // 
@@ -85,6 +71,11 @@
             this.lblMistakes.TabIndex = 2;
             this.lblMistakes.Text = "Ошибки: 0";
             // 
+            // TimerGame
+            // 
+            this.TimerGame.Interval = 1000;
+            this.TimerGame.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // panelDock
             // 
             this.panelDock.BackColor = System.Drawing.Color.SandyBrown;
@@ -94,10 +85,18 @@
             this.panelDock.Size = new System.Drawing.Size(682, 167);
             this.panelDock.TabIndex = 5;
             // 
-            // TimerGame
+            // panelGame
             // 
-            this.TimerGame.Interval = 1000;
-            this.TimerGame.Tick += new System.EventHandler(this.timer1_Tick);
+            this.panelGame.BackColor = System.Drawing.Color.BurlyWood;
+            this.panelGame.Controls.Add(this.btnBackToMenu);
+            this.panelGame.Controls.Add(this.lblTime);
+            this.panelGame.Controls.Add(this.lblMistakes);
+            this.panelGame.Controls.Add(this.panelDock);
+            this.panelGame.Location = new System.Drawing.Point(18, 62);
+            this.panelGame.Margin = new System.Windows.Forms.Padding(2);
+            this.panelGame.Name = "panelGame";
+            this.panelGame.Size = new System.Drawing.Size(682, 421);
+            this.panelGame.TabIndex = 3;
             // 
             // GameForm
             // 
@@ -115,10 +114,10 @@
         #endregion
 
         private System.Windows.Forms.Label lblTime;
-        private System.Windows.Forms.Panel panelGame;
         private System.Windows.Forms.Button btnBackToMenu;
         private System.Windows.Forms.Label lblMistakes;
-        private System.Windows.Forms.Panel panelDock;
         private System.Windows.Forms.Timer TimerGame;
+        private System.Windows.Forms.Panel panelDock;
+        private System.Windows.Forms.Panel panelGame;
     }
 }

@@ -43,6 +43,7 @@
             this.btnLevel3.TabIndex = 2;
             this.btnLevel3.Text = "Уровень 3";
             this.btnLevel3.UseVisualStyleBackColor = false;
+            this.btnLevel3.Click += new System.EventHandler(this.btnLevel3_Click);
             // 
             // btnLevel2
             // 
@@ -54,6 +55,7 @@
             this.btnLevel2.TabIndex = 1;
             this.btnLevel2.Text = "Уровень 2";
             this.btnLevel2.UseVisualStyleBackColor = false;
+            this.btnLevel2.Click += new System.EventHandler(this.btnLevel2_Click);
             // 
             // btnLevel1
             // 
@@ -65,6 +67,7 @@
             this.btnLevel1.TabIndex = 0;
             this.btnLevel1.Text = "Уровень 1";
             this.btnLevel1.UseVisualStyleBackColor = false;
+            this.btnLevel1.Click += new System.EventHandler(this.btnLevel1_Click);
             // 
             // LevelSekectForm
             // 
