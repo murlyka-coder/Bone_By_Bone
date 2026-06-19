@@ -109,12 +109,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::Bone_By_Bone.Properties.Resources.setting;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.btnFromSettings);
             this.Controls.Add(this.btnSendFeedback);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtFeedback);
             this.Controls.Add(this.chkPlayMusic);
             this.Controls.Add(this.label3);
+            this.DoubleBuffered = true;
             this.Name = "SettingForm";
             this.Size = new System.Drawing.Size(1920, 1080);
             this.ResumeLayout(false);
