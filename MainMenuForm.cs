@@ -41,23 +41,17 @@ namespace Bone_By_Bone
         private void button1_MouseEnter(object sender, EventArgs e)
         {
             button1.Image = Properties.Resources.buttonlight1;
-            button1.Parent.Invalidate(button1.Bounds);
-
         }
 
         private void button1_MouseLeave(object sender, EventArgs e)
         {
             button1.Image = Properties.Resources.buttonnormal1;
-            button1.Parent.Invalidate(button1.Bounds);
-
         }
 
 
         private void button1_MouseDown(object sender, MouseEventArgs e)
         {
             button1.Image = Properties.Resources.buttonpress1;
-            button1.Parent.Invalidate(button1.Bounds);
-
 
         }
     }
