@@ -54,5 +54,10 @@ namespace Bone_By_Bone
             button1.Image = Properties.Resources.buttonpress1;
 
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
