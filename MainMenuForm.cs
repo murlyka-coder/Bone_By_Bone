@@ -37,5 +37,25 @@ namespace Bone_By_Bone
         {
             SettingsClicked?.Invoke(this, EventArgs.Empty);
         }
+
+        private void button1_MouseEnter(object sender, EventArgs e)
+        {
+            button1.BackgroundImage = Properties.Resources.buttonlight1;
+            button1.BackColor = Color.Transparent;
+        }
+
+        private void button1_MouseLeave(object sender, EventArgs e)
+        {
+            button1.BackgroundImage = Properties.Resources.buttonnormal1;
+            button1.BackColor = Color.Transparent;
+        }
+
+        private void button1_MouseDown(object sender, MouseEventArgs e)
+        {
+            button1.BackgroundImage = Properties.Resources.buttonpress1;
+            button1.BackColor = Color.Transparent;
+        }
+
+
     }
 }

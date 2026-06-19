@@ -34,15 +34,24 @@
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.button1.Location = new System.Drawing.Point(929, 619);
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.BackgroundImage = global::Bone_By_Bone.Properties.Resources.buttonnormal1;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Comic Sans MS", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.button1.Location = new System.Drawing.Point(741, 468);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(200, 53);
+            this.button1.Size = new System.Drawing.Size(406, 157);
             this.button1.TabIndex = 3;
             this.button1.Text = " Начать игру";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button1_MouseDown);
+            this.button1.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
+            this.button1.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
             // 
             // btnSettings
             // 

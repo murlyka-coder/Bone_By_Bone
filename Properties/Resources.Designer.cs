@@ -73,6 +73,36 @@ namespace Bone_By_Bone.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap buttonlight1 {
+            get {
+                object obj = ResourceManager.GetObject("buttonlight1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap buttonnormal1 {
+            get {
+                object obj = ResourceManager.GetObject("buttonnormal1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap buttonpress1 {
+            get {
+                object obj = ResourceManager.GetObject("buttonpress1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap gamemenu {
             get {
                 object obj = ResourceManager.GetObject("gamemenu", resourceCulture);
