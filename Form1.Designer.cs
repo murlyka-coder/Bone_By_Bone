@@ -40,32 +40,28 @@ namespace Bone_By_Bone
             // 
             // mainMenuForm1
             // 
-            this.mainMenuForm1.Location = new System.Drawing.Point(0, 0);
+            this.mainMenuForm1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainMenuForm1.Name = "mainMenuForm1";
-            this.mainMenuForm1.Size = new System.Drawing.Size(1920, 1080);
             this.mainMenuForm1.TabIndex = 0;
             // 
             // levelSekectForm1
             // 
-            this.levelSekectForm1.Location = new System.Drawing.Point(0, 0);
+            this.levelSekectForm1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.levelSekectForm1.Name = "levelSekectForm1";
-            this.levelSekectForm1.Size = new System.Drawing.Size(1920, 1080);
             this.levelSekectForm1.TabIndex = 1;
             this.levelSekectForm1.Visible = false;
             // 
             // settingForm1
             // 
-            this.settingForm1.Location = new System.Drawing.Point(0, 0);
+            this.settingForm1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.settingForm1.Name = "settingForm1";
-            this.settingForm1.Size = new System.Drawing.Size(1920, 1080);
             this.settingForm1.TabIndex = 3;
             this.settingForm1.Visible = false;
             // 
             // gameForm1
-            // 
-            this.gameForm1.Location = new System.Drawing.Point(0, 0);
+            //
+            this.gameForm1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gameForm1.Name = "gameForm1";
-            this.gameForm1.Size = new System.Drawing.Size(1920, 1080);
             this.gameForm1.TabIndex = 2;
             this.gameForm1.Visible = false;
             // 
