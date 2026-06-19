@@ -77,9 +77,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::Bone_By_Bone.Properties.Resources.gamemenu;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.btnBackToMenu);
             this.Controls.Add(this.lblMistakes);
+            this.DoubleBuffered = true;
             this.Name = "GameForm";
             this.Size = new System.Drawing.Size(1920, 1080);
             this.ResumeLayout(false);

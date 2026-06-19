@@ -30,8 +30,6 @@ namespace Bone_By_Bone
         /// </summary>
         private void InitializeComponent()
         {
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.WindowState = FormWindowState.Maximized;
             this.mainMenuForm1 = new Bone_By_Bone.MainMenuForm();
             this.levelSekectForm1 = new Bone_By_Bone.LevelSekectForm();
             this.settingForm1 = new Bone_By_Bone.SettingForm();
@@ -41,27 +39,35 @@ namespace Bone_By_Bone
             // mainMenuForm1
             // 
             this.mainMenuForm1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainMenuForm1.Location = new System.Drawing.Point(0, 0);
             this.mainMenuForm1.Name = "mainMenuForm1";
+            this.mainMenuForm1.Size = new System.Drawing.Size(1920, 1080);
             this.mainMenuForm1.TabIndex = 0;
             // 
             // levelSekectForm1
             // 
             this.levelSekectForm1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.levelSekectForm1.Location = new System.Drawing.Point(0, 0);
             this.levelSekectForm1.Name = "levelSekectForm1";
+            this.levelSekectForm1.Size = new System.Drawing.Size(1920, 1080);
             this.levelSekectForm1.TabIndex = 1;
             this.levelSekectForm1.Visible = false;
             // 
             // settingForm1
             // 
             this.settingForm1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.settingForm1.Location = new System.Drawing.Point(0, 0);
             this.settingForm1.Name = "settingForm1";
+            this.settingForm1.Size = new System.Drawing.Size(1920, 1080);
             this.settingForm1.TabIndex = 3;
             this.settingForm1.Visible = false;
             // 
             // gameForm1
-            //
+            // 
             this.gameForm1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gameForm1.Location = new System.Drawing.Point(0, 0);
             this.gameForm1.Name = "gameForm1";
+            this.gameForm1.Size = new System.Drawing.Size(1920, 1080);
             this.gameForm1.TabIndex = 2;
             this.gameForm1.Visible = false;
             // 
@@ -69,14 +75,18 @@ namespace Bone_By_Bone
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.Controls.Add(this.mainMenuForm1);
             this.Controls.Add(this.levelSekectForm1);
             this.Controls.Add(this.settingForm1);
             this.Controls.Add(this.gameForm1);
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Game";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 

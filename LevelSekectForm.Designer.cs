@@ -73,9 +73,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::Bone_By_Bone.Properties.Resources.levelselect;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.btnLevel3);
             this.Controls.Add(this.btnLevel2);
             this.Controls.Add(this.btnLevel1);
+            this.DoubleBuffered = true;
             this.Name = "LevelSekectForm";
             this.Size = new System.Drawing.Size(1920, 1080);
             this.ResumeLayout(false);
