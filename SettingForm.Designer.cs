@@ -116,7 +116,7 @@
             this.Controls.Add(this.chkPlayMusic);
             this.Controls.Add(this.label3);
             this.Name = "SettingForm";
-            this.Size = new System.Drawing.Size(696, 525);
+            this.Size = new System.Drawing.Size(1920, 1080);
             this.ResumeLayout(false);
             this.PerformLayout();
 

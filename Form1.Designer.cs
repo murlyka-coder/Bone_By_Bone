@@ -1,4 +1,6 @@
-﻿namespace Bone_By_Bone
+﻿using System.Windows.Forms;
+
+namespace Bone_By_Bone
 {
     partial class Form1
     {
@@ -28,6 +30,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
             this.mainMenuForm1 = new Bone_By_Bone.MainMenuForm();
             this.levelSekectForm1 = new Bone_By_Bone.LevelSekectForm();
             this.settingForm1 = new Bone_By_Bone.SettingForm();
@@ -36,32 +40,32 @@
             // 
             // mainMenuForm1
             // 
-            this.mainMenuForm1.Location = new System.Drawing.Point(7, 12);
+            this.mainMenuForm1.Location = new System.Drawing.Point(0, 0);
             this.mainMenuForm1.Name = "mainMenuForm1";
-            this.mainMenuForm1.Size = new System.Drawing.Size(692, 444);
+            this.mainMenuForm1.Size = new System.Drawing.Size(1920, 1080);
             this.mainMenuForm1.TabIndex = 0;
             // 
             // levelSekectForm1
             // 
-            this.levelSekectForm1.Location = new System.Drawing.Point(7, -11);
+            this.levelSekectForm1.Location = new System.Drawing.Point(0, 0);
             this.levelSekectForm1.Name = "levelSekectForm1";
-            this.levelSekectForm1.Size = new System.Drawing.Size(677, 535);
+            this.levelSekectForm1.Size = new System.Drawing.Size(1920, 1080);
             this.levelSekectForm1.TabIndex = 1;
             this.levelSekectForm1.Visible = false;
             // 
             // settingForm1
             // 
-            this.settingForm1.Location = new System.Drawing.Point(-1, -11);
+            this.settingForm1.Location = new System.Drawing.Point(0, 0);
             this.settingForm1.Name = "settingForm1";
-            this.settingForm1.Size = new System.Drawing.Size(705, 525);
+            this.settingForm1.Size = new System.Drawing.Size(1920, 1080);
             this.settingForm1.TabIndex = 3;
             this.settingForm1.Visible = false;
             // 
             // gameForm1
             // 
-            this.gameForm1.Location = new System.Drawing.Point(7, -20);
+            this.gameForm1.Location = new System.Drawing.Point(0, 0);
             this.gameForm1.Name = "gameForm1";
-            this.gameForm1.Size = new System.Drawing.Size(719, 544);
+            this.gameForm1.Size = new System.Drawing.Size(1920, 1080);
             this.gameForm1.TabIndex = 2;
             this.gameForm1.Visible = false;
             // 
@@ -69,7 +73,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(716, 468);
+            this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.Controls.Add(this.mainMenuForm1);
             this.Controls.Add(this.levelSekectForm1);
             this.Controls.Add(this.settingForm1);

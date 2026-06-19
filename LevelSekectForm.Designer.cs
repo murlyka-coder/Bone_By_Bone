@@ -77,7 +77,7 @@
             this.Controls.Add(this.btnLevel2);
             this.Controls.Add(this.btnLevel1);
             this.Name = "LevelSekectForm";
-            this.Size = new System.Drawing.Size(697, 535);
+            this.Size = new System.Drawing.Size(1920, 1080);
             this.ResumeLayout(false);
 
         }
