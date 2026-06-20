@@ -19,8 +19,8 @@ namespace Bone_By_Bone
         public MainMenuForm()
         {
             InitializeComponent();
-        }
 
+        }
         private void MainMenuForm_Load(object sender, EventArgs e)
         {
 
@@ -55,12 +55,32 @@ namespace Bone_By_Bone
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+
+
+        private void button2_MouseEnter(object sender, EventArgs e)
+        {
+            button2.Image = Properties.Resources.buttonlight2;
+        }
+
+        private void button2_MouseLeave(object sender, EventArgs e)
+        {
+            button2.Image = Properties.Resources.buttonnormal2;
+        }
+
+
+        private void button2_MouseDown(object sender, MouseEventArgs e)
+        {
+            button2.Image = Properties.Resources.buttonpress2;
+
+        }
+
+
+        private void pictureBox3_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void pictureBox3_Click(object sender, EventArgs e)
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
 
         }

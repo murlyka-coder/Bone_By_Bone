@@ -30,6 +30,7 @@ namespace Bone_By_Bone
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.mainMenuForm1 = new Bone_By_Bone.MainMenuForm();
             this.levelSekectForm1 = new Bone_By_Bone.LevelSekectForm();
             this.settingForm1 = new Bone_By_Bone.SettingForm();
@@ -38,36 +39,44 @@ namespace Bone_By_Bone
             // 
             // mainMenuForm1
             // 
+            this.mainMenuForm1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mainMenuForm1.BackgroundImage")));
+            this.mainMenuForm1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.mainMenuForm1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainMenuForm1.Location = new System.Drawing.Point(0, 0);
             this.mainMenuForm1.Name = "mainMenuForm1";
-            this.mainMenuForm1.Size = new System.Drawing.Size(1920, 1080);
+            this.mainMenuForm1.Size = new System.Drawing.Size(1920, 1200);
             this.mainMenuForm1.TabIndex = 0;
             // 
             // levelSekectForm1
             // 
+            this.levelSekectForm1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("levelSekectForm1.BackgroundImage")));
+            this.levelSekectForm1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.levelSekectForm1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.levelSekectForm1.Location = new System.Drawing.Point(0, 0);
             this.levelSekectForm1.Name = "levelSekectForm1";
-            this.levelSekectForm1.Size = new System.Drawing.Size(1920, 1080);
+            this.levelSekectForm1.Size = new System.Drawing.Size(1920, 1200);
             this.levelSekectForm1.TabIndex = 1;
             this.levelSekectForm1.Visible = false;
             // 
             // settingForm1
             // 
+            this.settingForm1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("settingForm1.BackgroundImage")));
+            this.settingForm1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.settingForm1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.settingForm1.Location = new System.Drawing.Point(0, 0);
             this.settingForm1.Name = "settingForm1";
-            this.settingForm1.Size = new System.Drawing.Size(1920, 1080);
+            this.settingForm1.Size = new System.Drawing.Size(1920, 1200);
             this.settingForm1.TabIndex = 3;
             this.settingForm1.Visible = false;
             // 
             // gameForm1
             // 
+            this.gameForm1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gameForm1.BackgroundImage")));
+            this.gameForm1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.gameForm1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gameForm1.Location = new System.Drawing.Point(0, 0);
             this.gameForm1.Name = "gameForm1";
-            this.gameForm1.Size = new System.Drawing.Size(1920, 1080);
+            this.gameForm1.Size = new System.Drawing.Size(1920, 1200);
             this.gameForm1.TabIndex = 2;
             this.gameForm1.Visible = false;
             // 
@@ -76,7 +85,7 @@ namespace Bone_By_Bone
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.ClientSize = new System.Drawing.Size(1920, 1200);
             this.Controls.Add(this.mainMenuForm1);
             this.Controls.Add(this.levelSekectForm1);
             this.Controls.Add(this.settingForm1);

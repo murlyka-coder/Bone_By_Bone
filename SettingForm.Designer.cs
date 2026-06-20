@@ -40,7 +40,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(208, 165);
+            this.label3.Location = new System.Drawing.Point(840, 444);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(257, 20);
@@ -53,7 +53,7 @@
             this.chkPlayMusic.Checked = true;
             this.chkPlayMusic.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkPlayMusic.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.chkPlayMusic.Location = new System.Drawing.Point(226, 113);
+            this.chkPlayMusic.Location = new System.Drawing.Point(858, 392);
             this.chkPlayMusic.Margin = new System.Windows.Forms.Padding(2);
             this.chkPlayMusic.Name = "chkPlayMusic";
             this.chkPlayMusic.Size = new System.Drawing.Size(205, 21);
@@ -66,7 +66,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(243, 70);
+            this.label2.Location = new System.Drawing.Point(875, 349);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(188, 26);
@@ -76,7 +76,7 @@
             // 
             // txtFeedback
             // 
-            this.txtFeedback.Location = new System.Drawing.Point(212, 201);
+            this.txtFeedback.Location = new System.Drawing.Point(844, 480);
             this.txtFeedback.Margin = new System.Windows.Forms.Padding(2);
             this.txtFeedback.Multiline = true;
             this.txtFeedback.Name = "txtFeedback";
@@ -85,7 +85,7 @@
             // 
             // btnSendFeedback
             // 
-            this.btnSendFeedback.Location = new System.Drawing.Point(399, 201);
+            this.btnSendFeedback.Location = new System.Drawing.Point(1031, 480);
             this.btnSendFeedback.Margin = new System.Windows.Forms.Padding(2);
             this.btnSendFeedback.Name = "btnSendFeedback";
             this.btnSendFeedback.Size = new System.Drawing.Size(66, 71);
@@ -96,7 +96,7 @@
             // 
             // btnFromSettings
             // 
-            this.btnFromSettings.Location = new System.Drawing.Point(275, 418);
+            this.btnFromSettings.Location = new System.Drawing.Point(907, 697);
             this.btnFromSettings.Margin = new System.Windows.Forms.Padding(2);
             this.btnFromSettings.Name = "btnFromSettings";
             this.btnFromSettings.Size = new System.Drawing.Size(98, 19);

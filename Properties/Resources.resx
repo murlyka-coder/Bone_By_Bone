@@ -124,11 +124,20 @@
   <data name="buttonlight1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\buttonlight1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="buttonlight2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\buttonlight2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="buttonnormal1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\buttonnormal1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="buttonnormal2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\buttonnormal2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="buttonpress1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\buttonpress1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="buttonpress2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\buttonpress2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="gamemenu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\gamemenu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
