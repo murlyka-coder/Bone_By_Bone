@@ -15,6 +15,7 @@ namespace Bone_By_Bone
 
         public event EventHandler StartGameClicked;
         public event EventHandler SettingsClicked;
+        public event EventHandler ExitClicked;
 
         public MainMenuForm()
         {
@@ -27,6 +28,8 @@ namespace Bone_By_Bone
 
         }
 
+
+
         private void button1_Click(object sender, EventArgs e)
         {
             StartGameClicked?.Invoke(this, EventArgs.Empty);
@@ -36,6 +39,11 @@ namespace Bone_By_Bone
         private void btnSettings_Click(object sender, EventArgs e)
         {
             SettingsClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ExitClicked?.Invoke(this, EventArgs.Empty);
         }
 
         private void button1_MouseEnter(object sender, EventArgs e)
@@ -74,15 +82,24 @@ namespace Bone_By_Bone
 
         }
 
-
-        private void pictureBox3_Click(object sender, EventArgs e)
+        private void button3_MouseEnter(object sender, EventArgs e)
         {
+            button3.Image = Properties.Resources.buttonlight3;
+        }
+
+        private void button3_MouseLeave(object sender, EventArgs e)
+        {
+            button3.Image = Properties.Resources.buttonnormal3;
+        }
+
+
+        private void button3_MouseDown(object sender, MouseEventArgs e)
+        {
+            button3.Image = Properties.Resources.buttonpress3;
 
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
 
-        }
+
     }
 }

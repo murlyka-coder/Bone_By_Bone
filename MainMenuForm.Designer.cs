@@ -35,11 +35,11 @@ namespace Bone_By_Bone
             this.button1 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.button3 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.button1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.button2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.button3)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -75,7 +75,7 @@ namespace Bone_By_Bone
             this.button2.BackColor = System.Drawing.Color.Transparent;
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Image = global::Bone_By_Bone.Properties.Resources.buttonnormal2;
-            this.button2.Location = new System.Drawing.Point(778, 665);
+            this.button2.Location = new System.Drawing.Point(785, 661);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(362, 115);
             this.button2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -86,18 +86,21 @@ namespace Bone_By_Bone
             this.button2.MouseEnter += new System.EventHandler(this.button2_MouseEnter);
             this.button2.MouseLeave += new System.EventHandler(this.button2_MouseLeave);
             // 
-            // pictureBox3
+            // button3
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox3.Image = global::Bone_By_Bone.Properties.Resources.buttonnormal1;
-            this.pictureBox3.Location = new System.Drawing.Point(821, 811);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(278, 82);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 14;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            this.button3.BackColor = System.Drawing.Color.Transparent;
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button3.Image = global::Bone_By_Bone.Properties.Resources.buttonnormal3;
+            this.button3.Location = new System.Drawing.Point(828, 811);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(278, 93);
+            this.button3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.button3.TabIndex = 14;
+            this.button3.TabStop = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button3_MouseDown);
+            this.button3.MouseEnter += new System.EventHandler(this.button3_MouseEnter);
+            this.button3.MouseLeave += new System.EventHandler(this.button3_MouseLeave);
             // 
             // MainMenuForm
             // 
@@ -105,7 +108,7 @@ namespace Bone_By_Bone
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button1);
@@ -116,7 +119,7 @@ namespace Bone_By_Bone
             ((System.ComponentModel.ISupportInitialize)(this.button1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.button2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.button3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -125,6 +128,6 @@ namespace Bone_By_Bone
         private System.Windows.Forms.PictureBox button1;
         private PictureBox pictureBox1;
         private PictureBox button2;
-        private PictureBox pictureBox3;
+        private PictureBox button3;
     }
 }
