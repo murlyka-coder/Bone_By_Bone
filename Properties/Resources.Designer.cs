@@ -143,9 +143,9 @@ namespace Bone_By_Bone.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap setting {
+        internal static System.Drawing.Bitmap settingscreen {
             get {
-                object obj = ResourceManager.GetObject("setting", resourceCulture);
+                object obj = ResourceManager.GetObject("settingscreen", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
