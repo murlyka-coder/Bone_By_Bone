@@ -121,6 +121,15 @@
   <data name="background" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\background.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="buttonlevelight1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\buttonlevelight1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="buttonlevelnormal1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\buttonlevelnormal1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="buttonlevelpress1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\buttonlevelpress1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="buttonlight1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\buttonlight1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

@@ -33,5 +33,27 @@ namespace Bone_By_Bone
         {
             LevelSelected?.Invoke(this, 3);
         }
+
+
+        private void buttonlevelnormal1_MouseEnter(object sender, EventArgs e)
+        {
+            buttonlevelnormal1.Image = Properties.Resources.buttonlevelight1;
+        }
+
+        private void buttonlevelnormal1_MouseLeave(object sender, EventArgs e)
+        {
+            buttonlevelnormal1.Image = Properties.Resources.buttonlevelnormal1;
+        }
+
+
+        private void buttonlevelnormal1_MouseDown(object sender, MouseEventArgs e)
+        {
+            buttonlevelnormal1.Image = Properties.Resources.buttonlevelpress1;
+
+        }
+
+
+
+
     }
 }
