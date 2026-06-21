@@ -12,6 +12,9 @@ namespace Bone_By_Bone
 {
     public partial class LevelSekectForm : UserControl
     {
+
+        public event EventHandler BackToMenuClicked;
+
         public LevelSekectForm()
         {
             InitializeComponent();
@@ -32,6 +35,11 @@ namespace Bone_By_Bone
         private void btnLevel3_Click(object sender, EventArgs e)
         {
             LevelSelected?.Invoke(this, 3);
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            BackToMenuClicked?.Invoke(this, EventArgs.Empty);
         }
 
 
@@ -87,6 +95,22 @@ namespace Bone_By_Bone
         }
 
 
+        private void btnBack_MouseEnter(object sender, EventArgs e)
+        {
+            btnBack.Image = Properties.Resources.buttonlevelnazadlight;
+        }
+
+        private void btnBack_MouseLeave(object sender, EventArgs e)
+        {
+            btnBack.Image = Properties.Resources.buttonlevelnazadnormal;
+        }
+
+
+        private void btnBack_MouseDown(object sender, MouseEventArgs e)
+        {
+            btnBack.Image = Properties.Resources.buttonlevelnazadpress;
+
+        }
 
 
     }

@@ -157,6 +157,15 @@
   <data name="buttonlevellight3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\buttonlevellight3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="buttonlevelnazadlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\buttonlevelnazadlight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="buttonlevelnazadnormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\buttonlevelnazadnormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="buttonlevelnazadpress" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\buttonlevelnazadpress.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="buttonlevelnormal1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\buttonlevelnormal1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

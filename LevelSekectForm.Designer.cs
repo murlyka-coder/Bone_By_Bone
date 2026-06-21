@@ -41,6 +41,7 @@
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.buttonlevelnormal2 = new System.Windows.Forms.PictureBox();
             this.buttonlevelnormal3 = new System.Windows.Forms.PictureBox();
+            this.btnBack = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.buttonlevelnormal1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -54,6 +55,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonlevelnormal2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonlevelnormal3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBack)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonlevelnormal1
@@ -224,12 +226,29 @@
             this.buttonlevelnormal3.MouseEnter += new System.EventHandler(this.buttonlevelnormal3_MouseEnter);
             this.buttonlevelnormal3.MouseLeave += new System.EventHandler(this.buttonlevelnormal3_MouseLeave);
             // 
+            // btnBack
+            // 
+            this.btnBack.BackColor = System.Drawing.Color.Transparent;
+            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBack.Image = global::Bone_By_Bone.Properties.Resources.buttonlevelnazadnormal;
+            this.btnBack.Location = new System.Drawing.Point(794, 1044);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(318, 130);
+            this.btnBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnBack.TabIndex = 28;
+            this.btnBack.TabStop = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            this.btnBack.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnBack_MouseDown);
+            this.btnBack.MouseEnter += new System.EventHandler(this.btnBack_MouseEnter);
+            this.btnBack.MouseLeave += new System.EventHandler(this.btnBack_MouseLeave);
+            // 
             // LevelSekectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Bone_By_Bone.Properties.Resources.levelselect;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.buttonlevelnormal3);
             this.Controls.Add(this.buttonlevelnormal2);
             this.Controls.Add(this.pictureBox10);
@@ -259,6 +278,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonlevelnormal2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonlevelnormal3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBack)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -277,5 +297,6 @@
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.PictureBox buttonlevelnormal2;
         private System.Windows.Forms.PictureBox buttonlevelnormal3;
+        private System.Windows.Forms.PictureBox btnBack;
     }
 }

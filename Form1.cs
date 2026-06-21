@@ -17,6 +17,7 @@ namespace Bone_By_Bone
             levelSekectForm1.LevelSelected += LevelSekectForm1_LevelSelected;
             gameForm1.BackToMenuClicked += GameForm1_BackToMenuClicked;
             mainMenuForm1.ExitClicked += MainMenu_ExitClicked;
+            levelSekectForm1.BackToMenuClicked += LevelSekectForm1_BackToMenuClicked;
         }
 
         private void MainMenu_StartGameClicked(object sender, EventArgs e)
@@ -36,6 +37,12 @@ namespace Bone_By_Bone
         private void GameForm1_BackToMenuClicked(object sender, EventArgs e)
         {
             gameForm1.Visible = false;
+            mainMenuForm1.Visible = true;
+        }
+
+        private void LevelSekectForm1_BackToMenuClicked(object sender, EventArgs e)
+        {
+            levelSekectForm1.Visible = false;
             mainMenuForm1.Visible = true;
         }
 
