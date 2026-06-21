@@ -75,7 +75,7 @@ namespace Bone_By_Bone
             this.button2.BackColor = System.Drawing.Color.Transparent;
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Image = global::Bone_By_Bone.Properties.Resources.buttonnormal2;
-            this.button2.Location = new System.Drawing.Point(805, 641);
+            this.button2.Location = new System.Drawing.Point(806, 641);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(303, 130);
             this.button2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -91,7 +91,7 @@ namespace Bone_By_Bone
             this.button3.BackColor = System.Drawing.Color.Transparent;
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Image = global::Bone_By_Bone.Properties.Resources.buttonnormal3;
-            this.button3.Location = new System.Drawing.Point(836, 789);
+            this.button3.Location = new System.Drawing.Point(837, 789);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(236, 110);
             this.button3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
