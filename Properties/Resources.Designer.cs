@@ -163,9 +163,29 @@ namespace Bone_By_Bone.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap buttonlevelight1 {
+        internal static System.Drawing.Bitmap buttonlevellight1 {
             get {
-                object obj = ResourceManager.GetObject("buttonlevelight1", resourceCulture);
+                object obj = ResourceManager.GetObject("buttonlevellight1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap buttonlevellight2 {
+            get {
+                object obj = ResourceManager.GetObject("buttonlevellight2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap buttonlevellight3 {
+            get {
+                object obj = ResourceManager.GetObject("buttonlevellight3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,9 +203,49 @@ namespace Bone_By_Bone.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap buttonlevelnormal2 {
+            get {
+                object obj = ResourceManager.GetObject("buttonlevelnormal2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap buttonlevelnormal3 {
+            get {
+                object obj = ResourceManager.GetObject("buttonlevelnormal3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap buttonlevelpress1 {
             get {
                 object obj = ResourceManager.GetObject("buttonlevelpress1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap buttonlevelpress2 {
+            get {
+                object obj = ResourceManager.GetObject("buttonlevelpress2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap buttonlevelpress3 {
+            get {
+                object obj = ResourceManager.GetObject("buttonlevelpress3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

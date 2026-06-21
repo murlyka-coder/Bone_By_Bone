@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnLevel3 = new System.Windows.Forms.Button();
-            this.btnLevel2 = new System.Windows.Forms.Button();
             this.buttonlevelnormal1 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -41,6 +39,8 @@
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.buttonlevelnormal2 = new System.Windows.Forms.PictureBox();
+            this.buttonlevelnormal3 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.buttonlevelnormal1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -52,31 +52,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonlevelnormal2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonlevelnormal3)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnLevel3
-            // 
-            this.btnLevel3.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.btnLevel3.Location = new System.Drawing.Point(199, 253);
-            this.btnLevel3.Margin = new System.Windows.Forms.Padding(2);
-            this.btnLevel3.Name = "btnLevel3";
-            this.btnLevel3.Size = new System.Drawing.Size(150, 41);
-            this.btnLevel3.TabIndex = 2;
-            this.btnLevel3.Text = "Уровень 3";
-            this.btnLevel3.UseVisualStyleBackColor = false;
-            this.btnLevel3.Click += new System.EventHandler(this.btnLevel3_Click);
-            // 
-            // btnLevel2
-            // 
-            this.btnLevel2.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.btnLevel2.Location = new System.Drawing.Point(199, 193);
-            this.btnLevel2.Margin = new System.Windows.Forms.Padding(2);
-            this.btnLevel2.Name = "btnLevel2";
-            this.btnLevel2.Size = new System.Drawing.Size(150, 41);
-            this.btnLevel2.TabIndex = 1;
-            this.btnLevel2.Text = "Уровень 2";
-            this.btnLevel2.UseVisualStyleBackColor = false;
-            this.btnLevel2.Click += new System.EventHandler(this.btnLevel2_Click);
             // 
             // buttonlevelnormal1
             // 
@@ -214,12 +192,46 @@
             this.pictureBox10.TabIndex = 25;
             this.pictureBox10.TabStop = false;
             // 
+            // buttonlevelnormal2
+            // 
+            this.buttonlevelnormal2.BackColor = System.Drawing.Color.Transparent;
+            this.buttonlevelnormal2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonlevelnormal2.Image = global::Bone_By_Bone.Properties.Resources.buttonlevelnormal2;
+            this.buttonlevelnormal2.Location = new System.Drawing.Point(891, 350);
+            this.buttonlevelnormal2.Name = "buttonlevelnormal2";
+            this.buttonlevelnormal2.Size = new System.Drawing.Size(130, 130);
+            this.buttonlevelnormal2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.buttonlevelnormal2.TabIndex = 26;
+            this.buttonlevelnormal2.TabStop = false;
+            this.buttonlevelnormal2.Click += new System.EventHandler(this.btnLevel2_Click);
+            this.buttonlevelnormal2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonlevelnormal2_MouseDown);
+            this.buttonlevelnormal2.MouseEnter += new System.EventHandler(this.buttonlevelnormal2_MouseEnter);
+            this.buttonlevelnormal2.MouseLeave += new System.EventHandler(this.buttonlevelnormal2_MouseLeave);
+            // 
+            // buttonlevelnormal3
+            // 
+            this.buttonlevelnormal3.BackColor = System.Drawing.Color.Transparent;
+            this.buttonlevelnormal3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonlevelnormal3.Image = global::Bone_By_Bone.Properties.Resources.buttonlevelnormal3;
+            this.buttonlevelnormal3.Location = new System.Drawing.Point(1084, 350);
+            this.buttonlevelnormal3.Name = "buttonlevelnormal3";
+            this.buttonlevelnormal3.Size = new System.Drawing.Size(130, 130);
+            this.buttonlevelnormal3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.buttonlevelnormal3.TabIndex = 27;
+            this.buttonlevelnormal3.TabStop = false;
+            this.buttonlevelnormal3.Click += new System.EventHandler(this.btnLevel3_Click);
+            this.buttonlevelnormal3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonlevelnormal3_MouseDown);
+            this.buttonlevelnormal3.MouseEnter += new System.EventHandler(this.buttonlevelnormal3_MouseEnter);
+            this.buttonlevelnormal3.MouseLeave += new System.EventHandler(this.buttonlevelnormal3_MouseLeave);
+            // 
             // LevelSekectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Bone_By_Bone.Properties.Resources.levelselect;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.buttonlevelnormal3);
+            this.Controls.Add(this.buttonlevelnormal2);
             this.Controls.Add(this.pictureBox10);
             this.Controls.Add(this.pictureBox9);
             this.Controls.Add(this.pictureBox8);
@@ -231,8 +243,6 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.buttonlevelnormal1);
-            this.Controls.Add(this.btnLevel3);
-            this.Controls.Add(this.btnLevel2);
             this.DoubleBuffered = true;
             this.Name = "LevelSekectForm";
             this.Size = new System.Drawing.Size(1920, 1203);
@@ -247,14 +257,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonlevelnormal2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonlevelnormal3)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnLevel3;
-        private System.Windows.Forms.Button btnLevel2;
         private System.Windows.Forms.PictureBox buttonlevelnormal1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
@@ -266,5 +275,7 @@
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.PictureBox pictureBox10;
+        private System.Windows.Forms.PictureBox buttonlevelnormal2;
+        private System.Windows.Forms.PictureBox buttonlevelnormal3;
     }
 }

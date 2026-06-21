@@ -148,14 +148,32 @@
   <data name="buttonlevelblock12" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\buttonlevelblock12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="buttonlevelight1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="buttonlevellight1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\buttonlevellight1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="buttonlevellight2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\buttonlevellight2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="buttonlevellight3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\buttonlevellight3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="buttonlevelnormal1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\buttonlevelnormal1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="buttonlevelnormal2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\buttonlevelnormal2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="buttonlevelnormal3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\buttonlevelnormal3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="buttonlevelpress1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\buttonlevelpress1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="buttonlevelpress2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\buttonlevelpress2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="buttonlevelpress3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\buttonlevelpress3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="buttonlight1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\buttonlight1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

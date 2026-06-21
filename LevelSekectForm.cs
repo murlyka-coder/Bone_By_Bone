@@ -37,7 +37,7 @@ namespace Bone_By_Bone
 
         private void buttonlevelnormal1_MouseEnter(object sender, EventArgs e)
         {
-            buttonlevelnormal1.Image = Properties.Resources.buttonlevelight1;
+            buttonlevelnormal1.Image = Properties.Resources.buttonlevellight1;
         }
 
         private void buttonlevelnormal1_MouseLeave(object sender, EventArgs e)
@@ -49,6 +49,40 @@ namespace Bone_By_Bone
         private void buttonlevelnormal1_MouseDown(object sender, MouseEventArgs e)
         {
             buttonlevelnormal1.Image = Properties.Resources.buttonlevelpress1;
+
+        }
+
+        private void buttonlevelnormal2_MouseEnter(object sender, EventArgs e)
+        {
+            buttonlevelnormal2.Image = Properties.Resources.buttonlevellight2;
+        }
+
+        private void buttonlevelnormal2_MouseLeave(object sender, EventArgs e)
+        {
+            buttonlevelnormal2.Image = Properties.Resources.buttonlevelnormal2;
+        }
+
+
+        private void buttonlevelnormal2_MouseDown(object sender, MouseEventArgs e)
+        {
+            buttonlevelnormal2.Image = Properties.Resources.buttonlevelpress2;
+
+        }
+
+        private void buttonlevelnormal3_MouseEnter(object sender, EventArgs e)
+        {
+            buttonlevelnormal3.Image = Properties.Resources.buttonlevellight3;
+        }
+
+        private void buttonlevelnormal3_MouseLeave(object sender, EventArgs e)
+        {
+            buttonlevelnormal3.Image = Properties.Resources.buttonlevelnormal3;
+        }
+
+
+        private void buttonlevelnormal3_MouseDown(object sender, MouseEventArgs e)
+        {
+            buttonlevelnormal3.Image = Properties.Resources.buttonlevelpress3;
 
         }
 
