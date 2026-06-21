@@ -34,11 +34,15 @@
             this.buttonplay2 = new System.Windows.Forms.PictureBox();
             this.play1 = new System.Windows.Forms.PictureBox();
             this.btnBack = new System.Windows.Forms.PictureBox();
+            this.buttonstop2 = new System.Windows.Forms.PictureBox();
+            this.buttonstop1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonplay1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonplay2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.play1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBack)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonstop2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonstop1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtFeedback
@@ -85,7 +89,7 @@
             this.buttonplay2.BackColor = System.Drawing.Color.Transparent;
             this.buttonplay2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonplay2.Image = global::Bone_By_Bone.Properties.Resources.buttonmusicplay1;
-            this.buttonplay2.Location = new System.Drawing.Point(679, 491);
+            this.buttonplay2.Location = new System.Drawing.Point(678, 491);
             this.buttonplay2.Name = "buttonplay2";
             this.buttonplay2.Size = new System.Drawing.Size(76, 84);
             this.buttonplay2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -129,17 +133,51 @@
             this.btnBack.MouseEnter += new System.EventHandler(this.btnBack_MouseEnter);
             this.btnBack.MouseLeave += new System.EventHandler(this.btnBack_MouseLeave);
             // 
+            // buttonstop2
+            // 
+            this.buttonstop2.BackColor = System.Drawing.Color.Transparent;
+            this.buttonstop2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonstop2.Image = global::Bone_By_Bone.Properties.Resources.buttonmusicstop1;
+            this.buttonstop2.Location = new System.Drawing.Point(678, 491);
+            this.buttonstop2.Name = "buttonstop2";
+            this.buttonstop2.Size = new System.Drawing.Size(76, 84);
+            this.buttonstop2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.buttonstop2.TabIndex = 20;
+            this.buttonstop2.TabStop = false;
+            this.buttonstop2.Click += new System.EventHandler(this.buttonstop2_Click);
+            this.buttonstop2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonstop2_MouseDown);
+            this.buttonstop2.MouseEnter += new System.EventHandler(this.buttonstop2_MouseEnter);
+            this.buttonstop2.MouseLeave += new System.EventHandler(this.buttonstop2_MouseLeave);
+            // 
+            // buttonstop1
+            // 
+            this.buttonstop1.BackColor = System.Drawing.Color.Transparent;
+            this.buttonstop1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonstop1.Image = global::Bone_By_Bone.Properties.Resources.buttonmusicstop1;
+            this.buttonstop1.Location = new System.Drawing.Point(678, 384);
+            this.buttonstop1.Name = "buttonstop1";
+            this.buttonstop1.Size = new System.Drawing.Size(76, 84);
+            this.buttonstop1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.buttonstop1.TabIndex = 21;
+            this.buttonstop1.TabStop = false;
+            this.buttonstop1.Click += new System.EventHandler(this.buttonstop1_Click);
+            this.buttonstop1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonstop1_MouseDown);
+            this.buttonstop1.MouseEnter += new System.EventHandler(this.buttonstop1_MouseEnter);
+            this.buttonstop1.MouseLeave += new System.EventHandler(this.buttonstop1_MouseLeave);
+            // 
             // SettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Bone_By_Bone.Properties.Resources.settingscreen;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.buttonplay1);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.play1);
-            this.Controls.Add(this.buttonplay2);
-            this.Controls.Add(this.buttonplay1);
             this.Controls.Add(this.txtFeedback);
+            this.Controls.Add(this.buttonstop1);
+            this.Controls.Add(this.buttonplay2);
+            this.Controls.Add(this.buttonstop2);
             this.Controls.Add(this.pictureBox1);
             this.DoubleBuffered = true;
             this.Name = "SettingForm";
@@ -149,6 +187,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.buttonplay2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.play1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBack)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonstop2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonstop1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,5 +201,7 @@
         private System.Windows.Forms.PictureBox buttonplay2;
         private System.Windows.Forms.PictureBox play1;
         private System.Windows.Forms.PictureBox btnBack;
+        private System.Windows.Forms.PictureBox buttonstop2;
+        private System.Windows.Forms.PictureBox buttonstop1;
     }
 }

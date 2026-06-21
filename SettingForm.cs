@@ -25,16 +25,31 @@ namespace Bone_By_Bone
         {
             soundOn = false;
             buttonplay1.Visible = false;
-            buttonplay2.Visible = true;
+            buttonstop1.Visible = true;
+        }
 
+        private void buttonstop1_Click(object sender, EventArgs e)
+        {
+            soundOn = true;
+            buttonstop1.Visible = false;
+            buttonplay1.Visible = true;
         }
 
         private void buttonplay2_Click(object sender, EventArgs e)
         {
-            soundOn = true;
+            soundOn = false;
             buttonplay2.Visible = false;
-            buttonplay1.Visible = true;
+            buttonstop2.Visible = true;
         }
+
+        private void buttonstop2_Click(object sender, EventArgs e)
+        {
+            soundOn = true;
+            buttonstop2.Visible = false;
+            buttonplay2.Visible = true;
+        }
+
+
 
 
         private void btnFromSettings_Click(object sender, EventArgs e)
@@ -134,6 +149,42 @@ namespace Bone_By_Bone
             buttonplay2.Image = Properties.Resources.buttonmusicplay3;
 
         }
+
+        private void buttonstop1_MouseEnter(object sender, EventArgs e)
+        {
+            buttonstop1.Image = Properties.Resources.buttonmusicstop2;
+        }
+
+        private void buttonstop1_MouseLeave(object sender, EventArgs e)
+        {
+            buttonstop1.Image = Properties.Resources.buttonmusicstop1;
+        }
+
+
+        private void buttonstop1_MouseDown(object sender, MouseEventArgs e)
+        {
+            buttonstop1.Image = Properties.Resources.buttonmusicstop3;
+
+        }
+
+        private void buttonstop2_MouseEnter(object sender, EventArgs e)
+        {
+            buttonstop2.Image = Properties.Resources.buttonmusicstop2;
+        }
+
+        private void buttonstop2_MouseLeave(object sender, EventArgs e)
+        {
+            buttonstop2.Image = Properties.Resources.buttonmusicstop1;
+        }
+
+
+        private void buttonstop2_MouseDown(object sender, MouseEventArgs e)
+        {
+            buttonstop2.Image = Properties.Resources.buttonmusicstop3;
+
+        }
+
+
 
 
     }
