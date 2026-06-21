@@ -313,6 +313,66 @@ namespace Bone_By_Bone.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap buttonmusicplay1 {
+            get {
+                object obj = ResourceManager.GetObject("buttonmusicplay1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap buttonmusicplay2 {
+            get {
+                object obj = ResourceManager.GetObject("buttonmusicplay2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap buttonmusicplay3 {
+            get {
+                object obj = ResourceManager.GetObject("buttonmusicplay3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap buttonmusicstop1 {
+            get {
+                object obj = ResourceManager.GetObject("buttonmusicstop1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap buttonmusicstop2 {
+            get {
+                object obj = ResourceManager.GetObject("buttonmusicstop2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap buttonmusicstop3 {
+            get {
+                object obj = ResourceManager.GetObject("buttonmusicstop3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap buttonnormal1 {
             get {
                 object obj = ResourceManager.GetObject("buttonnormal1", resourceCulture);
@@ -373,6 +433,36 @@ namespace Bone_By_Bone.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap buttonsend1 {
+            get {
+                object obj = ResourceManager.GetObject("buttonsend1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap buttonsend2 {
+            get {
+                object obj = ResourceManager.GetObject("buttonsend2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap buttonsend3 {
+            get {
+                object obj = ResourceManager.GetObject("buttonsend3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap gamemenu {
             get {
                 object obj = ResourceManager.GetObject("gamemenu", resourceCulture);
@@ -426,6 +516,16 @@ namespace Bone_By_Bone.Properties {
         internal static System.Drawing.Bitmap settingscreen {
             get {
                 object obj = ResourceManager.GetObject("settingscreen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap settingscreenpanel {
+            get {
+                object obj = ResourceManager.GetObject("settingscreenpanel", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
