@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -8,26 +10,32 @@ using System.Windows.Forms;
 
 namespace Bone_By_Bone
 {
-    public partial class Form1
+    public partial class GameForm : UserControl
     {
+        public event EventHandler BackToMenuClicked;
+        private int secondsPassed = 0;
+        private bool isDragging = false;
+        private Point startPoint;
+        private List<PictureBox> activeBones = new List<PictureBox>();
+        private List<PictureBox> activeTargets = new List<PictureBox>();
+        private int mistakesCount = 0;
+        private int selectedLevel = 1;
+        private LevelConfig levelConfig = new LevelConfig();
 
-        private void btnLevel1_Click(object sender, EventArgs e)
+        public GameForm()
         {
-            StartLevel(1);
+            InitializeComponent();
         }
 
-        private void btnLevel2_Click(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
         {
-            StartLevel(2);
-        }
+            secondsPassed++;
+            lblTime.Text = "Время: " + secondsPassed + " сек";
 
-        private void btnLevel3_Click(object sender, EventArgs e)
-        {
-            StartLevel(3);
         }
 
 
-        private void StartLevel(int level)
+        public void StartLevel(int level)
         {
             selectedLevel = level;
 
@@ -40,7 +48,7 @@ namespace Bone_By_Bone
             // --- УМНЫЙ РАСЧЕТ ШАГА ---
             // Нам нужно распределить кости в пределах ширины панели (700 пикселей)
             int margin = 20; // отступ от левого и правого краев панели
-            int availableWidth = panelGame.Width - (margin * 2) - boneSize.Width; // доступная ширина для шага
+            int availableWidth = this.Width - (margin * 2) - boneSize.Width; // доступная ширина для шага
             float step = (float)availableWidth / (boneCount - 1); // расстояние между левыми краями соседних костей
 
             for (int i = 0; i < boneCount; i++)
@@ -58,7 +66,7 @@ namespace Bone_By_Bone
                 target.BorderStyle = BorderStyle.FixedSingle; // ДОБАВИТЬ ЭТУ СТРОКУ
                 target.Location = new Point(posX, 80);
 
-                panelGame.Controls.Add(target);
+                this.Controls.Add(target);
                 activeTargets.Add(target);
 
                 // 2. Создаем кость
@@ -76,15 +84,13 @@ namespace Bone_By_Bone
                 bone.MouseMove += DynamicBone_MouseMove;
                 bone.MouseUp += DynamicBone_MouseUp;
 
-                panelGame.Controls.Add(bone);
+                this.Controls.Add(bone);
                 activeBones.Add(bone);
 
                 bone.BringToFront();
             }
 
-            panelLevelSelect.Visible = false;
-            panelGame.Visible = true;
-            timerGame.Start();
+            TimerGame.Start();
         }
 
 
@@ -107,7 +113,7 @@ namespace Bone_By_Bone
             // Если все кости на местах — это победа!
             if (allSnapped)
             {
-                timerGame.Stop();
+                TimerGame.Stop();
 
                 int stars = 3;
                 var thresholds = levelConfig.GetStarThresholds(selectedLevel);
@@ -129,8 +135,9 @@ namespace Bone_By_Bone
         // Метод удаления костей с экрана при возврате в меню
         private void ClearActiveLevel()
         {
-            foreach (var b in activeBones) panelGame.Controls.Remove(b);
-            foreach (var t in activeTargets) panelGame.Controls.Remove(t);
+            btnBackToMenu.Visible = false;
+            foreach (var b in activeBones) this.Controls.Remove(b);
+            foreach (var t in activeTargets) this.Controls.Remove(t);
             activeBones.Clear();
             activeTargets.Clear();
         }
@@ -191,15 +198,6 @@ namespace Bone_By_Bone
         }
 
 
-
-
-        private void timerGame_Tick(object sender, EventArgs e)
-        {
-            secondsPassed++;
-            lblTime.Text = "Время: " + secondsPassed + " сек";
-        }
-
-
         private void btnRestart_Click(object sender, EventArgs e)
         {
             // Сбрасываем время и ошибки
@@ -212,9 +210,14 @@ namespace Bone_By_Bone
             StartLevel(selectedLevel);
         }
 
-
-
-
+        private void btnBackToMenu_Click(object sender, EventArgs e)
+        {
+            ClearActiveLevel();
+            secondsPassed = 0;
+            mistakesCount = 0;
+            lblTime.Text = "Время: 0 сек";
+            lblMistakes.Text = "Ошибки: 0";
+            BackToMenuClicked?.Invoke(this, EventArgs.Empty);
+        }
     }
-
 }

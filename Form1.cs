@@ -1,65 +1,81 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Bone_By_Bone
 {
     public partial class Form1 : Form
     {
-        private int secondsPassed = 0; // количество прошедших секунд
-        private bool isDragging = false; // тащим ли мы кость прямо сейчас?
-        private Point startPoint;        // точка, за которую мы зажали кость
-        private List<PictureBox> activeBones = new List<PictureBox>();
-        private List<PictureBox> activeTargets = new List<PictureBox>();
-        private int mistakesCount = 0; // количество ошибок
-        private int selectedLevel = 1; // какой уровень сейчас выбран?
-        LevelConfig levelConfig = new LevelConfig();
         private string previousPanel = "menu";
+        private int selectedLevel = 1;
 
         public Form1()
         {
             InitializeComponent();
+            mainMenuForm1.StartGameClicked += MainMenu_StartGameClicked;
+            mainMenuForm1.SettingsClicked += (s, e) => OpenSettings();
+            settingForm1.BackClicked += SettingsForm1_BackClicked;
+            levelSekectForm1.LevelSelected += LevelSekectForm1_LevelSelected;
+            gameForm1.BackToMenuClicked += GameForm1_BackToMenuClicked;
+            mainMenuForm1.ExitClicked += MainMenu_ExitClicked;
+            levelSekectForm1.BackToMenuClicked += LevelSekectForm1_BackToMenuClicked;
+        }
+
+        private void MainMenu_StartGameClicked(object sender, EventArgs e)
+        {
+            mainMenuForm1.Visible = false;
+            levelSekectForm1.Visible = true;
+        }
+
+        private void LevelSekectForm1_LevelSelected(object sender, int level)
+        {
+            selectedLevel = level;
+            levelSekectForm1.Visible = false;
+            gameForm1.Visible = true;
+            gameForm1.StartLevel(level);
+        }
+
+        private void GameForm1_BackToMenuClicked(object sender, EventArgs e)
+        {
+            gameForm1.Visible = false;
+            mainMenuForm1.Visible = true;
+        }
+
+        private void LevelSekectForm1_BackToMenuClicked(object sender, EventArgs e)
+        {
+            levelSekectForm1.Visible = false;
+            mainMenuForm1.Visible = true;
+        }
+
+
+        private void OpenSettings()
+        {
+            if (gameForm1.Visible) previousPanel = "game";
+            else if (levelSekectForm1.Visible) previousPanel = "levels";
+            else previousPanel = "menu";
+
+            mainMenuForm1.Visible = false;
+            levelSekectForm1.Visible = false;
+            gameForm1.Visible = false;
+            settingForm1.Visible = true;
+        }
+
+        private void SettingsForm1_BackClicked(object sender, EventArgs e)
+        {
+            settingForm1.Visible = false;
+
+            if (previousPanel == "game") gameForm1.Visible = true;
+            else if (previousPanel == "levels") levelSekectForm1.Visible = true;
+            else mainMenuForm1.Visible = true;
+        }
+
+        private void MainMenu_ExitClicked(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
-        }
-
-
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            // Скрываем главное меню
-            label1.Visible = false;
-            button1.Visible = false;
-
-            // Показываем панель выбора уровней
-            panelLevelSelect.Visible = true;
-        }
-
-
-        private void btnBackToMenu_Click(object sender, EventArgs e)
-        {
-            label1.Visible = true;
-            button1.Visible = true;
-            panelGame.Visible = false;
-            btnBackToMenu.Visible = false;
-
-            // Очищаем динамические кости и цели с экрана
-            ClearActiveLevel();
-
-            secondsPassed = 0;
-            mistakesCount = 0;
-
-            lblTime.Text = "Время: 0 сек";
-            lblMistakes.Text = "Ошибки: 0";
         }
     }
 }
