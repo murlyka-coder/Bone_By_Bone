@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Media;
 
 namespace Bone_By_Bone
 {
@@ -7,10 +8,22 @@ namespace Bone_By_Bone
     {
         private string previousPanel = "menu";
         private int selectedLevel = 1;
+        private SoundPlayer musicPlayer;
 
         public Form1()
         {
             InitializeComponent();
+
+            // Инициализируем плеер нашей музыкой из ресурсов
+            musicPlayer = new SoundPlayer(Properties.Resources.bg_music);
+
+            // Автоматически запускаем музыку по кругу при старте игры
+            try
+            {
+                musicPlayer.PlayLooping();
+            }
+            catch { /* Если файл не найден или поврежден, игра не вылетит */ }
+
             mainMenuForm1.StartGameClicked += MainMenu_StartGameClicked;
             mainMenuForm1.SettingsClicked += (s, e) => OpenSettings();
             settingForm1.BackClicked += SettingsForm1_BackClicked;
@@ -18,6 +31,9 @@ namespace Bone_By_Bone
             gameForm1.BackToMenuClicked += GameForm1_BackToMenuClicked;
             mainMenuForm1.ExitClicked += MainMenu_ExitClicked;
             levelSekectForm1.BackToMenuClicked += LevelSekectForm1_BackToMenuClicked;
+
+            // ПОДПИСЫВАЕМСЯ НА СОБЫТИЕ ВКЛЮЧЕНИЯ/ВЫКЛЮЧЕНИЯ МУЗЫКИ
+            settingForm1.MusicToggled += SettingForm1_MusicToggled;
         }
 
         private void MainMenu_StartGameClicked(object sender, EventArgs e)
@@ -76,6 +92,25 @@ namespace Bone_By_Bone
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void SettingForm1_MusicToggled(object sender, bool isEnabled)
+        {
+            try
+            {
+                if (isEnabled)
+                {
+                    musicPlayer.PlayLooping(); // Включаем музыку по кругу
+                }
+                else
+                {
+                    musicPlayer.Stop(); // Полностью останавливаем музыку
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка воспроизведения музыки: " + ex.Message);
+            }
         }
     }
 }
