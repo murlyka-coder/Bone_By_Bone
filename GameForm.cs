@@ -37,6 +37,7 @@ namespace Bone_By_Bone
         public GameForm()
         {
             InitializeComponent();
+            this.Paint += GameForm_Paint;
         }
 
         public void StartLevel(int level)
@@ -50,6 +51,7 @@ namespace Bone_By_Bone
 
             ClearLevel();
             System.Diagnostics.Debug.WriteLine($"GameForm size: {this.Width} x {this.Height}");
+            assemblyDrawList.Clear();
 
             skeleton = SkeletonLibrary.GetSkeleton(level);
 
@@ -60,31 +62,16 @@ namespace Bone_By_Bone
             TimerGame.Start();
         }
 
+        private List<(Image img, Rectangle rect)> assemblyDrawList = new List<(Image, Rectangle)>();
+
         private void PlaceBoneInAssembly(string boneId)
         {
             var bone = skeleton.GetBone(boneId);
             if (bone == null) return;
 
-            PictureBox pb = new PictureBox();
-            pb.Size = bone.BoneSize;
-            pb.Location = bone.SlotPosition;
-            System.Diagnostics.Debug.WriteLine($"Placing bone {boneId} at {bone.SlotPosition}, control size: {this.Width}x{this.Height}");
-            pb.SizeMode = PictureBoxSizeMode.StretchImage;
-            pb.BackColor = Color.Transparent;
-            pb.Image = GetBoneImage(bone.ImageKey);
-
-            this.Controls.Add(pb);
-            pb.SendToBack();
-            // Лейблы поверх костей
-            lblTime.BringToFront();
-            lblMistakes.BringToFront();
-            btnBackToMenu.BringToFront();
-            slotBoxes[boneId] = pb;
-
-            // Лейблы поверх костей
-            lblTime.BringToFront();
-            lblMistakes.BringToFront();
-            btnBackToMenu.BringToFront();
+            assemblyDrawList.Add((GetBoneImage(bone.ImageKey), new Rectangle(bone.SlotPosition, bone.BoneSize)));
+            slotBoxes[boneId] = new PictureBox { Location = bone.SlotPosition, Size = bone.BoneSize };
+            this.Invalidate();
         }
 
         private void RefreshChoicePanel()
@@ -134,7 +121,11 @@ namespace Bone_By_Bone
                 this.Controls.Add(pb);
                 pb.BringToFront();
                 choiceBoxes.Add(pb);
+
             }
+            lblTime.BringToFront();
+            lblMistakes.BringToFront();
+            btnBackToMenu.BringToFront();
 
             System.Diagnostics.Debug.WriteLine($"availableNeighbors count: {availableNeighbors.Count}");
             System.Diagnostics.Debug.WriteLine($"ChoiceZone: Y={ChoiceZone.Y}, H={ChoiceZone.Height}");
@@ -252,20 +243,16 @@ namespace Bone_By_Bone
 
         private Image GetBoneImage(string imageKey)
         {
-            try
+            Image original = (Image)Properties.Resources.ResourceManager.GetObject(imageKey);
+            if (original != null) return original;
+
+            Bitmap bmp = new Bitmap(150, 150);
+            using (var g = Graphics.FromImage(bmp))
             {
-                return (Image)Properties.Resources.ResourceManager.GetObject(imageKey);
+                g.Clear(Color.Gray);
+                g.DrawString(imageKey, new Font("Arial", 8), Brushes.White, 5, 65);
             }
-            catch
-            {
-                Bitmap bmp = new Bitmap(120, 120);
-                using (var g = Graphics.FromImage(bmp))
-                {
-                    g.Clear(Color.Gray);
-                    g.DrawString(imageKey, new Font("Arial", 8), Brushes.White, 5, 50);
-                }
-                return bmp;
-            }
+            return bmp;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -282,6 +269,12 @@ namespace Bone_By_Bone
             lblTime.Text = "Время: 0 сек";
             lblMistakes.Text = "Ошибки: 0";
             BackToMenuClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void GameForm_Paint(object sender, PaintEventArgs e)
+        {
+            foreach (var (img, rect) in assemblyDrawList)
+                e.Graphics.DrawImage(img, rect);
         }
     }
 }

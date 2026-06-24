@@ -463,6 +463,16 @@ namespace Bone_By_Bone.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap dino_arms {
+            get {
+                object obj = ResourceManager.GetObject("dino_arms", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap dino_leg_back {
             get {
                 object obj = ResourceManager.GetObject("dino_leg_back", resourceCulture);

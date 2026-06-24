@@ -51,12 +51,12 @@ namespace Bone_By_Bone
                 StartBoneId = "skull",
                 Bones = new List<BoneDefinition>
         {
-                    new BoneDefinition { Id = "skull",    ImageKey = "dino_skull",    BoneSize = new Size(200, 200), SlotPosition = new Point(30,  250), Neighbors = new List<string> { "neck" } },
-                    new BoneDefinition { Id = "neck",     ImageKey = "dino_neck",     BoneSize = new Size(180, 180), SlotPosition = new Point(220, 250), Neighbors = new List<string> { "arms", "ribs" } },
-                    new BoneDefinition { Id = "arms",     ImageKey = "dino_arms",     BoneSize = new Size(150, 200), SlotPosition = new Point(390, 200), Neighbors = new List<string> { "ribs" } },
-                    new BoneDefinition { Id = "ribs",     ImageKey = "dino_ribs",     BoneSize = new Size(250, 250), SlotPosition = new Point(300, 230), Neighbors = new List<string> { "leg_back" } },
-                    new BoneDefinition { Id = "leg_back", ImageKey = "dino_leg_back", BoneSize = new Size(150, 300), SlotPosition = new Point(540, 180), Neighbors = new List<string> { "tail" } },
-                    new BoneDefinition { Id = "tail",     ImageKey = "dino_tail",     BoneSize = new Size(350, 180), SlotPosition = new Point(680, 200), Neighbors = new List<string> { } },
+                    new BoneDefinition { Id = "skull",    ImageKey = "dino_skull",    BoneSize = new Size(200, 200), SlotPosition = new Point(30,  80),  Neighbors = new List<string> { "neck" } },
+                    new BoneDefinition { Id = "neck",     ImageKey = "dino_neck",     BoneSize = new Size(180, 180), SlotPosition = new Point(220, 60),  Neighbors = new List<string> { "arms", "ribs" } },
+                    new BoneDefinition { Id = "arms",     ImageKey = "dino_arms",     BoneSize = new Size(150, 200), SlotPosition = new Point(340, 200), Neighbors = new List<string> { "ribs" } },
+                    new BoneDefinition { Id = "ribs",     ImageKey = "dino_ribs",     BoneSize = new Size(250, 280), SlotPosition = new Point(360, 30),  Neighbors = new List<string> { "leg_back" } },
+                    new BoneDefinition { Id = "leg_back", ImageKey = "dino_leg_back", BoneSize = new Size(200, 320), SlotPosition = new Point(530, 80), Neighbors = new List<string> { "tail" } },
+                    new BoneDefinition { Id = "tail",     ImageKey = "dino_tail",     BoneSize = new Size(420, 160), SlotPosition = new Point(680, 50),  Neighbors = new List<string> { } },
         }
             };
         }
