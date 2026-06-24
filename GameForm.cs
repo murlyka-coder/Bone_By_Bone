@@ -13,206 +13,270 @@ namespace Bone_By_Bone
     public partial class GameForm : UserControl
     {
         public event EventHandler BackToMenuClicked;
+
         private int secondsPassed = 0;
-        private bool isDragging = false;
-        private Point startPoint;
-        private List<PictureBox> activeBones = new List<PictureBox>();
-        private List<PictureBox> activeTargets = new List<PictureBox>();
         private int mistakesCount = 0;
         private int selectedLevel = 1;
-        private LevelConfig levelConfig = new LevelConfig();
+
+        private SkeletonDefinition skeleton;
+        private HashSet<string> placedBones = new HashSet<string>();
+        private List<string> availableNeighbors = new List<string>();
+
+        private Dictionary<string, PictureBox> slotBoxes = new Dictionary<string, PictureBox>();
+        private List<PictureBox> choiceBoxes = new List<PictureBox>();
+
+        private bool isDragging = false;
+        private PictureBox draggingBone = null;
+        private string draggingBoneId = null;
+        private Point dragOffset;
+        private Point dragOriginalLocation;
+
+        private Rectangle AssemblyZone => new Rectangle(0, 0, this.Width, (int)(this.Height * 0.65));
+        private Rectangle ChoiceZone => new Rectangle(0, (int)(this.Height * 0.65), this.Width, (int)(this.Height * 0.35));
 
         public GameForm()
         {
             InitializeComponent();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            secondsPassed++;
-            lblTime.Text = "Время: " + secondsPassed + " сек";
-
-        }
-
-
         public void StartLevel(int level)
         {
             selectedLevel = level;
-
-            ClearActiveLevel();
-            var data = levelConfig.GetLevel(level);
-            int boneCount = data.boneCount;
-            Size boneSize = data.boneSize;
-
-
-            // --- УМНЫЙ РАСЧЕТ ШАГА ---
-            // Нам нужно распределить кости в пределах ширины панели (700 пикселей)
-            int margin = 20; // отступ от левого и правого краев панели
-            int availableWidth = this.Width - (margin * 2) - boneSize.Width; // доступная ширина для шага
-            float step = (float)availableWidth / (boneCount - 1); // расстояние между левыми краями соседних костей
-
-            for (int i = 0; i < boneCount; i++)
-            {
-                // Вычисляем точную координату X для i-й кости
-                int posX = margin + (int)(i * step);
-
-                // 1. Создаем цель
-                PictureBox target = new PictureBox();
-                target.Size = boneSize;
-                target.BackColor = Color.DimGray;
-                target.Location = new Point(posX, 80); // используемposX
-                target.Size = boneSize;
-                target.BackColor = Color.DimGray;
-                target.BorderStyle = BorderStyle.FixedSingle; // ДОБАВИТЬ ЭТУ СТРОКУ
-                target.Location = new Point(posX, 80);
-
-                this.Controls.Add(target);
-                activeTargets.Add(target);
-
-                // 2. Создаем кость
-                PictureBox bone = new PictureBox();
-                bone.Size = boneSize;
-                bone.BackColor = Color.White;
-                bone.Location = new Point(posX, 340); // используем posX
-                bone.Tag = target;
-                bone.Size = boneSize;
-                bone.BackColor = Color.White;
-                bone.BorderStyle = BorderStyle.FixedSingle; // ДОБАВИТЬ ЭТУ СТРОКУ
-                bone.Location = new Point(posX, 340);
-
-                bone.MouseDown += DynamicBone_MouseDown;
-                bone.MouseMove += DynamicBone_MouseMove;
-                bone.MouseUp += DynamicBone_MouseUp;
-
-                this.Controls.Add(bone);
-                activeBones.Add(bone);
-
-                bone.BringToFront();
-            }
-
-            TimerGame.Start();
-        }
-
-
-
-
-        // Метод проверки: установлены ли все кости на свои цели
-        private void CheckVictory()
-        {
-            bool allSnapped = true;
-            foreach (var bone in activeBones)
-            {
-                PictureBox target = (PictureBox)bone.Tag;
-                if (bone.Location != target.Location)
-                {
-                    allSnapped = false;
-                    break;
-                }
-            }
-
-            // Если все кости на местах — это победа!
-            if (allSnapped)
-            {
-                TimerGame.Stop();
-
-                int stars = 3;
-                var thresholds = levelConfig.GetStarThresholds(selectedLevel);
-                int timeFor3Stars = thresholds.timeFor3Stars;
-                int timeFor2Stars = thresholds.timeFor2Stars;
-
-                if (secondsPassed >= timeFor2Stars || mistakesCount > 3) stars = 1;
-                else if (secondsPassed >= timeFor3Stars || mistakesCount > 1) stars = 2;
-
-                string starRating = new string('★', stars) + new string('☆', 3 - stars);
-                MessageBox.Show($"Уровень пройден!\n\nВремя: {secondsPassed} сек.\nОшибок: {mistakesCount}\nОценка: {starRating}", "Победа!");
-
-                btnBackToMenu.Visible = true;
-            }
-        }
-
-
-
-        // Метод удаления костей с экрана при возврате в меню
-        private void ClearActiveLevel()
-        {
-            btnBackToMenu.Visible = false;
-            foreach (var b in activeBones) this.Controls.Remove(b);
-            foreach (var t in activeTargets) this.Controls.Remove(t);
-            activeBones.Clear();
-            activeTargets.Clear();
-        }
-
-
-
-        private void DynamicBone_MouseDown(object sender, MouseEventArgs e)
-        {
-            PictureBox bone = (PictureBox)sender;
-            PictureBox target = (PictureBox)bone.Tag; // находим цель, привязанную к этой кости
-
-            // Если кость уже стоит на месте цели — её нельзя двигать
-            if (bone.Location == target.Location) return;
-
-            if (e.Button == MouseButtons.Left)
-            {
-                isDragging = true;
-                startPoint = e.Location;
-                bone.BringToFront(); // выводим кость на передний план при перетаскивании
-            }
-        }
-
-        private void DynamicBone_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (isDragging)
-            {
-                PictureBox bone = (PictureBox)sender;
-                bone.Left += e.X - startPoint.X;
-                bone.Top += e.Y - startPoint.Y;
-            }
-        }
-
-        private void DynamicBone_MouseUp(object sender, MouseEventArgs e)
-        {
-            isDragging = false;
-            PictureBox bone = (PictureBox)sender;
-            PictureBox target = (PictureBox)bone.Tag; // получаем цель для этой кости
-
-            if (bone.Location == target.Location) return;
-
-            // Считаем расстояние до цели
-            int deltaX = Math.Abs(bone.Left - target.Left);
-            int deltaY = Math.Abs(bone.Top - target.Top);
-
-            if (deltaX < 35 && deltaY < 35) // теперь кость легче притягивается к цели
-            {
-                bone.Location = target.Location; // примагничиваем
-                bone.BackColor = Color.LightGreen; // (пока оставим временно зеленым для теста)
-
-                // Проверяем, собраны ли ВСЕ кости
-                CheckVictory();
-            }
-            else
-            {
-                mistakesCount++;
-                lblMistakes.Text = "Ошибки: " + mistakesCount;
-            }
-        }
-
-
-        private void btnRestart_Click(object sender, EventArgs e)
-        {
-            // Сбрасываем время и ошибки
             secondsPassed = 0;
             mistakesCount = 0;
             lblTime.Text = "Время: 0 сек";
             lblMistakes.Text = "Ошибки: 0";
+            btnBackToMenu.Visible = false;
 
-            // Перезапускаем текущий выбранный уровень
-            StartLevel(selectedLevel);
+            ClearLevel();
+            System.Diagnostics.Debug.WriteLine($"GameForm size: {this.Width} x {this.Height}");
+
+            skeleton = SkeletonLibrary.GetSkeleton(level);
+
+            PlaceBoneInAssembly(skeleton.StartBoneId);
+            placedBones.Add(skeleton.StartBoneId);
+
+            RefreshChoicePanel();
+            TimerGame.Start();
+        }
+
+        private void PlaceBoneInAssembly(string boneId)
+        {
+            var bone = skeleton.GetBone(boneId);
+            if (bone == null) return;
+
+            PictureBox pb = new PictureBox();
+            pb.Size = bone.BoneSize;
+            pb.Location = bone.SlotPosition;
+            System.Diagnostics.Debug.WriteLine($"Placing bone {boneId} at {bone.SlotPosition}, control size: {this.Width}x{this.Height}");
+            pb.SizeMode = PictureBoxSizeMode.StretchImage;
+            pb.BackColor = Color.Transparent;
+            pb.Image = GetBoneImage(bone.ImageKey);
+
+            this.Controls.Add(pb);
+            pb.SendToBack();
+            // Лейблы поверх костей
+            lblTime.BringToFront();
+            lblMistakes.BringToFront();
+            btnBackToMenu.BringToFront();
+            slotBoxes[boneId] = pb;
+
+            // Лейблы поверх костей
+            lblTime.BringToFront();
+            lblMistakes.BringToFront();
+            btnBackToMenu.BringToFront();
+        }
+
+        private void RefreshChoicePanel()
+        {
+            foreach (var pb in choiceBoxes)
+                this.Controls.Remove(pb);
+            choiceBoxes.Clear();
+            availableNeighbors.Clear();
+
+            foreach (var bone in skeleton.Bones)
+            {
+                if (!placedBones.Contains(bone.Id))
+                    availableNeighbors.Add(bone.Id);
+            }
+
+            // Перемешиваем
+            var rng = new Random();
+            availableNeighbors = availableNeighbors.OrderBy(x => rng.Next()).ToList();
+
+            int count = availableNeighbors.Count;
+            if (count == 0) return;
+
+            int boneW = 200;
+            int boneH = 200;
+            int zoneY = ChoiceZone.Y + (ChoiceZone.Height - boneH) / 2;
+            int totalW = count * boneW + (count - 1) * 30;
+            int startX = (this.Width - totalW) / 2;
+
+            for (int i = 0; i < count; i++)
+            {
+                string boneId = availableNeighbors[i];
+                var boneDef = skeleton.GetBone(boneId);
+
+                PictureBox pb = new PictureBox();
+                pb.Size = new Size(boneW, boneH);
+                pb.Location = new Point(startX + i * (boneW + 30), zoneY);
+                pb.SizeMode = PictureBoxSizeMode.StretchImage;
+                pb.BackColor = Color.Transparent;
+                pb.Image = GetBoneImage(boneDef.ImageKey);
+                pb.Tag = boneId;
+                pb.Cursor = Cursors.Hand;
+
+                pb.MouseDown += ChoiceBone_MouseDown;
+                pb.MouseMove += ChoiceBone_MouseMove;
+                pb.MouseUp += ChoiceBone_MouseUp;
+
+                this.Controls.Add(pb);
+                pb.BringToFront();
+                choiceBoxes.Add(pb);
+            }
+
+            System.Diagnostics.Debug.WriteLine($"availableNeighbors count: {availableNeighbors.Count}");
+            System.Diagnostics.Debug.WriteLine($"ChoiceZone: Y={ChoiceZone.Y}, H={ChoiceZone.Height}");
+            System.Diagnostics.Debug.WriteLine($"GameForm size: {this.Width}x{this.Height}");
+            foreach (var n in availableNeighbors)
+                System.Diagnostics.Debug.WriteLine($"  bone: {n}");
+        }
+
+        private void ChoiceBone_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+            PictureBox pb = (PictureBox)sender;
+            isDragging = true;
+            draggingBone = pb;
+            draggingBoneId = (string)pb.Tag;
+            dragOffset = e.Location;
+            dragOriginalLocation = pb.Location;
+            pb.Size = new Size(240, 240); // увеличиваем при захвате
+            pb.BringToFront();
+        }
+
+        private void ChoiceBone_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (!isDragging || draggingBone == null) return;
+            draggingBone.Left += e.X - dragOffset.X;
+            draggingBone.Top += e.Y - dragOffset.Y;
+        }
+
+        private void ChoiceBone_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (!isDragging || draggingBone == null) return;
+            isDragging = false;
+
+            Point center = new Point(
+                draggingBone.Left + draggingBone.Width / 2,
+                draggingBone.Top + draggingBone.Height / 2
+            );
+
+            if (AssemblyZone.Contains(center))
+            {
+                // Ищем кость к которой физически поднесли
+                bool isValidNeighbor = false;
+                foreach (var placedId in placedBones)
+                {
+                    var placedBone = skeleton.GetBone(placedId);
+                    if (!placedBone.Neighbors.Contains(draggingBoneId)) continue;
+
+                    // Проверяем физическое расстояние до этой кости на экране
+                    PictureBox slotPb = slotBoxes[placedId];
+                    Point slotCenter = new Point(
+                        slotPb.Left + slotPb.Width / 2,
+                        slotPb.Top + slotPb.Height / 2
+                    );
+                    int dx = Math.Abs(center.X - slotCenter.X);
+                    int dy = Math.Abs(center.Y - slotCenter.Y);
+
+                    if (dx < 150 && dy < 150) // радиус притяжения — подгонишь под себя
+                    {
+                        isValidNeighbor = true;
+                        break;
+                    }
+                }
+
+                if (isValidNeighbor)
+                {
+                    this.Controls.Remove(draggingBone);
+                    choiceBoxes.Remove(draggingBone);
+                    placedBones.Add(draggingBoneId);
+                    PlaceBoneInAssembly(draggingBoneId);
+                    RefreshChoicePanel();
+                    CheckVictory();
+                }
+                else
+                {
+                    draggingBone.Size = new Size(200, 200);
+                    draggingBone.Location = dragOriginalLocation;
+                    mistakesCount++;
+                    lblMistakes.Text = "Ошибки: " + mistakesCount;
+                }
+            }
+            else
+            {
+                draggingBone.Size = new Size(200, 200);
+                draggingBone.Location = dragOriginalLocation;
+            }
+
+            draggingBone = null;
+            draggingBoneId = null;
+        }
+
+        private void CheckVictory()
+        {
+            if (placedBones.Count == skeleton.Bones.Count)
+            {
+                TimerGame.Stop();
+                int stars = 3;
+                if (mistakesCount > 3) stars = 1;
+                else if (mistakesCount > 1) stars = 2;
+                string rating = new string('★', stars) + new string('☆', 3 - stars);
+                MessageBox.Show($"Скелет собран!\n\nВремя: {secondsPassed} сек.\nОшибок: {mistakesCount}\nОценка: {rating}", "Победа!");
+                btnBackToMenu.Visible = true;
+            }
+        }
+
+        private void ClearLevel()
+        {
+            foreach (var pb in slotBoxes.Values) this.Controls.Remove(pb);
+            foreach (var pb in choiceBoxes) this.Controls.Remove(pb);
+            slotBoxes.Clear();
+            choiceBoxes.Clear();
+            placedBones.Clear();
+            availableNeighbors.Clear();
+            TimerGame.Stop();
+        }
+
+        private Image GetBoneImage(string imageKey)
+        {
+            try
+            {
+                return (Image)Properties.Resources.ResourceManager.GetObject(imageKey);
+            }
+            catch
+            {
+                Bitmap bmp = new Bitmap(120, 120);
+                using (var g = Graphics.FromImage(bmp))
+                {
+                    g.Clear(Color.Gray);
+                    g.DrawString(imageKey, new Font("Arial", 8), Brushes.White, 5, 50);
+                }
+                return bmp;
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            secondsPassed++;
+            lblTime.Text = "Время: " + secondsPassed + " сек";
         }
 
         private void btnBackToMenu_Click(object sender, EventArgs e)
         {
-            ClearActiveLevel();
+            ClearLevel();
             secondsPassed = 0;
             mistakesCount = 0;
             lblTime.Text = "Время: 0 сек";
