@@ -36,8 +36,15 @@
             this.activetime = new System.Windows.Forms.PictureBox();
             this.buttonbuter = new System.Windows.Forms.PictureBox();
             this.pausePanel = new System.Windows.Forms.Panel();
+            this.btnResume = new System.Windows.Forms.PictureBox();
+            this.btnPauseSettings = new System.Windows.Forms.PictureBox();
+            this.btnEndGame = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.activetime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonbuter)).BeginInit();
+            this.pausePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResume)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPauseSettings)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEndGame)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTime
@@ -117,12 +124,63 @@
             this.pausePanel.BackColor = System.Drawing.Color.Transparent;
             this.pausePanel.BackgroundImage = global::Bone_By_Bone.Properties.Resources.menu;
             this.pausePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pausePanel.Controls.Add(this.btnResume);
+            this.pausePanel.Controls.Add(this.btnPauseSettings);
+            this.pausePanel.Controls.Add(this.btnEndGame);
             this.pausePanel.Enabled = false;
             this.pausePanel.Location = new System.Drawing.Point(659, 249);
             this.pausePanel.Name = "pausePanel";
             this.pausePanel.Size = new System.Drawing.Size(639, 598);
             this.pausePanel.TabIndex = 18;
             this.pausePanel.Visible = false;
+            // 
+            // btnResume
+            // 
+            this.btnResume.BackColor = System.Drawing.Color.Transparent;
+            this.btnResume.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnResume.Image = global::Bone_By_Bone.Properties.Resources.buttongo1;
+            this.btnResume.Location = new System.Drawing.Point(198, 164);
+            this.btnResume.Name = "btnResume";
+            this.btnResume.Size = new System.Drawing.Size(243, 105);
+            this.btnResume.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnResume.TabIndex = 21;
+            this.btnResume.TabStop = false;
+            this.btnResume.Click += new System.EventHandler(this.btnResume_Click);
+            this.btnResume.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnResume_MouseDown);
+            this.btnResume.MouseEnter += new System.EventHandler(this.btnResume_MouseEnter);
+            this.btnResume.MouseLeave += new System.EventHandler(this.btnResume_MouseLeave);
+            // 
+            // btnPauseSettings
+            // 
+            this.btnPauseSettings.BackColor = System.Drawing.Color.Transparent;
+            this.btnPauseSettings.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPauseSettings.Image = global::Bone_By_Bone.Properties.Resources.buttonnormal2;
+            this.btnPauseSettings.Location = new System.Drawing.Point(198, 288);
+            this.btnPauseSettings.Name = "btnPauseSettings";
+            this.btnPauseSettings.Size = new System.Drawing.Size(243, 105);
+            this.btnPauseSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnPauseSettings.TabIndex = 20;
+            this.btnPauseSettings.TabStop = false;
+            this.btnPauseSettings.Click += new System.EventHandler(this.btnPauseSettings_Click);
+            this.btnPauseSettings.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnPauseSettings_MouseDown);
+            this.btnPauseSettings.MouseEnter += new System.EventHandler(this.btnPauseSettings_MouseEnter);
+            this.btnPauseSettings.MouseLeave += new System.EventHandler(this.btnPauseSettings_MouseLeave);
+            // 
+            // btnEndGame
+            // 
+            this.btnEndGame.BackColor = System.Drawing.Color.Transparent;
+            this.btnEndGame.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEndGame.Image = global::Bone_By_Bone.Properties.Resources.buttonend1;
+            this.btnEndGame.Location = new System.Drawing.Point(198, 410);
+            this.btnEndGame.Name = "btnEndGame";
+            this.btnEndGame.Size = new System.Drawing.Size(243, 104);
+            this.btnEndGame.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnEndGame.TabIndex = 19;
+            this.btnEndGame.TabStop = false;
+            this.btnEndGame.Click += new System.EventHandler(this.btnEndGame_Click_1);
+            this.btnEndGame.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnEndGame_MouseDown);
+            this.btnEndGame.MouseEnter += new System.EventHandler(this.btnEndGame_MouseEnter);
+            this.btnEndGame.MouseLeave += new System.EventHandler(this.btnEndGame_MouseLeave);
             // 
             // GameForm
             // 
@@ -141,6 +199,10 @@
             this.Size = new System.Drawing.Size(1920, 1200);
             ((System.ComponentModel.ISupportInitialize)(this.activetime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonbuter)).EndInit();
+            this.pausePanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnResume)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPauseSettings)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEndGame)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,5 +217,8 @@
         private System.Windows.Forms.PictureBox activetime;
         private System.Windows.Forms.PictureBox buttonbuter;
         private System.Windows.Forms.Panel pausePanel;
+        private System.Windows.Forms.PictureBox btnResume;
+        private System.Windows.Forms.PictureBox btnPauseSettings;
+        private System.Windows.Forms.PictureBox btnEndGame;
     }
 }

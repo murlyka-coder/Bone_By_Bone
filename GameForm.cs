@@ -13,6 +13,7 @@ namespace Bone_By_Bone
     public partial class GameForm : UserControl
     {
         public event EventHandler BackToMenuClicked;
+        public event EventHandler SettingsClicked;
         private Bitmap lightScreenshot;
         private TransparentPanel overlayPanel;
 
@@ -73,6 +74,8 @@ namespace Bone_By_Bone
             overlayPanel.Controls.Add(pausePanel);
             pausePanel.Visible = true;
         }
+
+        
 
         private void buttonbuter_MouseEnter(object sender, EventArgs e)
         {
@@ -380,6 +383,69 @@ namespace Bone_By_Bone
         {
             foreach (var (img, rect) in assemblyDrawList)
                 e.Graphics.DrawImage(img, rect);
+        }
+
+
+        private void btnPauseSettings_MouseEnter(object sender, EventArgs e)
+        {
+            btnPauseSettings.Image = Properties.Resources.buttonlight2;
+        }
+
+        private void btnPauseSettings_MouseLeave(object sender, EventArgs e)
+        {
+            btnPauseSettings.Image = Properties.Resources.buttonnormal2;
+        }
+
+        private void btnPauseSettings_MouseDown(object sender, MouseEventArgs e)
+        {
+            btnPauseSettings.Image = Properties.Resources.buttonpress2;
+        }
+
+        private void btnPauseSettings_Click(object sender, EventArgs e)
+        {
+            TogglePause();
+            BackToMenuClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void btnEndGame_MouseEnter(object sender, EventArgs e)
+        {
+            btnEndGame.Image = Properties.Resources.buttonend2;
+        }
+
+        private void btnEndGame_MouseLeave(object sender, EventArgs e)
+        {
+            btnEndGame.Image = Properties.Resources.buttonend1;
+        }
+
+        private void btnEndGame_MouseDown(object sender, MouseEventArgs e)
+        {
+            btnEndGame.Image = Properties.Resources.buttonend3;
+        }
+
+        private void btnEndGame_Click_1(object sender, EventArgs e)
+        {
+            ClearLevel();
+            BackToMenuClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void btnResume_MouseEnter(object sender, EventArgs e)
+        {
+            btnResume.Image = Properties.Resources.buttongo2;
+        }
+
+        private void btnResume_MouseLeave(object sender, EventArgs e)
+        {
+            btnResume.Image = Properties.Resources.buttongo1;
+        }
+
+        private void btnResume_MouseDown(object sender, MouseEventArgs e)
+        {
+            btnResume.Image = Properties.Resources.buttongo3;
+        }
+
+        private void btnResume_Click(object sender, EventArgs e)
+        {
+            TogglePause();
         }
     }
 

@@ -18,12 +18,20 @@ namespace Bone_By_Bone
             gameForm1.BackToMenuClicked += GameForm1_BackToMenuClicked;
             mainMenuForm1.ExitClicked += MainMenu_ExitClicked;
             levelSekectForm1.BackToMenuClicked += LevelSekectForm1_BackToMenuClicked;
+            gameForm1.SettingsClicked += GameForm1_SettingsClicked;
         }
 
         private void MainMenu_StartGameClicked(object sender, EventArgs e)
         {
             mainMenuForm1.Visible = false;
             levelSekectForm1.Visible = true;
+        }
+
+        private void GameForm1_SettingsClicked(object sender, EventArgs e)
+        {
+            previousPanel = "game";
+            gameForm1.Visible = false;
+            settingForm1.Visible = true;
         }
 
         private void LevelSekectForm1_LevelSelected(object sender, int level)
