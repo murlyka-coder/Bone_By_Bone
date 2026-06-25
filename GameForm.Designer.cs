@@ -41,14 +41,14 @@
             // 
             this.lblTime.AutoSize = true;
             this.lblTime.BackColor = System.Drawing.Color.Transparent;
-            this.lblTime.Font = new System.Drawing.Font("Comic Sans MS", 25.44F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblTime.Font = new System.Drawing.Font("Comic Sans MS", 20.44F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(39)))), ((int)(((byte)(21)))));
-            this.lblTime.Location = new System.Drawing.Point(152, 65);
+            this.lblTime.Location = new System.Drawing.Point(152, 68);
             this.lblTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(41, 48);
+            this.lblTime.Size = new System.Drawing.Size(34, 39);
             this.lblTime.TabIndex = 3;
-            this.lblTime.Text = "0";
+            this.lblTime.Text = "1";
             // 
             // btnBackToMenu
             // 
@@ -67,12 +67,12 @@
             // 
             this.lblMistakes.AutoSize = true;
             this.lblMistakes.BackColor = System.Drawing.Color.Transparent;
-            this.lblMistakes.Font = new System.Drawing.Font("Comic Sans MS", 25.44F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblMistakes.Font = new System.Drawing.Font("Comic Sans MS", 20.44F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblMistakes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(39)))), ((int)(((byte)(21)))));
-            this.lblMistakes.Location = new System.Drawing.Point(179, 26);
+            this.lblMistakes.Location = new System.Drawing.Point(179, 29);
             this.lblMistakes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMistakes.Name = "lblMistakes";
-            this.lblMistakes.Size = new System.Drawing.Size(41, 48);
+            this.lblMistakes.Size = new System.Drawing.Size(34, 39);
             this.lblMistakes.TabIndex = 2;
             this.lblMistakes.Text = "0";
             // 
