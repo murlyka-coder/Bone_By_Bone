@@ -36,7 +36,6 @@
             this.activetime = new System.Windows.Forms.PictureBox();
             this.buttonbuter = new System.Windows.Forms.PictureBox();
             this.pausePanel = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.activetime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonbuter)).BeginInit();
             this.SuspendLayout();
@@ -125,14 +124,6 @@
             this.pausePanel.TabIndex = 18;
             this.pausePanel.Visible = false;
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1920, 1200);
-            this.panel1.TabIndex = 0;
-            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -145,7 +136,6 @@
             this.Controls.Add(this.lblMistakes);
             this.Controls.Add(this.activetime);
             this.Controls.Add(this.btnBackToMenu);
-            this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.Name = "GameForm";
             this.Size = new System.Drawing.Size(1920, 1200);
@@ -165,6 +155,5 @@
         private System.Windows.Forms.PictureBox activetime;
         private System.Windows.Forms.PictureBox buttonbuter;
         private System.Windows.Forms.Panel pausePanel;
-        private System.Windows.Forms.Panel panel1;
     }
 }
