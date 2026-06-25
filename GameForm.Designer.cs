@@ -43,7 +43,7 @@
             this.lblTime.BackColor = System.Drawing.Color.Transparent;
             this.lblTime.Font = new System.Drawing.Font("Comic Sans MS", 20.44F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(39)))), ((int)(((byte)(21)))));
-            this.lblTime.Location = new System.Drawing.Point(152, 68);
+            this.lblTime.Location = new System.Drawing.Point(132, 68);
             this.lblTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(34, 39);
@@ -69,7 +69,7 @@
             this.lblMistakes.BackColor = System.Drawing.Color.Transparent;
             this.lblMistakes.Font = new System.Drawing.Font("Comic Sans MS", 20.44F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblMistakes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(39)))), ((int)(((byte)(21)))));
-            this.lblMistakes.Location = new System.Drawing.Point(179, 29);
+            this.lblMistakes.Location = new System.Drawing.Point(159, 29);
             this.lblMistakes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMistakes.Name = "lblMistakes";
             this.lblMistakes.Size = new System.Drawing.Size(34, 39);
@@ -88,7 +88,7 @@
             this.activetime.Image = global::Bone_By_Bone.Properties.Resources.activegametime;
             this.activetime.Location = new System.Drawing.Point(3, 3);
             this.activetime.Name = "activetime";
-            this.activetime.Size = new System.Drawing.Size(337, 145);
+            this.activetime.Size = new System.Drawing.Size(287, 145);
             this.activetime.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.activetime.TabIndex = 13;
             this.activetime.TabStop = false;
