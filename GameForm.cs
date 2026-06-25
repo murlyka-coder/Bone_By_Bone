@@ -38,6 +38,11 @@ namespace Bone_By_Bone
         {
             InitializeComponent();
             this.Paint += GameForm_Paint;
+            lblTime.Parent = activetime;
+            lblTime.BackColor = Color.Transparent;
+
+            lblMistakes.Parent = activetime;
+            lblMistakes.BackColor = Color.Transparent;
         }
 
         public void StartLevel(int level)
@@ -45,8 +50,8 @@ namespace Bone_By_Bone
             selectedLevel = level;
             secondsPassed = 0;
             mistakesCount = 0;
-            lblTime.Text = "Время: 0 сек";
-            lblMistakes.Text = "Ошибки: 0";
+            lblTime.Text = "0";
+            lblMistakes.Text = "0";
             btnBackToMenu.Visible = false;
 
             ClearLevel();
@@ -203,7 +208,7 @@ namespace Bone_By_Bone
                     draggingBone.Size = new Size(200, 200);
                     draggingBone.Location = dragOriginalLocation;
                     mistakesCount++;
-                    lblMistakes.Text = "Ошибки: " + mistakesCount;
+                    lblMistakes.Text = "" + mistakesCount;
                 }
             }
             else
@@ -258,7 +263,7 @@ namespace Bone_By_Bone
         private void timer1_Tick(object sender, EventArgs e)
         {
             secondsPassed++;
-            lblTime.Text = "Время: " + secondsPassed + " сек";
+            lblTime.Text = "" + secondsPassed + "";
         }
 
         private void btnBackToMenu_Click(object sender, EventArgs e)
@@ -266,8 +271,8 @@ namespace Bone_By_Bone
             ClearLevel();
             secondsPassed = 0;
             mistakesCount = 0;
-            lblTime.Text = "Время: 0 сек";
-            lblMistakes.Text = "Ошибки: 0";
+            lblTime.Text = "0";
+            lblMistakes.Text = "0";
             BackToMenuClicked?.Invoke(this, EventArgs.Empty);
         }
 

@@ -33,22 +33,27 @@
             this.btnBackToMenu = new System.Windows.Forms.Button();
             this.lblMistakes = new System.Windows.Forms.Label();
             this.TimerGame = new System.Windows.Forms.Timer(this.components);
+            this.activetime = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.activetime)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTime
             // 
             this.lblTime.AutoSize = true;
-            this.lblTime.Location = new System.Drawing.Point(12, 66);
+            this.lblTime.BackColor = System.Drawing.Color.Transparent;
+            this.lblTime.Font = new System.Drawing.Font("Comic Sans MS", 25.44F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(39)))), ((int)(((byte)(21)))));
+            this.lblTime.Location = new System.Drawing.Point(152, 65);
             this.lblTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(76, 13);
+            this.lblTime.Size = new System.Drawing.Size(41, 48);
             this.lblTime.TabIndex = 3;
-            this.lblTime.Text = "Время: 0 сек.";
+            this.lblTime.Text = "0";
             // 
             // btnBackToMenu
             // 
             this.btnBackToMenu.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.btnBackToMenu.Location = new System.Drawing.Point(239, 63);
+            this.btnBackToMenu.Location = new System.Drawing.Point(1037, 197);
             this.btnBackToMenu.Margin = new System.Windows.Forms.Padding(2);
             this.btnBackToMenu.Name = "btnBackToMenu";
             this.btnBackToMenu.Size = new System.Drawing.Size(115, 19);
@@ -61,17 +66,32 @@
             // lblMistakes
             // 
             this.lblMistakes.AutoSize = true;
-            this.lblMistakes.Location = new System.Drawing.Point(12, 48);
+            this.lblMistakes.BackColor = System.Drawing.Color.Transparent;
+            this.lblMistakes.Font = new System.Drawing.Font("Comic Sans MS", 25.44F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblMistakes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(39)))), ((int)(((byte)(21)))));
+            this.lblMistakes.Location = new System.Drawing.Point(179, 26);
             this.lblMistakes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMistakes.Name = "lblMistakes";
-            this.lblMistakes.Size = new System.Drawing.Size(59, 13);
+            this.lblMistakes.Size = new System.Drawing.Size(41, 48);
             this.lblMistakes.TabIndex = 2;
-            this.lblMistakes.Text = "Ошибки: 0";
+            this.lblMistakes.Text = "0";
             // 
             // TimerGame
             // 
             this.TimerGame.Interval = 1000;
             this.TimerGame.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // activetime
+            // 
+            this.activetime.BackColor = System.Drawing.Color.Transparent;
+            this.activetime.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.activetime.Image = global::Bone_By_Bone.Properties.Resources.activegametime;
+            this.activetime.Location = new System.Drawing.Point(3, 3);
+            this.activetime.Name = "activetime";
+            this.activetime.Size = new System.Drawing.Size(337, 145);
+            this.activetime.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.activetime.TabIndex = 13;
+            this.activetime.TabStop = false;
             // 
             // GameForm
             // 
@@ -80,11 +100,13 @@
             this.BackgroundImage = global::Bone_By_Bone.Properties.Resources.gamemenu;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.lblTime);
-            this.Controls.Add(this.btnBackToMenu);
             this.Controls.Add(this.lblMistakes);
+            this.Controls.Add(this.activetime);
+            this.Controls.Add(this.btnBackToMenu);
             this.DoubleBuffered = true;
             this.Name = "GameForm";
-            this.Size = new System.Drawing.Size(1920, 1080);
+            this.Size = new System.Drawing.Size(1920, 1200);
+            ((System.ComponentModel.ISupportInitialize)(this.activetime)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -96,5 +118,6 @@
         private System.Windows.Forms.Button btnBackToMenu;
         private System.Windows.Forms.Label lblMistakes;
         private System.Windows.Forms.Timer TimerGame;
+        private System.Windows.Forms.PictureBox activetime;
     }
 }
