@@ -13,6 +13,7 @@ namespace Bone_By_Bone
     public partial class GameForm : UserControl
     {
         public event EventHandler BackToMenuClicked;
+        private TransparentPanel overlayPanel;
 
         private int secondsPassed = 0;
         private int mistakesCount = 0;
@@ -36,7 +37,16 @@ namespace Bone_By_Bone
 
         public GameForm()
         {
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
             InitializeComponent();
+            pausePanel.Enabled = false;
+            pausePanel.SendToBack();
+            this.Load += GameForm_Load;
+            overlayPanel = new TransparentPanel();
+            overlayPanel.Size = this.ClientSize;
+            overlayPanel.Location = new Point(0, 0);
+            overlayPanel.Visible = false;
+            this.Controls.Add(overlayPanel);
             this.Paint += GameForm_Paint;
             lblTime.Parent = activetime;
             lblTime.BackColor = Color.Transparent;
@@ -44,6 +54,77 @@ namespace Bone_By_Bone
             lblMistakes.Parent = activetime;
             lblMistakes.BackColor = Color.Transparent;
         }
+
+        private void GameForm_Load(object sender, EventArgs e)
+        {
+            overlayPanel = new TransparentPanel();
+            overlayPanel.Size = this.ClientSize;
+            overlayPanel.Location = new Point(0, 0);
+            overlayPanel.Visible = false;
+            this.Controls.Add(overlayPanel);
+
+            // переносим pausePanel внутрь overlayPanel
+            this.Controls.Remove(pausePanel);
+            pausePanel.Location = new Point(
+                (overlayPanel.Width - pausePanel.Width) / 2,
+                (overlayPanel.Height - pausePanel.Height) / 2);
+            overlayPanel.Controls.Add(pausePanel);
+            pausePanel.Visible = true;
+        }
+
+        private void buttonbuter_MouseEnter(object sender, EventArgs e)
+        {
+            buttonbuter.Image = Properties.Resources.buttonbuterlight;
+        }
+
+        private void buttonbuter_MouseLeave(object sender, EventArgs e)
+        {
+            buttonbuter.Image = Properties.Resources.buttonbuternormal;
+        }
+
+        private void buttonbuter_MouseDown(object sender, MouseEventArgs e)
+        {
+            buttonbuter.Image = Properties.Resources.buttonbuterpress;
+        }
+
+        private void buttonbuter_Click(object sender, EventArgs e)
+        {
+            TogglePause();
+        }
+
+        private void TogglePause()
+        {
+            bool pausing = !overlayPanel.Visible;
+            if (pausing)
+            {
+                TimerGame.Stop();
+
+                Bitmap screenshot = new Bitmap(this.Width, this.Height);
+                this.DrawToBitmap(screenshot, new Rectangle(0, 0, this.Width, this.Height));
+
+                using (Graphics g = Graphics.FromImage(screenshot))
+                using (var brush = new SolidBrush(Color.FromArgb(150, 0, 0, 0)))
+                    g.FillRectangle(brush, 0, 0, screenshot.Width, screenshot.Height);
+
+                overlayPanel.BackgroundImage = screenshot;
+                overlayPanel.BackgroundImageLayout = ImageLayout.Stretch;
+                overlayPanel.Visible = true;
+                overlayPanel.Size = this.ClientSize;
+                overlayPanel.BringToFront();
+                buttonbuter.BringToFront();
+            }
+            else
+            {
+                TimerGame.Start();
+                overlayPanel.Visible = false;
+                if (overlayPanel.BackgroundImage != null)
+                {
+                    overlayPanel.BackgroundImage.Dispose();
+                    overlayPanel.BackgroundImage = null;
+                }
+            }
+        }
+
 
         public void StartLevel(int level)
         {
@@ -131,6 +212,9 @@ namespace Bone_By_Bone
             lblTime.BringToFront();
             lblMistakes.BringToFront();
             btnBackToMenu.BringToFront();
+            pausePanel.SendToBack();
+            activetime.BringToFront();
+            buttonbuter.BringToFront();
 
             System.Diagnostics.Debug.WriteLine($"availableNeighbors count: {availableNeighbors.Count}");
             System.Diagnostics.Debug.WriteLine($"ChoiceZone: Y={ChoiceZone.Y}, H={ChoiceZone.Height}");
@@ -148,7 +232,6 @@ namespace Bone_By_Bone
             draggingBoneId = (string)pb.Tag;
             dragOffset = e.Location;
             dragOriginalLocation = pb.Location;
-            pb.Size = new Size(240, 240); // увеличиваем при захвате
             pb.BringToFront();
         }
 
@@ -280,6 +363,15 @@ namespace Bone_By_Bone
         {
             foreach (var (img, rect) in assemblyDrawList)
                 e.Graphics.DrawImage(img, rect);
+        }
+    }
+
+
+    public class TransparentPanel : Panel
+    {
+        public TransparentPanel()
+        {
+            this.BackColor = Color.Transparent;
         }
     }
 }
