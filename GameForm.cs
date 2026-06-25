@@ -45,15 +45,9 @@ namespace Bone_By_Bone
             pausePanel.Enabled = false;
             pausePanel.SendToBack();
             this.Load += GameForm_Load;
-            overlayPanel = new TransparentPanel();
-            overlayPanel.Size = this.ClientSize;
-            overlayPanel.Location = new Point(0, 0);
-            overlayPanel.Visible = false;
-            this.Controls.Add(overlayPanel);
             this.Paint += GameForm_Paint;
             lblTime.Parent = activetime;
             lblTime.BackColor = Color.Transparent;
-
             lblMistakes.Parent = activetime;
             lblMistakes.BackColor = Color.Transparent;
         }
@@ -75,7 +69,25 @@ namespace Bone_By_Bone
             pausePanel.Visible = true;
         }
 
-        
+        public void ShowPause()
+        {
+            lightScreenshot = new Bitmap(this.Width, this.Height);
+            this.DrawToBitmap(lightScreenshot, new Rectangle(0, 0, this.Width, this.Height));
+
+            Bitmap dark = new Bitmap(lightScreenshot);
+            using (Graphics g = Graphics.FromImage(dark))
+            using (var brush = new SolidBrush(Color.FromArgb(150, 0, 0, 0)))
+                g.FillRectangle(brush, 0, 0, dark.Width, dark.Height);
+
+            overlayPanel.BackgroundImage = dark;
+            overlayPanel.BackgroundImageLayout = ImageLayout.Stretch;
+            overlayPanel.Visible = true;
+            overlayPanel.Size = this.ClientSize;
+            overlayPanel.BringToFront();
+            pausePanel.Enabled = true;
+        }
+
+
 
         private void buttonbuter_MouseEnter(object sender, EventArgs e)
         {
@@ -103,6 +115,9 @@ namespace Bone_By_Bone
             if (pausing)
             {
                 TimerGame.Stop();
+                pausePanel.Enabled = true;
+
+                buttonbuter.Image = Properties.Resources.buttonbuternormal;
 
                 // сначала сохраняем светлый скриншот
                 lightScreenshot = new Bitmap(this.Width, this.Height);
@@ -119,11 +134,11 @@ namespace Bone_By_Bone
                 overlayPanel.Visible = true;
                 overlayPanel.Size = this.ClientSize;
                 overlayPanel.BringToFront();
-                buttonbuter.BringToFront();
             }
             else
             {
                 TimerGame.Start();
+                pausePanel.Enabled = false;
 
                 // показываем светлый скриншот пока overlay ещё видим
                 overlayPanel.BackgroundImage = lightScreenshot;
@@ -264,64 +279,7 @@ namespace Bone_By_Bone
 
         private void ChoiceBone_MouseUp(object sender, MouseEventArgs e)
         {
-            if (!isDragging || draggingBone == null) return;
-            isDragging = false;
 
-            Point center = new Point(
-                draggingBone.Left + draggingBone.Width / 2,
-                draggingBone.Top + draggingBone.Height / 2
-            );
-
-            if (AssemblyZone.Contains(center))
-            {
-                // Ищем кость к которой физически поднесли
-                bool isValidNeighbor = false;
-                foreach (var placedId in placedBones)
-                {
-                    var placedBone = skeleton.GetBone(placedId);
-                    if (!placedBone.Neighbors.Contains(draggingBoneId)) continue;
-
-                    // Проверяем физическое расстояние до этой кости на экране
-                    PictureBox slotPb = slotBoxes[placedId];
-                    Point slotCenter = new Point(
-                        slotPb.Left + slotPb.Width / 2,
-                        slotPb.Top + slotPb.Height / 2
-                    );
-                    int dx = Math.Abs(center.X - slotCenter.X);
-                    int dy = Math.Abs(center.Y - slotCenter.Y);
-
-                    if (dx < 150 && dy < 150) // радиус притяжения — подгонишь под себя
-                    {
-                        isValidNeighbor = true;
-                        break;
-                    }
-                }
-
-                if (isValidNeighbor)
-                {
-                    this.Controls.Remove(draggingBone);
-                    choiceBoxes.Remove(draggingBone);
-                    placedBones.Add(draggingBoneId);
-                    PlaceBoneInAssembly(draggingBoneId);
-                    RefreshChoicePanel();
-                    CheckVictory();
-                }
-                else
-                {
-                    draggingBone.Size = new Size(200, 200);
-                    draggingBone.Location = dragOriginalLocation;
-                    mistakesCount++;
-                    lblMistakes.Text = "" + mistakesCount;
-                }
-            }
-            else
-            {
-                draggingBone.Size = new Size(200, 200);
-                draggingBone.Location = dragOriginalLocation;
-            }
-
-            draggingBone = null;
-            draggingBoneId = null;
         }
 
         private void CheckVictory()
@@ -347,6 +305,9 @@ namespace Bone_By_Bone
             placedBones.Clear();
             availableNeighbors.Clear();
             TimerGame.Stop();
+            overlayPanel.Visible = false;
+            pausePanel.Enabled = false;
+            assemblyDrawList.Clear();
         }
 
         private Image GetBoneImage(string imageKey)
@@ -404,7 +365,8 @@ namespace Bone_By_Bone
         private void btnPauseSettings_Click(object sender, EventArgs e)
         {
             TogglePause();
-            BackToMenuClicked?.Invoke(this, EventArgs.Empty);
+            TimerGame.Stop();
+            SettingsClicked?.Invoke(this, EventArgs.Empty);
         }
 
         private void btnEndGame_MouseEnter(object sender, EventArgs e)

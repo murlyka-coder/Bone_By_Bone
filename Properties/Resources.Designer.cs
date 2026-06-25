@@ -653,6 +653,16 @@ namespace Bone_By_Bone.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pauzepanel {
+            get {
+                object obj = ResourceManager.GetObject("pauzepanel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap settingscreen {
             get {
                 object obj = ResourceManager.GetObject("settingscreen", resourceCulture);

@@ -45,7 +45,7 @@ namespace Bone_By_Bone
         private void GameForm1_BackToMenuClicked(object sender, EventArgs e)
         {
             gameForm1.Visible = false;
-            mainMenuForm1.Visible = true;
+            levelSekectForm1.Visible = true;
         }
 
         private void LevelSekectForm1_BackToMenuClicked(object sender, EventArgs e)
@@ -71,7 +71,11 @@ namespace Bone_By_Bone
         {
             settingForm1.Visible = false;
 
-            if (previousPanel == "game") gameForm1.Visible = true;
+            if (previousPanel == "game")
+            {
+                gameForm1.Visible = true;
+                gameForm1.ShowPause(); // добавим метод
+            }
             else if (previousPanel == "levels") levelSekectForm1.Visible = true;
             else mainMenuForm1.Visible = true;
         }

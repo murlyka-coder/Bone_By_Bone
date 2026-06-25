@@ -122,13 +122,12 @@
             // pausePanel
             // 
             this.pausePanel.BackColor = System.Drawing.Color.Transparent;
-            this.pausePanel.BackgroundImage = global::Bone_By_Bone.Properties.Resources.menu;
+            this.pausePanel.BackgroundImage = global::Bone_By_Bone.Properties.Resources.pauzepanel;
             this.pausePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pausePanel.Controls.Add(this.btnResume);
             this.pausePanel.Controls.Add(this.btnPauseSettings);
             this.pausePanel.Controls.Add(this.btnEndGame);
-            this.pausePanel.Enabled = false;
-            this.pausePanel.Location = new System.Drawing.Point(659, 249);
+            this.pausePanel.Location = new System.Drawing.Point(655, 247);
             this.pausePanel.Name = "pausePanel";
             this.pausePanel.Size = new System.Drawing.Size(639, 598);
             this.pausePanel.TabIndex = 18;
@@ -139,9 +138,9 @@
             this.btnResume.BackColor = System.Drawing.Color.Transparent;
             this.btnResume.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnResume.Image = global::Bone_By_Bone.Properties.Resources.buttongo1;
-            this.btnResume.Location = new System.Drawing.Point(198, 164);
+            this.btnResume.Location = new System.Drawing.Point(195, 175);
             this.btnResume.Name = "btnResume";
-            this.btnResume.Size = new System.Drawing.Size(243, 105);
+            this.btnResume.Size = new System.Drawing.Size(254, 105);
             this.btnResume.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnResume.TabIndex = 21;
             this.btnResume.TabStop = false;
@@ -155,9 +154,9 @@
             this.btnPauseSettings.BackColor = System.Drawing.Color.Transparent;
             this.btnPauseSettings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPauseSettings.Image = global::Bone_By_Bone.Properties.Resources.buttonnormal2;
-            this.btnPauseSettings.Location = new System.Drawing.Point(198, 288);
+            this.btnPauseSettings.Location = new System.Drawing.Point(195, 299);
             this.btnPauseSettings.Name = "btnPauseSettings";
-            this.btnPauseSettings.Size = new System.Drawing.Size(243, 105);
+            this.btnPauseSettings.Size = new System.Drawing.Size(254, 105);
             this.btnPauseSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnPauseSettings.TabIndex = 20;
             this.btnPauseSettings.TabStop = false;
@@ -171,9 +170,9 @@
             this.btnEndGame.BackColor = System.Drawing.Color.Transparent;
             this.btnEndGame.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEndGame.Image = global::Bone_By_Bone.Properties.Resources.buttonend1;
-            this.btnEndGame.Location = new System.Drawing.Point(198, 410);
+            this.btnEndGame.Location = new System.Drawing.Point(195, 421);
             this.btnEndGame.Name = "btnEndGame";
-            this.btnEndGame.Size = new System.Drawing.Size(243, 104);
+            this.btnEndGame.Size = new System.Drawing.Size(254, 104);
             this.btnEndGame.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnEndGame.TabIndex = 19;
             this.btnEndGame.TabStop = false;
