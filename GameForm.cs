@@ -203,6 +203,84 @@ namespace Bone_By_Bone
             buttonbuter.BringToFront();
         }
 
+
+        private void ChoiceBone_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+            PictureBox pb = (PictureBox)sender;
+            isDragging = true;
+            draggingBone = pb;
+            draggingBoneId = (string)pb.Tag;
+            dragOffset = e.Location;
+            dragOriginalLocation = pb.Location;
+            pb.BringToFront();
+        }
+
+        private void ChoiceBone_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (!isDragging || draggingBone == null) return;
+            draggingBone.Left += e.X - dragOffset.X;
+            draggingBone.Top += e.Y - dragOffset.Y;
+        }
+
+        private void ChoiceBone_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (!isDragging || draggingBone == null) return;
+            isDragging = false;
+
+            Point center = new Point(
+                draggingBone.Left + draggingBone.Width / 2,
+                draggingBone.Top + draggingBone.Height / 2
+            );
+
+            if (AssemblyZone.Contains(center))
+            {
+                bool isValidNeighbor = false;
+                foreach (var placedId in placedBones)
+                {
+                    var placedBone = skeleton.GetBone(placedId);
+                    if (!placedBone.Neighbors.Contains(draggingBoneId)) continue;
+
+                    PictureBox slotPb = slotBoxes[placedId];
+                    Point slotCenter = new Point(
+                        slotPb.Left + slotPb.Width / 2,
+                        slotPb.Top + slotPb.Height / 2
+                    );
+                    int dx = Math.Abs(center.X - slotCenter.X);
+                    int dy = Math.Abs(center.Y - slotCenter.Y);
+
+                    if (dx < 150 && dy < 150)
+                    {
+                        isValidNeighbor = true;
+                        break;
+                    }
+                }
+
+                if (isValidNeighbor)
+                {
+                    this.Controls.Remove(draggingBone);
+                    choiceBoxes.Remove(draggingBone);
+                    placedBones.Add(draggingBoneId);
+                    PlaceBoneInAssembly(draggingBoneId);
+                    RefreshChoicePanel();
+                    CheckVictory();
+                }
+                else
+                {
+                    draggingBone.Location = dragOriginalLocation;
+                    mistakesCount++;
+                    lblMistakes.Text = "" + mistakesCount;
+                }
+            }
+            else
+            {
+                draggingBone.Location = dragOriginalLocation;
+            }
+
+            draggingBone = null;
+            draggingBoneId = null;
+        }
+
         private void CheckVictory()
         {
             if (placedBones.Count == skeleton.Bones.Count)
@@ -243,6 +321,12 @@ namespace Bone_By_Bone
                 g.DrawString(imageKey, new Font("Arial", 8), Brushes.White, 5, 65);
             }
             return bmp;
+        }
+
+        private void GameForm_Paint(object sender, PaintEventArgs e)
+        {
+            foreach (var (img, rect) in assemblyDrawList)
+                e.Graphics.DrawImage(img, rect);
         }
     }
 }

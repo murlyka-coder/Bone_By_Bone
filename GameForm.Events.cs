@@ -34,11 +34,6 @@ namespace Bone_By_Bone
             inGameSettingsPanel.Visible = false;
         }
 
-        private void GameForm_Paint(object sender, PaintEventArgs e)
-        {
-            foreach (var (img, rect) in assemblyDrawList)
-                e.Graphics.DrawImage(img, rect);
-        }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -46,7 +41,6 @@ namespace Bone_By_Bone
             lblTime.Text = "" + secondsPassed + "";
         }
 
-        // ===== БУТЕРБРОД =====
         private void buttonbuter_Click(object sender, EventArgs e)
         {
             TogglePause();
@@ -67,7 +61,6 @@ namespace Bone_By_Bone
             buttonbuter.Image = Properties.Resources.buttonbuterpress;
         }
 
-        // ===== НАЗАД В МЕНЮ =====
         private void btnBackToMenu_Click(object sender, EventArgs e)
         {
             ClearLevel();
@@ -78,7 +71,6 @@ namespace Bone_By_Bone
             BackToMenuClicked?.Invoke(this, EventArgs.Empty);
         }
 
-        // ===== ПРОДОЛЖИТЬ =====
         private void btnResume_Click(object sender, EventArgs e)
         {
             TogglePause();
@@ -99,7 +91,6 @@ namespace Bone_By_Bone
             btnResume.Image = Properties.Resources.buttongo3;
         }
 
-        // ===== ЗАВЕРШИТЬ ИГРУ =====
         private void btnEndGame_Click_1(object sender, EventArgs e)
         {
             ClearLevel();
@@ -144,7 +135,6 @@ namespace Bone_By_Bone
             btnPauseSettings.Image = Properties.Resources.buttonpress2;
         }
 
-        // ===== inGameSettingsPanel =====
         private void SyncInGameSettingsUI()
         {
             inGameButtonPlay1.Visible = AudioSettings.MusicOn;
@@ -287,32 +277,6 @@ namespace Bone_By_Bone
         {
             inGameSend.Image = Properties.Resources.buttonsend2;
         }
-
-        // ===== КОСТИ =====
-        private void ChoiceBone_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button != MouseButtons.Left) return;
-            PictureBox pb = (PictureBox)sender;
-            isDragging = true;
-            draggingBone = pb;
-            draggingBoneId = (string)pb.Tag;
-            dragOffset = e.Location;
-            dragOriginalLocation = pb.Location;
-            pb.BringToFront();
-        }
-
-        private void ChoiceBone_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (!isDragging || draggingBone == null) return;
-            draggingBone.Left += e.X - dragOffset.X;
-            draggingBone.Top += e.Y - dragOffset.Y;
-        }
-
-        private void ChoiceBone_MouseUp(object sender, MouseEventArgs e)
-        {
-
-        }
-
 
     }
 
