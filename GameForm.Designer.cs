@@ -153,7 +153,7 @@
             this.btnResume.BackColor = System.Drawing.Color.Transparent;
             this.btnResume.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnResume.Image = global::Bone_By_Bone.Properties.Resources.buttongo1;
-            this.btnResume.Location = new System.Drawing.Point(195, 175);
+            this.btnResume.Location = new System.Drawing.Point(212, 175);
             this.btnResume.Name = "btnResume";
             this.btnResume.Size = new System.Drawing.Size(254, 105);
             this.btnResume.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -169,7 +169,7 @@
             this.btnPauseSettings.BackColor = System.Drawing.Color.Transparent;
             this.btnPauseSettings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPauseSettings.Image = global::Bone_By_Bone.Properties.Resources.buttonnormal2;
-            this.btnPauseSettings.Location = new System.Drawing.Point(195, 299);
+            this.btnPauseSettings.Location = new System.Drawing.Point(212, 299);
             this.btnPauseSettings.Name = "btnPauseSettings";
             this.btnPauseSettings.Size = new System.Drawing.Size(254, 105);
             this.btnPauseSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -185,7 +185,7 @@
             this.btnEndGame.BackColor = System.Drawing.Color.Transparent;
             this.btnEndGame.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEndGame.Image = global::Bone_By_Bone.Properties.Resources.buttonend1;
-            this.btnEndGame.Location = new System.Drawing.Point(195, 421);
+            this.btnEndGame.Location = new System.Drawing.Point(212, 421);
             this.btnEndGame.Name = "btnEndGame";
             this.btnEndGame.Size = new System.Drawing.Size(254, 104);
             this.btnEndGame.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -319,6 +319,7 @@
             this.inGameSettingsPanel.Name = "inGameSettingsPanel";
             this.inGameSettingsPanel.Size = new System.Drawing.Size(674, 633);
             this.inGameSettingsPanel.TabIndex = 26;
+            this.inGameSettingsPanel.Visible = false;
             // 
             // GameForm
             // 
@@ -326,13 +327,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Bone_By_Bone.Properties.Resources.gamemenu;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Controls.Add(this.inGameSettingsPanel);
             this.Controls.Add(this.buttonbuter);
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.lblMistakes);
             this.Controls.Add(this.activetime);
             this.Controls.Add(this.btnBackToMenu);
             this.Controls.Add(this.pausePanel);
+            this.Controls.Add(this.inGameSettingsPanel);
             this.DoubleBuffered = true;
             this.Name = "GameForm";
             this.Size = new System.Drawing.Size(1920, 1200);

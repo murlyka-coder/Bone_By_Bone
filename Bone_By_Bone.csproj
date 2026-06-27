@@ -49,6 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AudioSettings.cs" />
+    <Compile Include="GameForm.Events.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="SettingForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
