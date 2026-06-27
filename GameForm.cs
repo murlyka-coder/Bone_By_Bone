@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Bone_By_Bone
@@ -16,7 +12,6 @@ namespace Bone_By_Bone
         public event EventHandler SettingsClicked;
         private Bitmap lightScreenshot;
         private TransparentPanel overlayPanel;
-
 
         private int secondsPassed = 0;
         private int mistakesCount = 0;
@@ -35,6 +30,8 @@ namespace Bone_By_Bone
         private Point dragOffset;
         private Point dragOriginalLocation;
 
+        private List<(Image img, Rectangle rect)> assemblyDrawList = new List<(Image, Rectangle)>();
+
         private Rectangle AssemblyZone => new Rectangle(0, 0, this.Width, (int)(this.Height * 0.65));
         private Rectangle ChoiceZone => new Rectangle(0, (int)(this.Height * 0.65), this.Width, (int)(this.Height * 0.35));
 
@@ -50,30 +47,6 @@ namespace Bone_By_Bone
             lblTime.BackColor = Color.Transparent;
             lblMistakes.Parent = activetime;
             lblMistakes.BackColor = Color.Transparent;
-        }
-
-        private void GameForm_Load(object sender, EventArgs e)
-        {
-            overlayPanel = new TransparentPanel();
-            overlayPanel.Size = this.ClientSize;
-            overlayPanel.Location = new Point(0, 0);
-            overlayPanel.Visible = false;
-            this.Controls.Add(overlayPanel);
-
-            this.Controls.Remove(pausePanel);
-            pausePanel.Location = new Point(
-                (overlayPanel.Width - pausePanel.Width) / 2,
-                (overlayPanel.Height - pausePanel.Height) / 2);
-            overlayPanel.Controls.Add(pausePanel);
-            pausePanel.Visible = true;
-
-            // Добавляем панель настроек внутрь overlayPanel
-            this.Controls.Remove(inGameSettingsPanel);
-            inGameSettingsPanel.Location = new Point(
-                (overlayPanel.Width - inGameSettingsPanel.Width) / 2,
-                (overlayPanel.Height - inGameSettingsPanel.Height) / 2);
-            overlayPanel.Controls.Add(inGameSettingsPanel);
-            inGameSettingsPanel.Visible = false;
         }
 
         public void ShowPause()
@@ -92,28 +65,6 @@ namespace Bone_By_Bone
             overlayPanel.Size = this.ClientSize;
             overlayPanel.BringToFront();
             pausePanel.Enabled = true;
-        }
-
-
-
-        private void buttonbuter_MouseEnter(object sender, EventArgs e)
-        {
-            buttonbuter.Image = Properties.Resources.buttonbuterlight;
-        }
-
-        private void buttonbuter_MouseLeave(object sender, EventArgs e)
-        {
-            buttonbuter.Image = Properties.Resources.buttonbuternormal;
-        }
-
-        private void buttonbuter_MouseDown(object sender, MouseEventArgs e)
-        {
-            buttonbuter.Image = Properties.Resources.buttonbuterpress;
-        }
-
-        private void buttonbuter_Click(object sender, EventArgs e)
-        {
-            TogglePause();
         }
 
         private void TogglePause()
@@ -140,9 +91,9 @@ namespace Bone_By_Bone
                 overlayPanel.Size = this.ClientSize;
                 overlayPanel.Visible = true;
                 overlayPanel.BringToFront();
-                overlayPanel.Refresh(); // рисуем тёмный фон без pausePanel
+                overlayPanel.Refresh();
 
-                pausePanel.Visible = true; // только потом показываем окошко
+                pausePanel.Visible = true;
                 pausePanel.Enabled = true;
             }
             else
@@ -165,7 +116,6 @@ namespace Bone_By_Bone
             }
         }
 
-
         public void StartLevel(int level)
         {
             selectedLevel = level;
@@ -176,7 +126,6 @@ namespace Bone_By_Bone
             btnBackToMenu.Visible = false;
 
             ClearLevel();
-            System.Diagnostics.Debug.WriteLine($"GameForm size: {this.Width} x {this.Height}");
             assemblyDrawList.Clear();
 
             skeleton = SkeletonLibrary.GetSkeleton(level);
@@ -187,8 +136,6 @@ namespace Bone_By_Bone
             RefreshChoicePanel();
             TimerGame.Start();
         }
-
-        private List<(Image img, Rectangle rect)> assemblyDrawList = new List<(Image, Rectangle)>();
 
         private void PlaceBoneInAssembly(string boneId)
         {
@@ -213,7 +160,6 @@ namespace Bone_By_Bone
                     availableNeighbors.Add(bone.Id);
             }
 
-            // Перемешиваем
             var rng = new Random();
             availableNeighbors = availableNeighbors.OrderBy(x => rng.Next()).ToList();
 
@@ -247,44 +193,14 @@ namespace Bone_By_Bone
                 this.Controls.Add(pb);
                 pb.BringToFront();
                 choiceBoxes.Add(pb);
-
             }
+
             lblTime.BringToFront();
             lblMistakes.BringToFront();
             btnBackToMenu.BringToFront();
             pausePanel.SendToBack();
             activetime.BringToFront();
             buttonbuter.BringToFront();
-
-            System.Diagnostics.Debug.WriteLine($"availableNeighbors count: {availableNeighbors.Count}");
-            System.Diagnostics.Debug.WriteLine($"ChoiceZone: Y={ChoiceZone.Y}, H={ChoiceZone.Height}");
-            System.Diagnostics.Debug.WriteLine($"GameForm size: {this.Width}x{this.Height}");
-            foreach (var n in availableNeighbors)
-                System.Diagnostics.Debug.WriteLine($"  bone: {n}");
-        }
-
-        private void ChoiceBone_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button != MouseButtons.Left) return;
-            PictureBox pb = (PictureBox)sender;
-            isDragging = true;
-            draggingBone = pb;
-            draggingBoneId = (string)pb.Tag;
-            dragOffset = e.Location;
-            dragOriginalLocation = pb.Location;
-            pb.BringToFront();
-        }
-
-        private void ChoiceBone_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (!isDragging || draggingBone == null) return;
-            draggingBone.Left += e.X - dragOffset.X;
-            draggingBone.Top += e.Y - dragOffset.Y;
-        }
-
-        private void ChoiceBone_MouseUp(object sender, MouseEventArgs e)
-        {
-
         }
 
         private void CheckVictory()
@@ -327,243 +243,6 @@ namespace Bone_By_Bone
                 g.DrawString(imageKey, new Font("Arial", 8), Brushes.White, 5, 65);
             }
             return bmp;
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            secondsPassed++;
-            lblTime.Text = "" + secondsPassed + "";
-        }
-
-        private void btnBackToMenu_Click(object sender, EventArgs e)
-        {
-            ClearLevel();
-            secondsPassed = 0;
-            mistakesCount = 0;
-            lblTime.Text = "0";
-            lblMistakes.Text = "0";
-            BackToMenuClicked?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void GameForm_Paint(object sender, PaintEventArgs e)
-        {
-            foreach (var (img, rect) in assemblyDrawList)
-                e.Graphics.DrawImage(img, rect);
-        }
-
-
-        private void btnPauseSettings_MouseEnter(object sender, EventArgs e)
-        {
-            btnPauseSettings.Image = Properties.Resources.buttonlight2;
-        }
-
-        private void btnPauseSettings_MouseLeave(object sender, EventArgs e)
-        {
-            btnPauseSettings.Image = Properties.Resources.buttonnormal2;
-        }
-
-        private void btnPauseSettings_MouseDown(object sender, MouseEventArgs e)
-        {
-            btnPauseSettings.Image = Properties.Resources.buttonpress2;
-        }
-
-        private void btnPauseSettings_Click(object sender, EventArgs e)
-        {
-            SyncInGameSettingsUI();
-            pausePanel.Visible = false;
-            inGameSettingsPanel.Visible = true;
-        }
-
-        private void inGameButtonPlay1_Click(object sender, EventArgs e)
-        {
-            AudioSettings.SetMusic(false);
-            inGameButtonPlay1.Visible = false;
-            inGameButtonStop1.Visible = true;
-        }
-
-        private void inGameButtonStop1_Click(object sender, EventArgs e)
-        {
-            AudioSettings.SetMusic(true);
-            inGameButtonStop1.Visible = false;
-            inGameButtonPlay1.Visible = true;
-        }
-
-        private void inGameButtonPlay2_Click(object sender, EventArgs e)
-        {
-            AudioSettings.SetSound(false);
-            inGameButtonPlay2.Visible = false;
-            inGameButtonStop2.Visible = true;
-        }
-
-        private void inGameButtonStop2_Click(object sender, EventArgs e)
-        {
-            AudioSettings.SetSound(true);
-            inGameButtonStop2.Visible = false;
-            inGameButtonPlay2.Visible = true;
-        }
-
-        private void SyncInGameSettingsUI()
-        {
-            inGameButtonPlay1.Visible = AudioSettings.MusicOn;
-            inGameButtonStop1.Visible = !AudioSettings.MusicOn;
-
-            inGameButtonPlay2.Visible = AudioSettings.SoundOn;
-            inGameButtonStop2.Visible = !AudioSettings.SoundOn;
-        }
-
-        private void inGameButtonPlay1_MouseEnter(object sender, EventArgs e)
-        {
-            inGameButtonPlay1.Image = Properties.Resources.buttonmusicplay2;
-        }
-
-        private void inGameButtonPlay1_MouseLeave(object sender, EventArgs e)
-        {
-            inGameButtonPlay1.Image = Properties.Resources.buttonmusicplay1;
-        }
-
-        private void inGameButtonPlay1_MouseDown(object sender, MouseEventArgs e)
-        {
-            inGameButtonPlay1.Image = Properties.Resources.buttonmusicplay3;
-        }
-
-        private void inGameButtonPlay2_MouseEnter(object sender, EventArgs e)
-        {
-            inGameButtonPlay2.Image = Properties.Resources.buttonmusicplay2;
-        }
-
-        private void inGameButtonPlay2_MouseLeave(object sender, EventArgs e)
-        {
-            inGameButtonPlay2.Image = Properties.Resources.buttonmusicplay1;
-        }
-
-        private void inGameButtonPlay2_MouseDown(object sender, MouseEventArgs e)
-        {
-            inGameButtonPlay2.Image = Properties.Resources.buttonmusicplay3;
-        }
-
-        private void inGameButtonStop1_MouseEnter(object sender, EventArgs e)
-        {
-            inGameButtonStop1.Image = Properties.Resources.buttonmusicstop2;
-        }
-
-        private void inGameButtonStop1_MouseLeave(object sender, EventArgs e)
-        {
-            inGameButtonStop1.Image = Properties.Resources.buttonmusicstop1;
-        }
-
-        private void inGameButtonStop1_MouseDown(object sender, MouseEventArgs e)
-        {
-            inGameButtonStop1.Image = Properties.Resources.buttonmusicstop3;
-        }
-
-        private void inGameButtonStop2_MouseEnter(object sender, EventArgs e)
-        {
-            inGameButtonStop2.Image = Properties.Resources.buttonmusicstop2;
-        }
-
-        private void inGameButtonStop2_MouseLeave(object sender, EventArgs e)
-        {
-            inGameButtonStop2.Image = Properties.Resources.buttonmusicstop1;
-        }
-
-        private void inGameButtonStop2_MouseDown(object sender, MouseEventArgs e)
-        {
-            inGameButtonStop2.Image = Properties.Resources.buttonmusicstop3;
-        }
-
-        private void inGameBack_Click(object sender, EventArgs e)
-        {
-            inGameSettingsPanel.Visible = false;
-            pausePanel.Visible = true;
-        }
-
-        private void inGameBack_MouseEnter(object sender, EventArgs e)
-        {
-            inGameBack.Image = Properties.Resources.buttonlevelnazadlight;
-        }
-
-        private void inGameBack_MouseLeave(object sender, EventArgs e)
-        {
-            inGameBack.Image = Properties.Resources.buttonlevelnazadnormal;
-        }
-
-        private void inGameBack_MouseDown(object sender, MouseEventArgs e)
-        {
-            inGameBack.Image = Properties.Resources.buttonlevelnazadpress;
-        }
-
-        private void inGameSend_Click(object sender, EventArgs e)
-        {
-            inGameTxtFeedback.Clear();
-        }
-
-        private void inGameSend_MouseEnter(object sender, EventArgs e)
-        {
-            inGameSend.Image = Properties.Resources.buttonsend2;
-        }
-
-        private void inGameSend_MouseLeave(object sender, EventArgs e)
-        {
-            inGameSend.Image = Properties.Resources.buttonsend1;
-        }
-
-        private void inGameSend_MouseDown(object sender, MouseEventArgs e)
-        {
-            inGameSend.Image = Properties.Resources.buttonsend3;
-        }
-
-        private void inGameSend_MouseUp(object sender, MouseEventArgs e)
-        {
-            inGameSend.Image = Properties.Resources.buttonsend2;
-        }
-
-        private void btnEndGame_MouseEnter(object sender, EventArgs e)
-        {
-            btnEndGame.Image = Properties.Resources.buttonend2;
-        }
-
-        private void btnEndGame_MouseLeave(object sender, EventArgs e)
-        {
-            btnEndGame.Image = Properties.Resources.buttonend1;
-        }
-
-        private void btnEndGame_MouseDown(object sender, MouseEventArgs e)
-        {
-            btnEndGame.Image = Properties.Resources.buttonend3;
-        }
-
-        private void btnEndGame_Click_1(object sender, EventArgs e)
-        {
-            ClearLevel();
-            BackToMenuClicked?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void btnResume_MouseEnter(object sender, EventArgs e)
-        {
-            btnResume.Image = Properties.Resources.buttongo2;
-        }
-
-        private void btnResume_MouseLeave(object sender, EventArgs e)
-        {
-            btnResume.Image = Properties.Resources.buttongo1;
-        }
-
-        private void btnResume_MouseDown(object sender, MouseEventArgs e)
-        {
-            btnResume.Image = Properties.Resources.buttongo3;
-        }
-
-        private void btnResume_Click(object sender, EventArgs e)
-        {
-            TogglePause();
-        }
-    }
-
-    public class TransparentPanel : Panel
-    {
-        public TransparentPanel()
-        {
-            this.BackColor = Color.Transparent;
         }
     }
 }
