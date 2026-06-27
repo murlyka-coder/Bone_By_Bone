@@ -26,6 +26,8 @@ namespace Bone_By_Bone
             overlayPanel.Controls.Add(pausePanel);
             pausePanel.Visible = true;
 
+
+
             this.Controls.Remove(victoryPanel);
             victoryPanel.Location = new Point(
                 (overlayPanel.Width - victoryPanel.Width) / 2,
@@ -41,7 +43,55 @@ namespace Bone_By_Bone
             inGameSettingsPanel.Visible = false;
         }
 
+        private void btnLevelComplete_MouseEnter(object sender, EventArgs e)
+        {
+            btnLevelComplete.Image = Properties.Resources.buttonlevelcomp2;
+        }
 
+        private void btnLevelComplete_MouseLeave(object sender, EventArgs e)
+        {
+            btnLevelComplete.Image = Properties.Resources.buttonlevelcomp1;
+        }
+
+        private void btnLevelComplete_MouseDown(object sender, MouseEventArgs e)
+        {
+            btnLevelComplete.Image = Properties.Resources.buttonlevelcomp3;
+        }
+
+        private void btnLevelComplete_Click(object sender, EventArgs e)
+        {
+            ClearLevel();
+            BackToMenuClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void btnComplete_MouseEnter(object sender, EventArgs e)
+        {
+            btnComplete.Image = Properties.Resources.buttonsobr2;
+        }
+
+        private void btnComplete_MouseLeave(object sender, EventArgs e)
+        {
+            btnComplete.Image = Properties.Resources.buttonsobr1;
+        }
+
+        private void btnComplete_MouseDown(object sender, MouseEventArgs e)
+        {
+            btnComplete.Image = Properties.Resources.buttonsobr3;
+        }
+
+        private void btnComplete_Click(object sender, EventArgs e)
+        {
+            btnComplete.Visible = false;  // было btnLevelComplete
+            ShowVictory();
+        }
+
+
+
+
+        private void pbVictoryBg_Click(object sender, EventArgs e)
+        {
+
+        }
 
 
 

@@ -48,8 +48,9 @@
             this.inGameButtonPlay1 = new System.Windows.Forms.PictureBox();
             this.inGameSettingsPanel = new System.Windows.Forms.Panel();
             this.btnLevelComplete = new System.Windows.Forms.PictureBox();
-            this.pbVictoryBg = new System.Windows.Forms.PictureBox();
             this.victoryPanel = new System.Windows.Forms.Panel();
+            this.lblVictoryMistakes = new System.Windows.Forms.Label();
+            this.lblVictoryTime = new System.Windows.Forms.Label();
             this.btnComplete = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.activetime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonbuter)).BeginInit();
@@ -65,7 +66,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.inGameButtonPlay1)).BeginInit();
             this.inGameSettingsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnLevelComplete)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbVictoryBg)).BeginInit();
             this.victoryPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnComplete)).BeginInit();
             this.SuspendLayout();
@@ -334,51 +334,61 @@
             this.btnLevelComplete.BackColor = System.Drawing.Color.Transparent;
             this.btnLevelComplete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLevelComplete.Image = global::Bone_By_Bone.Properties.Resources.buttonlevelcomp1;
-            this.btnLevelComplete.Location = new System.Drawing.Point(198, 418);
+            this.btnLevelComplete.Location = new System.Drawing.Point(206, 429);
             this.btnLevelComplete.Name = "btnLevelComplete";
-            this.btnLevelComplete.Size = new System.Drawing.Size(305, 143);
+            this.btnLevelComplete.Size = new System.Drawing.Size(267, 126);
             this.btnLevelComplete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnLevelComplete.TabIndex = 29;
             this.btnLevelComplete.TabStop = false;
-            this.btnLevelComplete.Visible = false;
             this.btnLevelComplete.Click += new System.EventHandler(this.btnLevelComplete_Click);
             this.btnLevelComplete.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnLevelComplete_MouseDown);
             this.btnLevelComplete.MouseEnter += new System.EventHandler(this.btnLevelComplete_MouseEnter);
             this.btnLevelComplete.MouseLeave += new System.EventHandler(this.btnLevelComplete_MouseLeave);
             // 
-            // pbVictoryBg
-            // 
-            this.pbVictoryBg.BackColor = System.Drawing.Color.Transparent;
-            this.pbVictoryBg.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbVictoryBg.Image = global::Bone_By_Bone.Properties.Resources.pobeda1;
-            this.pbVictoryBg.Location = new System.Drawing.Point(3, 0);
-            this.pbVictoryBg.Name = "pbVictoryBg";
-            this.pbVictoryBg.Size = new System.Drawing.Size(677, 630);
-            this.pbVictoryBg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbVictoryBg.TabIndex = 31;
-            this.pbVictoryBg.TabStop = false;
-            this.pbVictoryBg.Visible = false;
-            this.pbVictoryBg.Click += new System.EventHandler(this.pbVictoryBg_Click);
-            // 
             // victoryPanel
             // 
             this.victoryPanel.BackColor = System.Drawing.Color.Transparent;
-            this.victoryPanel.BackgroundImage = global::Bone_By_Bone.Properties.Resources.pauzepanel;
+            this.victoryPanel.BackgroundImage = global::Bone_By_Bone.Properties.Resources.pobeda1;
             this.victoryPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.victoryPanel.Controls.Add(this.btnLevelComplete);
-            this.victoryPanel.Controls.Add(this.pbVictoryBg);
+            this.victoryPanel.Controls.Add(this.lblVictoryMistakes);
+            this.victoryPanel.Controls.Add(this.lblVictoryTime);
             this.victoryPanel.Location = new System.Drawing.Point(649, 215);
             this.victoryPanel.Name = "victoryPanel";
             this.victoryPanel.Size = new System.Drawing.Size(677, 633);
             this.victoryPanel.TabIndex = 22;
             this.victoryPanel.Visible = false;
             // 
+            // lblVictoryMistakes
+            // 
+            this.lblVictoryMistakes.BackColor = System.Drawing.Color.Transparent;
+            this.lblVictoryMistakes.Font = new System.Drawing.Font("Comic Sans MS", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblVictoryMistakes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(39)))), ((int)(((byte)(21)))));
+            this.lblVictoryMistakes.Location = new System.Drawing.Point(279, 294);
+            this.lblVictoryMistakes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblVictoryMistakes.Name = "lblVictoryMistakes";
+            this.lblVictoryMistakes.Size = new System.Drawing.Size(55, 66);
+            this.lblVictoryMistakes.TabIndex = 32;
+            this.lblVictoryMistakes.Text = "0";
+            // 
+            // lblVictoryTime
+            // 
+            this.lblVictoryTime.BackColor = System.Drawing.Color.Transparent;
+            this.lblVictoryTime.Font = new System.Drawing.Font("Comic Sans MS", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblVictoryTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(39)))), ((int)(((byte)(21)))));
+            this.lblVictoryTime.Location = new System.Drawing.Point(243, 360);
+            this.lblVictoryTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblVictoryTime.Name = "lblVictoryTime";
+            this.lblVictoryTime.Size = new System.Drawing.Size(71, 66);
+            this.lblVictoryTime.TabIndex = 31;
+            this.lblVictoryTime.Text = "0";
+            // 
             // btnComplete
             // 
             this.btnComplete.BackColor = System.Drawing.Color.Transparent;
             this.btnComplete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnComplete.Image = global::Bone_By_Bone.Properties.Resources.buttonsobr1;
-            this.btnComplete.Location = new System.Drawing.Point(846, 832);
+            this.btnComplete.Location = new System.Drawing.Point(816, 832);
             this.btnComplete.Name = "btnComplete";
             this.btnComplete.Size = new System.Drawing.Size(306, 144);
             this.btnComplete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -423,7 +433,6 @@
             this.inGameSettingsPanel.ResumeLayout(false);
             this.inGameSettingsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnLevelComplete)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbVictoryBg)).EndInit();
             this.victoryPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnComplete)).EndInit();
             this.ResumeLayout(false);
@@ -452,8 +461,9 @@
         private System.Windows.Forms.PictureBox inGameButtonStop1;
         private System.Windows.Forms.Panel inGameSettingsPanel;
         private System.Windows.Forms.PictureBox btnLevelComplete;
-        private System.Windows.Forms.PictureBox pbVictoryBg;
         private System.Windows.Forms.Panel victoryPanel;
         private System.Windows.Forms.PictureBox btnComplete;
+        private System.Windows.Forms.Label lblVictoryTime;
+        private System.Windows.Forms.Label lblVictoryMistakes;
     }
 }
