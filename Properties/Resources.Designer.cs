@@ -679,5 +679,15 @@ namespace Bone_By_Bone.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap settingscreenpanelpause {
+            get {
+                object obj = ResourceManager.GetObject("settingscreenpanelpause", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

@@ -13,44 +13,49 @@ namespace Bone_By_Bone
     public partial class SettingForm : UserControl
     {
         public event EventHandler BackClicked;
-        private bool soundOn = true;
 
         public SettingForm()
         {
             InitializeComponent();
         }
 
+        // Вызывать при каждом появлении формы — синхронизирует UI
+        public void SyncUI()
+        {
+            buttonplay1.Visible = AudioSettings.MusicOn;
+            buttonstop1.Visible = !AudioSettings.MusicOn;
+
+            buttonplay2.Visible = AudioSettings.SoundOn;
+            buttonstop2.Visible = !AudioSettings.SoundOn;
+        }
 
         private void buttonplay1_Click(object sender, EventArgs e)
         {
-            soundOn = false;
+            AudioSettings.SetMusic(false);
             buttonplay1.Visible = false;
             buttonstop1.Visible = true;
         }
 
         private void buttonstop1_Click(object sender, EventArgs e)
         {
-            soundOn = true;
+            AudioSettings.SetMusic(true);
             buttonstop1.Visible = false;
             buttonplay1.Visible = true;
         }
 
         private void buttonplay2_Click(object sender, EventArgs e)
         {
-            soundOn = false;
+            AudioSettings.SetSound(false);
             buttonplay2.Visible = false;
             buttonstop2.Visible = true;
         }
 
         private void buttonstop2_Click(object sender, EventArgs e)
         {
-            soundOn = true;
+            AudioSettings.SetSound(true);
             buttonstop2.Visible = false;
             buttonplay2.Visible = true;
         }
-
-
-
 
         private void btnFromSettings_Click(object sender, EventArgs e)
         {

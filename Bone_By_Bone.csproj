@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AudioSettings.cs" />
     <Compile Include="SettingForm.cs">
       <SubType>UserControl</SubType>
     </Compile>

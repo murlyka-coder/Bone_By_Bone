@@ -39,12 +39,27 @@
             this.btnResume = new System.Windows.Forms.PictureBox();
             this.btnPauseSettings = new System.Windows.Forms.PictureBox();
             this.btnEndGame = new System.Windows.Forms.PictureBox();
+            this.inGameButtonStop1 = new System.Windows.Forms.PictureBox();
+            this.inGameButtonStop2 = new System.Windows.Forms.PictureBox();
+            this.inGameButtonPlay2 = new System.Windows.Forms.PictureBox();
+            this.inGameBack = new System.Windows.Forms.PictureBox();
+            this.inGameSend = new System.Windows.Forms.PictureBox();
+            this.inGameTxtFeedback = new System.Windows.Forms.TextBox();
+            this.inGameButtonPlay1 = new System.Windows.Forms.PictureBox();
+            this.inGameSettingsPanel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.activetime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonbuter)).BeginInit();
             this.pausePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnResume)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPauseSettings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEndGame)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inGameButtonStop1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inGameButtonStop2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inGameButtonPlay2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inGameBack)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inGameSend)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inGameButtonPlay1)).BeginInit();
+            this.inGameSettingsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTime
@@ -127,9 +142,9 @@
             this.pausePanel.Controls.Add(this.btnResume);
             this.pausePanel.Controls.Add(this.btnPauseSettings);
             this.pausePanel.Controls.Add(this.btnEndGame);
-            this.pausePanel.Location = new System.Drawing.Point(655, 247);
+            this.pausePanel.Location = new System.Drawing.Point(655, 212);
             this.pausePanel.Name = "pausePanel";
-            this.pausePanel.Size = new System.Drawing.Size(639, 598);
+            this.pausePanel.Size = new System.Drawing.Size(677, 633);
             this.pausePanel.TabIndex = 18;
             this.pausePanel.Visible = false;
             // 
@@ -181,18 +196,143 @@
             this.btnEndGame.MouseEnter += new System.EventHandler(this.btnEndGame_MouseEnter);
             this.btnEndGame.MouseLeave += new System.EventHandler(this.btnEndGame_MouseLeave);
             // 
+            // inGameButtonStop1
+            // 
+            this.inGameButtonStop1.BackColor = System.Drawing.Color.Transparent;
+            this.inGameButtonStop1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.inGameButtonStop1.Image = global::Bone_By_Bone.Properties.Resources.buttonmusicstop1;
+            this.inGameButtonStop1.Location = new System.Drawing.Point(62, 140);
+            this.inGameButtonStop1.Name = "inGameButtonStop1";
+            this.inGameButtonStop1.Size = new System.Drawing.Size(76, 84);
+            this.inGameButtonStop1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.inGameButtonStop1.TabIndex = 27;
+            this.inGameButtonStop1.TabStop = false;
+            this.inGameButtonStop1.Click += new System.EventHandler(this.inGameButtonStop1_Click);
+            this.inGameButtonStop1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inGameButtonStop1_MouseDown);
+            this.inGameButtonStop1.MouseEnter += new System.EventHandler(this.inGameButtonStop1_MouseEnter);
+            this.inGameButtonStop1.MouseLeave += new System.EventHandler(this.inGameButtonStop1_MouseLeave);
+            // 
+            // inGameButtonStop2
+            // 
+            this.inGameButtonStop2.BackColor = System.Drawing.Color.Transparent;
+            this.inGameButtonStop2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.inGameButtonStop2.Image = global::Bone_By_Bone.Properties.Resources.buttonmusicstop1;
+            this.inGameButtonStop2.Location = new System.Drawing.Point(61, 237);
+            this.inGameButtonStop2.Name = "inGameButtonStop2";
+            this.inGameButtonStop2.Size = new System.Drawing.Size(76, 84);
+            this.inGameButtonStop2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.inGameButtonStop2.TabIndex = 26;
+            this.inGameButtonStop2.TabStop = false;
+            this.inGameButtonStop2.Click += new System.EventHandler(this.inGameButtonStop2_Click);
+            this.inGameButtonStop2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inGameButtonStop2_MouseDown);
+            this.inGameButtonStop2.MouseLeave += new System.EventHandler(this.inGameButtonStop2_MouseLeave);
+            this.inGameButtonStop2.MouseHover += new System.EventHandler(this.inGameButtonStop2_MouseLeave);
+            // 
+            // inGameButtonPlay2
+            // 
+            this.inGameButtonPlay2.BackColor = System.Drawing.Color.Transparent;
+            this.inGameButtonPlay2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.inGameButtonPlay2.Image = global::Bone_By_Bone.Properties.Resources.buttonmusicplay1;
+            this.inGameButtonPlay2.Location = new System.Drawing.Point(62, 237);
+            this.inGameButtonPlay2.Name = "inGameButtonPlay2";
+            this.inGameButtonPlay2.Size = new System.Drawing.Size(76, 84);
+            this.inGameButtonPlay2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.inGameButtonPlay2.TabIndex = 22;
+            this.inGameButtonPlay2.TabStop = false;
+            this.inGameButtonPlay2.Click += new System.EventHandler(this.inGameButtonPlay2_Click);
+            this.inGameButtonPlay2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inGameButtonPlay2_MouseDown);
+            this.inGameButtonPlay2.MouseEnter += new System.EventHandler(this.inGameButtonPlay2_MouseEnter);
+            this.inGameButtonPlay2.MouseLeave += new System.EventHandler(this.inGameButtonPlay2_MouseLeave);
+            // 
+            // inGameBack
+            // 
+            this.inGameBack.BackColor = System.Drawing.Color.Transparent;
+            this.inGameBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.inGameBack.Image = global::Bone_By_Bone.Properties.Resources.buttonlevelnazadnormal;
+            this.inGameBack.Location = new System.Drawing.Point(258, 484);
+            this.inGameBack.Name = "inGameBack";
+            this.inGameBack.Size = new System.Drawing.Size(153, 84);
+            this.inGameBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.inGameBack.TabIndex = 25;
+            this.inGameBack.TabStop = false;
+            this.inGameBack.Click += new System.EventHandler(this.inGameBack_Click);
+            this.inGameBack.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inGameBack_MouseDown);
+            this.inGameBack.MouseEnter += new System.EventHandler(this.inGameBack_MouseEnter);
+            this.inGameBack.MouseLeave += new System.EventHandler(this.inGameBack_MouseLeave);
+            // 
+            // inGameSend
+            // 
+            this.inGameSend.BackColor = System.Drawing.Color.Transparent;
+            this.inGameSend.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.inGameSend.Image = global::Bone_By_Bone.Properties.Resources.buttonsend1;
+            this.inGameSend.Location = new System.Drawing.Point(523, 352);
+            this.inGameSend.Name = "inGameSend";
+            this.inGameSend.Size = new System.Drawing.Size(87, 128);
+            this.inGameSend.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.inGameSend.TabIndex = 24;
+            this.inGameSend.TabStop = false;
+            this.inGameSend.Click += new System.EventHandler(this.inGameSend_Click);
+            this.inGameSend.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inGameSend_MouseDown);
+            this.inGameSend.MouseEnter += new System.EventHandler(this.inGameSend_MouseEnter);
+            this.inGameSend.MouseLeave += new System.EventHandler(this.inGameSend_MouseLeave);
+            // 
+            // inGameTxtFeedback
+            // 
+            this.inGameTxtFeedback.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(191)))), ((int)(((byte)(130)))));
+            this.inGameTxtFeedback.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.inGameTxtFeedback.Location = new System.Drawing.Point(79, 367);
+            this.inGameTxtFeedback.Margin = new System.Windows.Forms.Padding(2);
+            this.inGameTxtFeedback.Multiline = true;
+            this.inGameTxtFeedback.Name = "inGameTxtFeedback";
+            this.inGameTxtFeedback.Size = new System.Drawing.Size(423, 102);
+            this.inGameTxtFeedback.TabIndex = 20;
+            // 
+            // inGameButtonPlay1
+            // 
+            this.inGameButtonPlay1.BackColor = System.Drawing.Color.Transparent;
+            this.inGameButtonPlay1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.inGameButtonPlay1.Image = global::Bone_By_Bone.Properties.Resources.buttonmusicplay1;
+            this.inGameButtonPlay1.Location = new System.Drawing.Point(62, 140);
+            this.inGameButtonPlay1.Name = "inGameButtonPlay1";
+            this.inGameButtonPlay1.Size = new System.Drawing.Size(76, 84);
+            this.inGameButtonPlay1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.inGameButtonPlay1.TabIndex = 23;
+            this.inGameButtonPlay1.TabStop = false;
+            this.inGameButtonPlay1.Click += new System.EventHandler(this.inGameButtonPlay1_Click);
+            this.inGameButtonPlay1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inGameButtonPlay1_MouseDown);
+            this.inGameButtonPlay1.MouseEnter += new System.EventHandler(this.inGameButtonPlay1_MouseEnter);
+            this.inGameButtonPlay1.MouseLeave += new System.EventHandler(this.inGameButtonPlay1_MouseLeave);
+            // 
+            // inGameSettingsPanel
+            // 
+            this.inGameSettingsPanel.BackColor = System.Drawing.Color.Transparent;
+            this.inGameSettingsPanel.BackgroundImage = global::Bone_By_Bone.Properties.Resources.settingscreenpanelpause;
+            this.inGameSettingsPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.inGameSettingsPanel.Controls.Add(this.inGameTxtFeedback);
+            this.inGameSettingsPanel.Controls.Add(this.inGameBack);
+            this.inGameSettingsPanel.Controls.Add(this.inGameSend);
+            this.inGameSettingsPanel.Controls.Add(this.inGameButtonPlay1);
+            this.inGameSettingsPanel.Controls.Add(this.inGameButtonPlay2);
+            this.inGameSettingsPanel.Controls.Add(this.inGameButtonStop1);
+            this.inGameSettingsPanel.Controls.Add(this.inGameButtonStop2);
+            this.inGameSettingsPanel.Location = new System.Drawing.Point(655, 215);
+            this.inGameSettingsPanel.Name = "inGameSettingsPanel";
+            this.inGameSettingsPanel.Size = new System.Drawing.Size(674, 633);
+            this.inGameSettingsPanel.TabIndex = 26;
+            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Bone_By_Bone.Properties.Resources.gamemenu;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Controls.Add(this.pausePanel);
+            this.Controls.Add(this.inGameSettingsPanel);
             this.Controls.Add(this.buttonbuter);
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.lblMistakes);
             this.Controls.Add(this.activetime);
             this.Controls.Add(this.btnBackToMenu);
+            this.Controls.Add(this.pausePanel);
             this.DoubleBuffered = true;
             this.Name = "GameForm";
             this.Size = new System.Drawing.Size(1920, 1200);
@@ -202,6 +342,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnResume)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPauseSettings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEndGame)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inGameButtonStop1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inGameButtonStop2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inGameButtonPlay2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inGameBack)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inGameSend)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inGameButtonPlay1)).EndInit();
+            this.inGameSettingsPanel.ResumeLayout(false);
+            this.inGameSettingsPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,5 +367,13 @@
         private System.Windows.Forms.PictureBox btnResume;
         private System.Windows.Forms.PictureBox btnPauseSettings;
         private System.Windows.Forms.PictureBox btnEndGame;
+        private System.Windows.Forms.PictureBox inGameButtonPlay2;
+        private System.Windows.Forms.PictureBox inGameBack;
+        private System.Windows.Forms.PictureBox inGameSend;
+        private System.Windows.Forms.TextBox inGameTxtFeedback;
+        private System.Windows.Forms.PictureBox inGameButtonPlay1;
+        private System.Windows.Forms.PictureBox inGameButtonStop2;
+        private System.Windows.Forms.PictureBox inGameButtonStop1;
+        private System.Windows.Forms.Panel inGameSettingsPanel;
     }
 }

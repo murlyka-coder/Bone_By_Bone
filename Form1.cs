@@ -30,9 +30,12 @@ namespace Bone_By_Bone
         private void GameForm1_SettingsClicked(object sender, EventArgs e)
         {
             previousPanel = "game";
-            gameForm1.Visible = false;
+            settingForm1.SyncUI(); // синхронизируем перед показом
             settingForm1.Visible = true;
+            gameForm1.Visible = false;
         }
+
+
 
         private void LevelSekectForm1_LevelSelected(object sender, int level)
         {
@@ -64,6 +67,7 @@ namespace Bone_By_Bone
             mainMenuForm1.Visible = false;
             levelSekectForm1.Visible = false;
             gameForm1.Visible = false;
+            settingForm1.SyncUI(); // добавить
             settingForm1.Visible = true;
         }
 
