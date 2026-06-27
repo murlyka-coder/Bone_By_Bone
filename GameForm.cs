@@ -122,15 +122,14 @@ namespace Bone_By_Bone
             if (pausing)
             {
                 TimerGame.Stop();
-                pausePanel.Enabled = true;
+                pausePanel.Enabled = false;
+                pausePanel.Visible = false;
 
                 buttonbuter.Image = Properties.Resources.buttonbuternormal;
 
-                // сначала сохраняем светлый скриншот
                 lightScreenshot = new Bitmap(this.Width, this.Height);
                 this.DrawToBitmap(lightScreenshot, new Rectangle(0, 0, this.Width, this.Height));
 
-                // затем делаем затемнённый
                 Bitmap dark = new Bitmap(lightScreenshot);
                 using (Graphics g = Graphics.FromImage(dark))
                 using (var brush = new SolidBrush(Color.FromArgb(150, 0, 0, 0)))
@@ -138,27 +137,26 @@ namespace Bone_By_Bone
 
                 overlayPanel.BackgroundImage = dark;
                 overlayPanel.BackgroundImageLayout = ImageLayout.Stretch;
-                overlayPanel.Visible = true;
                 overlayPanel.Size = this.ClientSize;
+                overlayPanel.Visible = true;
                 overlayPanel.BringToFront();
+                overlayPanel.Refresh(); // рисуем тёмный фон без pausePanel
+
+                pausePanel.Visible = true; // только потом показываем окошко
+                pausePanel.Enabled = true;
             }
             else
             {
                 TimerGame.Start();
                 pausePanel.Enabled = false;
+                pausePanel.Visible = false;
 
-                // показываем светлый скриншот пока overlay ещё видим
                 overlayPanel.BackgroundImage = lightScreenshot;
                 overlayPanel.Refresh();
 
-                // теперь убираем overlay — под ним уже готовый светлый кадр
                 overlayPanel.Visible = false;
+                pausePanel.Visible = true;
 
-                if (overlayPanel.BackgroundImage != null)
-                {
-                    overlayPanel.BackgroundImage.Dispose();
-                    overlayPanel.BackgroundImage = null;
-                }
                 if (lightScreenshot != null)
                 {
                     lightScreenshot.Dispose();
