@@ -263,6 +263,36 @@ namespace Bone_By_Bone.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap buttonlevelcomp1 {
+            get {
+                object obj = ResourceManager.GetObject("buttonlevelcomp1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap buttonlevelcomp2 {
+            get {
+                object obj = ResourceManager.GetObject("buttonlevelcomp2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap buttonlevelcomp3 {
+            get {
+                object obj = ResourceManager.GetObject("buttonlevelcomp3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap buttonlevellight1 {
             get {
                 object obj = ResourceManager.GetObject("buttonlevellight1", resourceCulture);
@@ -563,6 +593,36 @@ namespace Bone_By_Bone.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap buttonsobr1 {
+            get {
+                object obj = ResourceManager.GetObject("buttonsobr1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap buttonsobr2 {
+            get {
+                object obj = ResourceManager.GetObject("buttonsobr2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap buttonsobr3 {
+            get {
+                object obj = ResourceManager.GetObject("buttonsobr3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap dino_arms {
             get {
                 object obj = ResourceManager.GetObject("dino_arms", resourceCulture);
@@ -656,6 +716,36 @@ namespace Bone_By_Bone.Properties {
         internal static System.Drawing.Bitmap pauzepanel {
             get {
                 object obj = ResourceManager.GetObject("pauzepanel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pobeda1 {
+            get {
+                object obj = ResourceManager.GetObject("pobeda1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pobeda2 {
+            get {
+                object obj = ResourceManager.GetObject("pobeda2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pobeda3 {
+            get {
+                object obj = ResourceManager.GetObject("pobeda3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

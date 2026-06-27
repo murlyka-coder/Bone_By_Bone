@@ -178,6 +178,15 @@
   <data name="buttonlevelblock12" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\buttonlevelblock12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="buttonlevelcomp2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\buttonlevelcomp2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="buttonlevelcomp3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\buttonlevelcomp3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="buttonlevelcomp1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\buttonlevelcomp1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="buttonlevellight1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\buttonlevellight1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -268,6 +277,15 @@
   <data name="buttonsend3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\buttonsend3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="buttonsobr1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\buttonsobr1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="buttonsobr2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\buttonsobr2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="buttonsobr3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\buttonsobr3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="dino_arms" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\dino_arms.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -297,6 +315,15 @@
   </data>
   <data name="pauzepanel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\pauzepanel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pobeda1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\pobeda1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pobeda2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\pobeda2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pobeda3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\pobeda3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="settingscreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\settingscreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

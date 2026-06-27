@@ -26,6 +26,13 @@ namespace Bone_By_Bone
             overlayPanel.Controls.Add(pausePanel);
             pausePanel.Visible = true;
 
+            this.Controls.Remove(victoryPanel);
+            victoryPanel.Location = new Point(
+                (overlayPanel.Width - victoryPanel.Width) / 2,
+                (overlayPanel.Height - victoryPanel.Height) / 2);
+            overlayPanel.Controls.Add(victoryPanel);
+            victoryPanel.Visible = false;
+
             this.Controls.Remove(inGameSettingsPanel);
             inGameSettingsPanel.Location = new Point(
                 (overlayPanel.Width - inGameSettingsPanel.Width) / 2,
@@ -33,6 +40,10 @@ namespace Bone_By_Bone
             overlayPanel.Controls.Add(inGameSettingsPanel);
             inGameSettingsPanel.Visible = false;
         }
+
+
+
+
 
 
         private void timer1_Tick(object sender, EventArgs e)

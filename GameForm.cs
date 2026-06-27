@@ -49,6 +49,9 @@ namespace Bone_By_Bone
             lblMistakes.BackColor = Color.Transparent;
         }
 
+
+       
+
         public void ShowPause()
         {
             lightScreenshot = new Bitmap(this.Width, this.Height);
@@ -286,13 +289,41 @@ namespace Bone_By_Bone
             if (placedBones.Count == skeleton.Bones.Count)
             {
                 TimerGame.Stop();
-                int stars = 3;
-                if (mistakesCount > 3) stars = 1;
-                else if (mistakesCount > 1) stars = 2;
-                string rating = new string('★', stars) + new string('☆', 3 - stars);
-                MessageBox.Show($"Скелет собран!\n\nВремя: {secondsPassed} сек.\nОшибок: {mistakesCount}\nОценка: {rating}", "Победа!");
-                btnBackToMenu.Visible = true;
+                btnLevelComplete.Visible = true;
+                btnLevelComplete.BringToFront();
             }
+        }
+
+        private void ShowVictory()
+        {
+            int stars = 3;
+            if (mistakesCount > 3) stars = 1;
+            else if (mistakesCount > 1) stars = 2;
+
+            if (stars == 1) pbVictoryBg.Image = Properties.Resources.pobeda1;
+            else if (stars == 2) pbVictoryBg.Image = Properties.Resources.pobeda2;
+            else pbVictoryBg.Image = Properties.Resources.pobeda3;
+
+            lblVictoryTime.Text = "" + secondsPassed + " сек.";
+            lblVictoryMistakes.Text = "" + mistakesCount;
+
+            pausePanel.Visible = false;
+            inGameSettingsPanel.Visible = false;
+            victoryPanel.Visible = true;
+
+            lightScreenshot = new Bitmap(this.Width, this.Height);
+            this.DrawToBitmap(lightScreenshot, new Rectangle(0, 0, this.Width, this.Height));
+
+            Bitmap dark = new Bitmap(lightScreenshot);
+            using (Graphics g = Graphics.FromImage(dark))
+            using (var brush = new SolidBrush(Color.FromArgb(150, 0, 0, 0)))
+                g.FillRectangle(brush, 0, 0, dark.Width, dark.Height);
+
+            overlayPanel.BackgroundImage = dark;
+            overlayPanel.BackgroundImageLayout = ImageLayout.Stretch;
+            overlayPanel.Size = this.ClientSize;
+            overlayPanel.Visible = true;
+            overlayPanel.BringToFront();
         }
 
         private void ClearLevel()
@@ -327,6 +358,62 @@ namespace Bone_By_Bone
         {
             foreach (var (img, rect) in assemblyDrawList)
                 e.Graphics.DrawImage(img, rect);
+        }
+
+
+        private void btnLevelComplete_MouseEnter(object sender, EventArgs e)
+        {
+            btnLevelComplete.Image = Properties.Resources.buttonlevelcomp2;
+        }
+
+        private void btnLevelComplete_MouseLeave(object sender, EventArgs e)
+        {
+            btnLevelComplete.Image = Properties.Resources.buttonlevelcomp1;
+        }
+
+        private void btnLevelComplete_MouseDown(object sender, MouseEventArgs e)
+        {
+            btnLevelComplete.Image = Properties.Resources.buttonlevelcomp3;
+        }
+
+        private void btnLevelComplete_Click(object sender, EventArgs e)
+        {
+            ClearLevel();
+            BackToMenuClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void btnComplete_MouseEnter(object sender, EventArgs e)
+        {
+            btnLevelComplete.Image = Properties.Resources.buttonsobr2;
+        }
+
+        private void btnComplete_MouseLeave(object sender, EventArgs e)
+        {
+            btnLevelComplete.Image = Properties.Resources.buttonsobr1;
+        }
+
+        private void btnComplete_MouseDown(object sender, MouseEventArgs e)
+        {
+            btnLevelComplete.Image = Properties.Resources.buttonsobr3;
+        }
+
+        private void btnComplete_Click(object sender, EventArgs e)
+        {
+            btnLevelComplete.Visible = false;
+            ShowVictory();
+        }
+
+
+
+
+        private void pbVictoryBg_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnComplete_MouseDown(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }
