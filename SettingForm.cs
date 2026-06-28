@@ -78,6 +78,7 @@ namespace Bone_By_Bone
             string fromPassword = "mzhihchsupynsmnq"; // Пароль приложения
             string toAddress = "slobanova070@gmail.com";
 
+
             try
             {
                 // Создаем письмо
