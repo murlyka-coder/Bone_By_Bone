@@ -373,4 +373,58 @@
   <data name="dino_head_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\dino_head_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cat_head" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\cat_head.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cat_head_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\cat_head_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cat_sheya_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\cat_sheya_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cat_sheya" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\cat_sheya.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cat_noga1_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\cat_noga1_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cat_noga1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\cat_noga1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cat_noga2_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\cat_noga2_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cat_noga2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\cat_noga2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cat_ribs_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\cat_ribs_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cat_ribs" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\cat_ribs.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cat_spina_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\cat_spina_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cat_spina" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\cat_spina.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cat_noga3_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\cat_noga3_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cat_noga3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\cat_noga3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cat_tail_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\cat_tail_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cat_tail" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\cat_tail.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cat_noga4_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\cat_noga4_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cat_noga4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\cat_noga4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
