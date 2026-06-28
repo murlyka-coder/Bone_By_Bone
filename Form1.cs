@@ -1,6 +1,5 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
-using System.Media;
 
 namespace Bone_By_Bone
 {
@@ -8,22 +7,10 @@ namespace Bone_By_Bone
     {
         private string previousPanel = "menu";
         private int selectedLevel = 1;
-        private SoundPlayer musicPlayer;
 
         public Form1()
         {
             InitializeComponent();
-
-            // Инициализируем плеер нашей музыкой из ресурсов
-            musicPlayer = new SoundPlayer(Properties.Resources.bg_music);
-
-            // Автоматически запускаем музыку по кругу при старте игры
-            try
-            {
-                musicPlayer.PlayLooping();
-            }
-            catch { /* Если файл не найден или поврежден, игра не вылетит */ }
-
             mainMenuForm1.StartGameClicked += MainMenu_StartGameClicked;
             mainMenuForm1.SettingsClicked += (s, e) => OpenSettings();
             settingForm1.BackClicked += SettingsForm1_BackClicked;
@@ -31,9 +18,7 @@ namespace Bone_By_Bone
             gameForm1.BackToMenuClicked += GameForm1_BackToMenuClicked;
             mainMenuForm1.ExitClicked += MainMenu_ExitClicked;
             levelSekectForm1.BackToMenuClicked += LevelSekectForm1_BackToMenuClicked;
-
-            // ПОДПИСЫВАЕМСЯ НА СОБЫТИЕ ВКЛЮЧЕНИЯ/ВЫКЛЮЧЕНИЯ МУЗЫКИ
-            settingForm1.MusicToggled += SettingForm1_MusicToggled;
+            gameForm1.SettingsClicked += GameForm1_SettingsClicked;
         }
 
         private void MainMenu_StartGameClicked(object sender, EventArgs e)
@@ -41,6 +26,16 @@ namespace Bone_By_Bone
             mainMenuForm1.Visible = false;
             levelSekectForm1.Visible = true;
         }
+
+        private void GameForm1_SettingsClicked(object sender, EventArgs e)
+        {
+            previousPanel = "game";
+            settingForm1.SyncUI(); // синхронизируем перед показом
+            settingForm1.Visible = true;
+            gameForm1.Visible = false;
+        }
+
+
 
         private void LevelSekectForm1_LevelSelected(object sender, int level)
         {
@@ -53,7 +48,7 @@ namespace Bone_By_Bone
         private void GameForm1_BackToMenuClicked(object sender, EventArgs e)
         {
             gameForm1.Visible = false;
-            mainMenuForm1.Visible = true;
+            levelSekectForm1.Visible = true;
         }
 
         private void LevelSekectForm1_BackToMenuClicked(object sender, EventArgs e)
@@ -72,6 +67,7 @@ namespace Bone_By_Bone
             mainMenuForm1.Visible = false;
             levelSekectForm1.Visible = false;
             gameForm1.Visible = false;
+            settingForm1.SyncUI(); // добавить
             settingForm1.Visible = true;
         }
 
@@ -79,7 +75,11 @@ namespace Bone_By_Bone
         {
             settingForm1.Visible = false;
 
-            if (previousPanel == "game") gameForm1.Visible = true;
+            if (previousPanel == "game")
+            {
+                gameForm1.Visible = true;
+                gameForm1.ShowPause(); // добавим метод
+            }
             else if (previousPanel == "levels") levelSekectForm1.Visible = true;
             else mainMenuForm1.Visible = true;
         }
@@ -94,23 +94,16 @@ namespace Bone_By_Bone
 
         }
 
-        private void SettingForm1_MusicToggled(object sender, bool isEnabled)
+
+        protected override CreateParams CreateParams
         {
-            try
+            get
             {
-                if (isEnabled)
-                {
-                    musicPlayer.PlayLooping(); // Включаем музыку по кругу
-                }
-                else
-                {
-                    musicPlayer.Stop(); // Полностью останавливаем музыку
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ошибка воспроизведения музыки: " + ex.Message);
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000; // Включаем буферизацию
+                return cp;
             }
         }
+
     }
 }

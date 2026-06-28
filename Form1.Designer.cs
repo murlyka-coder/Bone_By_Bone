@@ -39,7 +39,7 @@ namespace Bone_By_Bone
             // 
             // mainMenuForm1
             // 
-            this.mainMenuForm1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mainMenuForm1.BackgroundImage")));
+            this.mainMenuForm1.BackgroundImage = global::Bone_By_Bone.Properties.Resources.background;
             this.mainMenuForm1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.mainMenuForm1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainMenuForm1.Location = new System.Drawing.Point(0, 0);
@@ -49,7 +49,7 @@ namespace Bone_By_Bone
             // 
             // levelSekectForm1
             // 
-            this.levelSekectForm1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("levelSekectForm1.BackgroundImage")));
+            this.levelSekectForm1.BackgroundImage = global::Bone_By_Bone.Properties.Resources.levelselect;
             this.levelSekectForm1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.levelSekectForm1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.levelSekectForm1.Location = new System.Drawing.Point(0, 0);
@@ -60,7 +60,7 @@ namespace Bone_By_Bone
             // 
             // settingForm1
             // 
-            this.settingForm1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("settingForm1.BackgroundImage")));
+            this.settingForm1.BackgroundImage = global::Bone_By_Bone.Properties.Resources.settingscreen;
             this.settingForm1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.settingForm1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.settingForm1.Location = new System.Drawing.Point(0, 0);
@@ -71,7 +71,7 @@ namespace Bone_By_Bone
             // 
             // gameForm1
             // 
-            this.gameForm1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gameForm1.BackgroundImage")));
+            this.gameForm1.BackgroundImage = global::Bone_By_Bone.Properties.Resources.gamemenu;
             this.gameForm1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.gameForm1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gameForm1.Location = new System.Drawing.Point(0, 0);

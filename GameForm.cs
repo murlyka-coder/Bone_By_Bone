@@ -1,365 +1,466 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
-
 
 namespace Bone_By_Bone
 {
     public partial class GameForm : UserControl
     {
         public event EventHandler BackToMenuClicked;
+        public event EventHandler SettingsClicked;
+        private Bitmap lightScreenshot;
+        private TransparentPanel overlayPanel;
+
         private int secondsPassed = 0;
-        private bool isDragging = false;
-        private Point startPoint;
-        private List<PictureBox> activeBones = new List<PictureBox>();
-        private List<PictureBox> activeTargets = new List<PictureBox>();
         private int mistakesCount = 0;
         private int selectedLevel = 1;
-        private LevelConfig levelConfig = new LevelConfig();
-        // Элементы всплывающего баннера
-        private Panel panelInfo;
-        private Label lblInfoText;
-        private Label lblClose; // Крестик закрытия
 
-        // Список интересных фактов
-        private string[] dinoFacts = new string[]
-        {
-    "ЧЕРЕП: Достигал 1.5 метров в длину и обладал сокрушительной силой укуса в 3.5 тонны!",
-    "ШЕЯ: Была короткой и невероятно мускулистой, чтобы надежно удерживать тяжелую голову.",
-    "РЕБРА: Образовывали прочный панцирь, защищавшую легкие и сердце этого гиганта.",
-    "ЛАПКА: Передние лапы были двупалыми и крошечными, но при этом на удивление сильными.",
-    "ТАЗ: Служил мощной опорой для тяжелых ног и помогал удерживать массивный вес тела.",
-    "НОГА: Сильные задние ноги позволяли Т-Рексу развивать скорость при беге до 20-25 км/ч.",
-    "ХВОСТ: Длинный и тяжелый хвост служил балансиром, удерживая равновесие при беге."
-        };
+        private SkeletonDefinition skeleton;
+        private HashSet<string> placedBones = new HashSet<string>();
+        private List<string> availableNeighbors = new List<string>();
 
-        // СТРОКИ ОБЪЯВЛЕНИЯ ПЛАНШЕТОВ ДОЛЖНЫ СТОЯТЬ СТРОГО ТУТ:
-        private PictureBox picSkel;
+        private Dictionary<string, PictureBox> slotBoxes = new Dictionary<string, PictureBox>();
+        private List<PictureBox> choiceBoxes = new List<PictureBox>();
 
-        [DllImport("winmm.dll")]
-        private static extern long mciSendString(string lpstrCommand, StringBuilder lpstrReturnString, int uReturnLength, int hwndCallback);
+        private bool isDragging = false;
+        private string draggingBoneId = null;
+        private Image draggingImage = null; // Картинка, которая рисуется при перетаскивании
+        private Rectangle draggingRect;     // Координаты этой картинки
+        private Point dragOffset;
+        private PictureBox hiddenSourcePb = null; // Ссылка на иконку внизу, чтобы вернуть ее при промахе
+
+        private List<(Image img, Rectangle rect)> assemblyDrawList = new List<(Image, Rectangle)>();
+
+        private Rectangle AssemblyZone => new Rectangle(0, 0, this.Width, (int)(this.Height * 0.65));
+        private Rectangle ChoiceZone => new Rectangle(0, (int)(this.Height * 0.65), this.Width, (int)(this.Height * 0.35));
 
         public GameForm()
         {
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
             InitializeComponent();
+            pausePanel.Enabled = false;
+            pausePanel.SendToBack();
+            this.Load += GameForm_Load;
+            this.Paint += GameForm_Paint;
+            lblTime.Parent = activetime;
+            lblTime.BackColor = Color.Transparent;
+            lblMistakes.Parent = activetime;
+            lblMistakes.BackColor = Color.Transparent;
+            // Включаем скрытую двойную буферизацию для панели победы
+            typeof(Panel).InvokeMember("DoubleBuffered",
+                System.Reflection.BindingFlags.SetProperty |
+                System.Reflection.BindingFlags.Instance |
+                System.Reflection.BindingFlags.NonPublic,
+                null, victoryPanel, new object[] { true });
 
-            // Создаем панель баннера (белый фон)
-            panelInfo = new Panel();
-            panelInfo.Size = new Size(650, 85);
-            panelInfo.Location = new Point((910 - 650) / 2, 10); // Центрируем по ширине экрана
-            panelInfo.BackColor = Color.White; // СТРОГО БЕЛЫЙ ФОН
-            panelInfo.BorderStyle = BorderStyle.FixedSingle;
-            panelInfo.Visible = false;
-
-            // Кнопка-крестик «Х» в правом верхнем углу панели
-            lblClose = new Label();
-            lblClose.Size = new Size(25, 25);
-            lblClose.Location = new Point(620, 5); // В углу панели
-            lblClose.Text = "✕";
-            lblClose.ForeColor = Color.Black; // Черный цвет
-            lblClose.Font = new Font("Arial", 12, FontStyle.Bold);
-            lblClose.Cursor = Cursors.Hand;
-            lblClose.Click += (s, ev) => { panelInfo.Visible = false; };
-
-            // Текст внутри баннера (черный цвет) - идеально центрирован
-            lblInfoText = new Label();
-            lblInfoText.Location = new Point(30, 15); // Симметричные отступы
-            lblInfoText.Size = new Size(590, 55);    // Симметричная ширина под центр
-            lblInfoText.ForeColor = Color.Black;
-            lblInfoText.Font = new Font("Arial", 11, FontStyle.Bold);
-            lblInfoText.TextAlign = ContentAlignment.MiddleCenter;
-
-            // Собираем всё вместе
-            panelInfo.Controls.Add(lblClose);
-            panelInfo.Controls.Add(lblInfoText);
-            this.Controls.Add(panelInfo);
+            // Рекомендую сразу сделать то же самое и для панели паузы, чтобы она работала идеально гладко:
+            typeof(Panel).InvokeMember("DoubleBuffered",
+                System.Reflection.BindingFlags.SetProperty |
+                System.Reflection.BindingFlags.Instance |
+                System.Reflection.BindingFlags.NonPublic,
+                null, pausePanel, new object[] { true });
         }
-        private void timer1_Tick(object sender, EventArgs e)
+
+
+       
+
+        public void ShowPause()
         {
-            secondsPassed++;
-            lblTime.Text = "Время: " + secondsPassed + " сек";
+            lightScreenshot = new Bitmap(this.Width, this.Height);
+            this.DrawToBitmap(lightScreenshot, new Rectangle(0, 0, this.Width, this.Height));
 
+            Bitmap dark = new Bitmap(lightScreenshot);
+            using (Graphics g = Graphics.FromImage(dark))
+            using (var brush = new SolidBrush(Color.FromArgb(150, 0, 0, 0)))
+                g.FillRectangle(brush, 0, 0, dark.Width, dark.Height);
+
+            overlayPanel.BackgroundImage = dark;
+            overlayPanel.BackgroundImageLayout = ImageLayout.Stretch;
+            overlayPanel.Visible = true;
+            overlayPanel.Size = this.ClientSize;
+            overlayPanel.BringToFront();
+            pausePanel.Enabled = true;
         }
 
+        private void TogglePause()
+        {
+            bool pausing = !overlayPanel.Visible;
+            if (pausing)
+            {
+                TimerGame.Stop();
+                pausePanel.Enabled = false;
+                pausePanel.Visible = false;
+
+                buttonbuter.Image = Properties.Resources.buttonbuternormal;
+
+                lightScreenshot = new Bitmap(this.Width, this.Height);
+                this.DrawToBitmap(lightScreenshot, new Rectangle(0, 0, this.Width, this.Height));
+
+                Bitmap dark = new Bitmap(lightScreenshot);
+                using (Graphics g = Graphics.FromImage(dark))
+                using (var brush = new SolidBrush(Color.FromArgb(150, 0, 0, 0)))
+                    g.FillRectangle(brush, 0, 0, dark.Width, dark.Height);
+
+                overlayPanel.BackgroundImage = dark;
+                overlayPanel.BackgroundImageLayout = ImageLayout.Stretch;
+                overlayPanel.Size = this.ClientSize;
+                overlayPanel.Visible = true;
+                overlayPanel.BringToFront();
+                overlayPanel.Refresh();
+
+                pausePanel.Visible = true;
+                pausePanel.Enabled = true;
+            }
+            else
+            {
+                TimerGame.Start();
+                pausePanel.Enabled = false;
+                pausePanel.Visible = false;
+
+                overlayPanel.BackgroundImage = lightScreenshot;
+                overlayPanel.Refresh();
+
+                overlayPanel.Visible = false;
+                pausePanel.Visible = true;
+
+                if (lightScreenshot != null)
+                {
+                    lightScreenshot.Dispose();
+                    lightScreenshot = null;
+                }
+            }
+        }
 
         public void StartLevel(int level)
         {
             selectedLevel = level;
-
-            ClearActiveLevel();
-            var data = levelConfig.GetLevel(level);
-            int boneCount = data.boneCount;
-
-            Image[] boneImages = null;
-            Point[] targetLocations = null;
-            Size[] boneSizes = null;
-
-            // 1. Создаем прозрачный холст на ВЕСЬ экран ноутбука
-            picSkel = new PictureBox();
-            picSkel.Name = "picSkel";
-            picSkel.Size = new Size(this.Width, this.Height - 60);
-            picSkel.Location = new Point(0, 20);
-            picSkel.BackColor = Color.Transparent;
-            picSkel.SizeMode = PictureBoxSizeMode.Normal; // Обычный режим
-
-            // 2. Создаем чистый прозрачный рисунок размером с экран и рисуем силуэт 600х400 строго по центру
-            Bitmap bmp = new Bitmap(picSkel.Width, picSkel.Height);
-            int dinoWidth = 600; // Идеальная ширина
-            int dinoHeight = 400; // Идеальная высота
-            int offsetX = (bmp.Width - dinoWidth) / 2;
-            int offsetY = (bmp.Height - dinoHeight) / 2 - 30; // Чуть приподнят над полками
-
-            using (Graphics g = Graphics.FromImage(bmp))
-            {
-                // Прорисовываем силуэт динозавра по центру пустого прозрачного холста
-                g.DrawImage(Properties.Resources.dino_template, offsetX, offsetY, dinoWidth, dinoHeight);
-            }
-            picSkel.Image = bmp; // Назначаем этот рисунок нашей панели
-            this.Controls.Add(picSkel);
-
-            if (level == 1)
-            {
-                boneCount = 7;
-
-                boneImages = new Image[]
-                {
-            Properties.Resources.dino_skull,
-            Properties.Resources.dino_neck,
-            Properties.Resources.dino_ribs,
-            Properties.Resources.dino_arm,
-            Properties.Resources.dino_pelvis,
-            Properties.Resources.dino_leg,
-            Properties.Resources.dino_tail
-                };
-
-                int boardHeight = picSkel.Height;
-                int dockY = boardHeight - 110; // Высота деревянных полок
-
-                // Размеры костей под масштаб 600х400
-                boneSizes = new Size[]
-                {
-            new Size(100, 80),  // Череп
-            new Size(45, 60),   // Шея
-            new Size(100, 80),  // Рёбра
-            new Size(75, 75),   // Лапка
-            new Size(70, 60),   // Таз
-            new Size(90, 120),  // Нога
-            new Size(150, 75)   // Хвост
-                };
-
-                // Координаты целей относительно центрального силуэта
-                targetLocations = new Point[]
-                {
-            new Point(offsetX + 20, offsetY + 40),   // Череп
-            new Point(offsetX + 145, offsetY + 40),  // Шея
-            new Point(offsetX + 200, offsetY + 90),  // Рёбра
-            new Point(offsetX + 110, offsetY + 170), // Лапка
-            new Point(offsetX + 200, offsetY + 170),  // Таз 
-            new Point(offsetX + 280, offsetY + 170), // Нога
-            new Point(offsetX + 400, offsetY + 110)  // Хвост
-                };
-
-                // --- ГЕНЕРАЦИЯ ЭЛЕМЕНТОВ НА ЭКРАНЕ ---
-                int cellWidth = this.Width / 8; // Ширина ячейки под ящики
-
-                for (int i = 0; i < boneCount; i++)
-                {
-                    Size currentSize = (boneSizes != null) ? boneSizes[i] : data.boneSize;
-
-                    // 1. Создаем цель
-                    PictureBox target = new PictureBox();
-                    target.Size = currentSize;
-                    target.BackColor = Color.Transparent; // Полностью невидима
-                    target.BorderStyle = BorderStyle.None;
-                    target.SizeMode = PictureBoxSizeMode.Zoom;
-                    target.Location = targetLocations[i];
-
-                    picSkel.Controls.Add(target); // Добавляем в полноэкранный picSkel
-                    activeTargets.Add(target);
-
-                    // 2. Создаем кость
-                    PictureBox bone = new PictureBox();
-                    bone.Size = currentSize;
-                    bone.BackColor = Color.Transparent;
-                    bone.SizeMode = PictureBoxSizeMode.Zoom;
-                    bone.Image = boneImages[i];
-
-                    // Раскладываем кости со 2-й по 8-ю ячейку (первая пустая)
-                    int cellIndex = i + 1;
-                    int cellCenter = cellIndex * cellWidth + cellWidth / 2;
-                    int posX = cellCenter - (currentSize.Width / 2);
-
-                    bone.Location = new Point(posX, dockY);
-                    bone.Tag = target;
-
-                    bone.MouseDown += DynamicBone_MouseDown;
-                    bone.MouseMove += DynamicBone_MouseMove;
-                    bone.MouseUp += DynamicBone_MouseUp;
-
-                    picSkel.Controls.Add(bone); // Добавляем в полноэкранный picSkel! 
-                    activeBones.Add(bone);
-
-                    bone.BringToFront();
-                }
-
-                TimerGame.Start();
-                return;
-            }
-        }
-
-        // Метод проверки: установлены ли все кости на свои цели
-        private void CheckVictory()
-        {
-            // Победа наступает, когда все активные кости вплавлены в динозавра (стали невидимыми)
-            bool allSnapped = activeBones.All(b => !b.Visible);
-
-            if (allSnapped)
-            {
-                TimerGame.Stop();
-
-                int stars = 3;
-                var thresholds = levelConfig.GetStarThresholds(selectedLevel);
-                int timeFor3Stars = thresholds.timeFor3Stars;
-                int timeFor2Stars = thresholds.timeFor2Stars;
-
-                if (secondsPassed >= timeFor2Stars || mistakesCount > 3) stars = 1;
-                else if (secondsPassed >= timeFor3Stars || mistakesCount > 1) stars = 2;
-
-                string starRating = new string('★', stars) + new string('☆', 3 - stars);
-                MessageBox.Show($"Динозавр собран!\n\nВремя: {secondsPassed} сек.\nОшибок: {mistakesCount}\nОценка: {starRating}", "Победа!");
-
-                btnBackToMenu.Visible = true;
-            }
-        }
-
-
-        private void ClearActiveLevel()
-        {
+            secondsPassed = 0;
+            mistakesCount = 0;
+            lblTime.Text = "0";
+            lblMistakes.Text = "0";
             btnBackToMenu.Visible = false;
 
-            // Возвращаем видимость костям перед очисткой
-            foreach (var b in activeBones) b.Visible = true;
+            ClearLevel();
+            assemblyDrawList.Clear();
 
-            // Удаляем полноэкранный холст
-            Control board = this.Controls["picSkel"];
-            if (board != null) this.Controls.Remove(board);
+            skeleton = SkeletonLibrary.GetSkeleton(level);
 
-            activeBones.Clear();
-            activeTargets.Clear();
+            PlaceBoneInAssembly(skeleton.StartBoneId);
+            placedBones.Add(skeleton.StartBoneId);
+
+            RefreshChoicePanel();
+            TimerGame.Start();
         }
 
-        private void DynamicBone_MouseDown(object sender, MouseEventArgs e)
+        private void PlaceBoneInAssembly(string boneId)
         {
-            PictureBox bone = (PictureBox)sender;
-            PictureBox target = (PictureBox)bone.Tag;
+            var bone = skeleton.GetBone(boneId);
+            if (bone == null) return;
 
-            // Если кость уже стоит на месте цели — её нельзя двигать
-            if (bone.Location == target.Location) return;
+            // Настройте эти цифры под вашу текстуру фона
+            int paperX = 450;       // Сдвигаем правее (было 130)
+            int paperY = 270; // было 220, увеличь на сколько нужно
+            int paperWidth = 1200;  // Ширина холста сборки
+            int paperHeight = 550;  // Высота холста сборки
 
-            if (e.Button == MouseButtons.Left)
+            assemblyDrawList.Add((GetBoneImage(bone.ImageKey), new Rectangle(paperX, paperY, paperWidth, paperHeight)));
+
+            this.Invalidate();
+        }
+
+        private void RefreshChoicePanel()
+        {
+            foreach (var pb in choiceBoxes)
+                this.Controls.Remove(pb);
+            choiceBoxes.Clear();
+            availableNeighbors.Clear();
+
+            foreach (var bone in skeleton.Bones)
             {
-                isDragging = true;
-                startPoint = e.Location;
-                bone.BringToFront();
+                if (!placedBones.Contains(bone.Id))
+                    availableNeighbors.Add(bone.Id);
             }
-        }
 
-        private void DynamicBone_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (isDragging)
+            var rng = new Random();
+            availableNeighbors = availableNeighbors.OrderBy(x => rng.Next()).ToList();
+
+            int count = availableNeighbors.Count;
+            if (count == 0) return;
+
+            int boneW = 150;
+            int boneH = 150;
+            int zoneY = ChoiceZone.Y + (ChoiceZone.Height - boneH) / 2 + 60;
+            int totalW = count * boneW + (count - 1) * 20;
+            int startX = (this.Width - totalW) / 2;
+
+            for (int i = 0; i < count; i++)
             {
-                PictureBox bone = (PictureBox)sender;
-                bone.Left += e.X - startPoint.X;
-                bone.Top += e.Y - startPoint.Y;
+                string boneId = availableNeighbors[i];
+                var boneDef = skeleton.GetBone(boneId);
+
+                PictureBox pb = new PictureBox();
+                pb.Size = new Size(boneW, boneH);
+                pb.Location = new Point(startX + i * (boneW + 30), zoneY);
+                pb.SizeMode = PictureBoxSizeMode.Zoom;
+                pb.BackColor = Color.Transparent;
+                pb.Image = GetBoneImage(boneDef.GameImageKey);
+                pb.Tag = boneId;
+                pb.Cursor = Cursors.Hand;
+
+                pb.MouseDown += ChoiceBone_MouseDown;
+                pb.MouseMove += ChoiceBone_MouseMove;
+                pb.MouseUp += ChoiceBone_MouseUp;
+
+                this.Controls.Add(pb);
+                pb.BringToFront();
+                choiceBoxes.Add(pb);
             }
+
+            lblTime.BringToFront();
+            lblMistakes.BringToFront();
+            btnBackToMenu.BringToFront();
+            pausePanel.SendToBack();
+            activetime.BringToFront();
+            buttonbuter.BringToFront();
         }
 
-        private void DynamicBone_MouseUp(object sender, MouseEventArgs e)
+
+        private void ChoiceBone_MouseDown(object sender, MouseEventArgs e)
         {
+            if (e.Button != MouseButtons.Left) return;
+            PictureBox pb = (PictureBox)sender;
+
+            isDragging = true;
+            draggingBoneId = (string)pb.Tag;
+
+            // Берем вашу готовую маленькую картинку
+            draggingImage = pb.Image;
+
+            hiddenSourcePb = pb;
+            pb.Visible = false;
+
+            // Считываем реальные размеры вашей картинки "game"
+            int imgWidth = draggingImage.Width;
+            int imgHeight = draggingImage.Height;
+
+            // Центрируем захват ровно по середине вашей картинки
+            Point clientMousePos = this.PointToClient(Cursor.Position);
+            draggingRect = new Rectangle(clientMousePos.X - (imgWidth / 2), clientMousePos.Y - (imgHeight / 2), imgWidth, imgHeight);
+
+            this.Invalidate(draggingRect);
+        }
+
+        private void ChoiceBone_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (!isDragging || draggingImage == null) return;
+
+            Rectangle oldRect = draggingRect;
+            oldRect.Inflate(5, 5);
+
+            // Снова берем реальные размеры
+            int imgWidth = draggingImage.Width;
+            int imgHeight = draggingImage.Height;
+
+            // Двигаем прямоугольник с родными пропорциями
+            Point clientMousePos = this.PointToClient(Cursor.Position);
+            draggingRect = new Rectangle(clientMousePos.X - (imgWidth / 2), clientMousePos.Y - (imgHeight / 2), imgWidth, imgHeight);
+
+            Rectangle newRect = draggingRect;
+            newRect.Inflate(5, 5);
+
+            this.Invalidate(oldRect);
+            this.Invalidate(newRect);
+        }
+
+        private void ChoiceBone_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (!isDragging) return;
             isDragging = false;
-            PictureBox bone = (PictureBox)sender;
-            PictureBox target = (PictureBox)bone.Tag;
 
-            if (bone.Location == target.Location) return;
+            // Узнаем, где игрок отпустил кнопку
+            Point dropPoint = this.PointToClient(Cursor.Position);
 
-            // Считаем расстояние напрямую (так как кость и цель имеют одного полноэкранного родителя!)
-            int deltaX = Math.Abs(bone.Left - target.Left);
-            int deltaY = Math.Abs(bone.Top - target.Top);
+            // Проверяем, находится ли курсор в верхней половине экрана (AssemblyZone)
+            bool isInAssemblyZone = AssemblyZone.Contains(dropPoint);
 
-            if (deltaX < 35 && deltaY < 35) // Кость встала на место
+            // Проверяем соседей
+            bool isValidNeighbor = false;
+            foreach (var placedId in placedBones)
             {
-                // === НОВЫЙ ТРЮК: ВПЛАВЛЕНИЕ ПИКСЕЛЕЙ В ФОН ===
-                using (Graphics g = Graphics.FromImage(picSkel.Image))
+                var placedBone = skeleton.GetBone(placedId);
+                if (placedBone.Neighbors.Contains(draggingBoneId))
                 {
-                    // Рисуем картинку кости прямо на холсте динозавра по координатам цели
-                    g.DrawImage(bone.Image, target.Left, target.Top, target.Width, target.Height);
+                    isValidNeighbor = true;
+                    break;
                 }
-                picSkel.Invalidate(); // Принудительно обновляем экран, чтобы показать изменения
+            }
 
-                bone.Visible = false; // Саму летающую кость полностью убираем!
+            // Если отпустили в нужной зоне и сосед правильный — кость "примагничивается"
+            if (isInAssemblyZone && isValidNeighbor)
+            {
+                placedBones.Add(draggingBoneId);
 
-                // === ВЫВОД ИНФОРМАЦИИ ПРИ СБОРКЕ ===
-                int boneIndex = activeBones.IndexOf(bone);
-                if (boneIndex >= 0 && boneIndex < dinoFacts.Length)
-                {
-                    lblInfoText.Text = dinoFacts[boneIndex];
-                    panelInfo.Visible = true;
-                    panelInfo.BringToFront(); // Показываем баннер на переднем плане
-                }
+                // Тут кость жестко встанет на 130, 170 в своем оригинальном размере 1660x470
+                PlaceBoneInAssembly(draggingBoneId);
 
-                // Бесшумный запуск звука
-                try
-                {
-                    string soundPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "sounds", "snap.mp3");
-                    if (!System.IO.File.Exists(soundPath)) soundPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "sounds", "snap.wav");
+                this.Controls.Remove(hiddenSourcePb);
+                choiceBoxes.Remove(hiddenSourcePb);
+                hiddenSourcePb.Dispose();
 
-                    if (System.IO.File.Exists(soundPath))
-                    {
-                        mciSendString("close snap", null, 0, 0);
-                        string fileType = soundPath.EndsWith(".mp3") ? "mpegvideo" : "waveaudio";
-                        mciSendString($"open \"{soundPath}\" type {fileType} alias snap", null, 0, 0);
-                        mciSendString("play snap", null, 0, 0);
-                    }
-                }
-                catch { }
-
+                RefreshChoicePanel();
                 CheckVictory();
             }
             else
             {
+                // Промах
+                hiddenSourcePb.Visible = true;
                 mistakesCount++;
-                lblMistakes.Text = "Ошибки: " + mistakesCount;
+                lblMistakes.Text = mistakesCount.ToString();
+            }
+
+            // Запоминаем последнюю зону отрисовки перед очисткой
+            Rectangle clearRect = draggingRect;
+            clearRect.Inflate(5, 5);
+
+            // Сбрасываем переменные
+            draggingImage = null;
+            draggingBoneId = null;
+            hiddenSourcePb = null;
+
+            // Стираем кость с курсора
+            this.Invalidate(clearRect);
+        }
+
+        private void CheckVictory()
+        {
+            if (placedBones.Count == skeleton.Bones.Count)
+            {
+                TimerGame.Stop();
+                btnComplete.Visible = true;
+                btnComplete.BringToFront();
+            }
+        }
+
+        private void ShowVictory()
+        {
+            // 1. Вычисляем количество звезд
+            int stars = 3;
+            if (mistakesCount > 3) stars = 1;
+            else if (mistakesCount > 1) stars = 2;
+
+            // 2. Достаем исходную картинку
+            Image sourceBg;
+            if (stars == 1) sourceBg = Properties.Resources.pobeda1;
+            else if (stars == 2) sourceBg = Properties.Resources.pobeda2;
+            else sourceBg = Properties.Resources.pobeda3;
+
+            // 3. Создаем чистый холст строго под размеры панели
+            Bitmap preSizedBg = new Bitmap(victoryPanel.Width, victoryPanel.Height);
+
+            using (Graphics g = Graphics.FromImage(preSizedBg))
+            {
+                // Включаем максимальное сглаживание для графики и текста
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+
+                // Рисуем картинку фона
+                g.DrawImage(sourceBg, 0, 0, victoryPanel.Width, victoryPanel.Height);
+
+                // МАГИЯ: Рисуем текст времени и ошибок прямо на текстуре фона!
+                // Используем координаты (Left, Top) твоих лейблов, так как они уже правильно выставлены на панели
+                using (Font font = new Font(lblVictoryTime.Font.FontFamily, lblVictoryTime.Font.Size, lblVictoryTime.Font.Style))
+                using (Brush brush = new SolidBrush(lblVictoryTime.ForeColor))
+                {
+                    // Рисуем время
+                    g.DrawString(secondsPassed.ToString(), font, brush, lblVictoryTime.Left, lblVictoryTime.Top);
+                    // Рисуем ошибки
+                    g.DrawString(mistakesCount.ToString(), font, brush, lblVictoryMistakes.Left, lblVictoryMistakes.Top);
+                }
+            }
+
+            // Скрываем оригинальные лейблы, чтобы они не мерцали поверх нашей новой отрисовки
+            lblVictoryTime.Visible = false;
+            lblVictoryMistakes.Visible = false;
+
+            // Отдаем панели уже полностью готовое изображение с цифрами
+            victoryPanel.BackgroundImage = preSizedBg;
+            victoryPanel.BackgroundImageLayout = ImageLayout.None;
+
+            // 4. Стандартный процесс создания темного оверлея (без изменений)
+            pausePanel.Visible = false;
+            pausePanel.Enabled = false;
+            inGameSettingsPanel.Visible = false;
+            victoryPanel.Visible = false;
+            overlayPanel.Visible = false;
+
+            lightScreenshot = new Bitmap(this.Width, this.Height);
+            this.DrawToBitmap(lightScreenshot, new Rectangle(0, 0, this.Width, this.Height));
+
+            Bitmap dark = new Bitmap(lightScreenshot);
+            using (Graphics g = Graphics.FromImage(dark))
+            using (var brush = new SolidBrush(Color.FromArgb(150, 0, 0, 0)))
+                g.FillRectangle(brush, 0, 0, dark.Width, dark.Height);
+
+            overlayPanel.BackgroundImage = dark;
+            overlayPanel.BackgroundImageLayout = ImageLayout.Stretch;
+            overlayPanel.Size = this.ClientSize;
+
+            overlayPanel.Visible = true;
+            overlayPanel.BringToFront();
+            overlayPanel.Refresh();
+
+            victoryPanel.Visible = true;
+        }
+
+        private void ClearLevel()
+        {
+            foreach (var pb in slotBoxes.Values) this.Controls.Remove(pb);
+            foreach (var pb in choiceBoxes) this.Controls.Remove(pb);
+            slotBoxes.Clear();
+            choiceBoxes.Clear();
+            placedBones.Clear();
+            availableNeighbors.Clear();
+            TimerGame.Stop();
+            overlayPanel.Visible = false;
+            pausePanel.Enabled = false;
+            assemblyDrawList.Clear();
+        }
+
+        private Image GetBoneImage(string imageKey)
+        {
+            Image original = (Image)Properties.Resources.ResourceManager.GetObject(imageKey);
+            if (original != null) return original;
+
+            Bitmap bmp = new Bitmap(150, 150);
+            using (var g = Graphics.FromImage(bmp))
+            {
+                g.Clear(Color.Gray);
+                g.DrawString(imageKey, new Font("Arial", 8), Brushes.White, 5, 65);
+            }
+            return bmp;
+        }
+
+        private void GameForm_Paint(object sender, PaintEventArgs e)
+        {
+            // 1. Сначала фон скелета (все, что уже закреплено)
+            foreach (var (img, rect) in assemblyDrawList)
+            {
+                e.Graphics.DrawImage(img, rect);
+            }
+
+            // 2. В ПОСЛЕДНЮЮ ОЧЕРЕДЬ — перетаскиваемая кость.
+            // Она всегда будет рисоваться поверх всего, что нарисовано выше.
+            if (isDragging && draggingImage != null)
+            {
+                e.Graphics.DrawImage(draggingImage, draggingRect);
             }
         }
 
 
-        private void btnRestart_Click(object sender, EventArgs e)
-        {
-            // Сбрасываем время и ошибки
-            secondsPassed = 0;
-            mistakesCount = 0;
-            lblTime.Text = "Время: 0 сек";
-            lblMistakes.Text = "Ошибки: 0";
 
-            // Перезапускаем текущий выбранный уровень
-            StartLevel(selectedLevel);
-        }
 
-        private void btnBackToMenu_Click(object sender, EventArgs e)
-        {
-            ClearActiveLevel();
-            secondsPassed = 0;
-            mistakesCount = 0;
-            lblTime.Text = "Время: 0 сек";
-            lblMistakes.Text = "Ошибки: 0";
-            BackToMenuClicked?.Invoke(this, EventArgs.Empty);
-        }
+
     }
 }

@@ -171,12 +171,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Bone_By_Bone.Properties.Resources.settingscreen;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Controls.Add(this.buttonplay1);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.play1);
             this.Controls.Add(this.txtFeedback);
-            this.Controls.Add(this.buttonstop1);
+            this.Controls.Add(this.buttonplay1);
             this.Controls.Add(this.buttonplay2);
+            this.Controls.Add(this.buttonstop1);
             this.Controls.Add(this.buttonstop2);
             this.Controls.Add(this.pictureBox1);
             this.DoubleBuffered = true;
