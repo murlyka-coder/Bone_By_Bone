@@ -47,6 +47,19 @@ namespace Bone_By_Bone
             lblTime.BackColor = Color.Transparent;
             lblMistakes.Parent = activetime;
             lblMistakes.BackColor = Color.Transparent;
+            // Включаем скрытую двойную буферизацию для панели победы
+            typeof(Panel).InvokeMember("DoubleBuffered",
+                System.Reflection.BindingFlags.SetProperty |
+                System.Reflection.BindingFlags.Instance |
+                System.Reflection.BindingFlags.NonPublic,
+                null, victoryPanel, new object[] { true });
+
+            // Рекомендую сразу сделать то же самое и для панели паузы, чтобы она работала идеально гладко:
+            typeof(Panel).InvokeMember("DoubleBuffered",
+                System.Reflection.BindingFlags.SetProperty |
+                System.Reflection.BindingFlags.Instance |
+                System.Reflection.BindingFlags.NonPublic,
+                null, pausePanel, new object[] { true });
         }
 
 
@@ -296,18 +309,50 @@ namespace Bone_By_Bone
 
         private void ShowVictory()
         {
+            // 1. Вычисляем количество звезд
             int stars = 3;
             if (mistakesCount > 3) stars = 1;
             else if (mistakesCount > 1) stars = 2;
 
-            if (stars == 1) victoryPanel.BackgroundImage = Properties.Resources.pobeda1;
-            else if (stars == 2) victoryPanel.BackgroundImage = Properties.Resources.pobeda2;
-            else victoryPanel.BackgroundImage = Properties.Resources.pobeda3;
+            // 2. Достаем исходную картинку
+            Image sourceBg;
+            if (stars == 1) sourceBg = Properties.Resources.pobeda1;
+            else if (stars == 2) sourceBg = Properties.Resources.pobeda2;
+            else sourceBg = Properties.Resources.pobeda3;
 
-            lblVictoryTime.Text = "" + secondsPassed;
-            lblVictoryMistakes.Text = "" + mistakesCount;
+            // 3. Создаем чистый холст строго под размеры панели
+            Bitmap preSizedBg = new Bitmap(victoryPanel.Width, victoryPanel.Height);
 
-            // скрываем всё перед скриншотом
+            using (Graphics g = Graphics.FromImage(preSizedBg))
+            {
+                // Включаем максимальное сглаживание для графики и текста
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+
+                // Рисуем картинку фона
+                g.DrawImage(sourceBg, 0, 0, victoryPanel.Width, victoryPanel.Height);
+
+                // МАГИЯ: Рисуем текст времени и ошибок прямо на текстуре фона!
+                // Используем координаты (Left, Top) твоих лейблов, так как они уже правильно выставлены на панели
+                using (Font font = new Font(lblVictoryTime.Font.FontFamily, lblVictoryTime.Font.Size, lblVictoryTime.Font.Style))
+                using (Brush brush = new SolidBrush(lblVictoryTime.ForeColor))
+                {
+                    // Рисуем время
+                    g.DrawString(secondsPassed.ToString(), font, brush, lblVictoryTime.Left, lblVictoryTime.Top);
+                    // Рисуем ошибки
+                    g.DrawString(mistakesCount.ToString(), font, brush, lblVictoryMistakes.Left, lblVictoryMistakes.Top);
+                }
+            }
+
+            // Скрываем оригинальные лейблы, чтобы они не мерцали поверх нашей новой отрисовки
+            lblVictoryTime.Visible = false;
+            lblVictoryMistakes.Visible = false;
+
+            // Отдаем панели уже полностью готовое изображение с цифрами
+            victoryPanel.BackgroundImage = preSizedBg;
+            victoryPanel.BackgroundImageLayout = ImageLayout.None;
+
+            // 4. Стандартный процесс создания темного оверлея (без изменений)
             pausePanel.Visible = false;
             pausePanel.Enabled = false;
             inGameSettingsPanel.Visible = false;
@@ -325,13 +370,12 @@ namespace Bone_By_Bone
             overlayPanel.BackgroundImage = dark;
             overlayPanel.BackgroundImageLayout = ImageLayout.Stretch;
             overlayPanel.Size = this.ClientSize;
+
             overlayPanel.Visible = true;
             overlayPanel.BringToFront();
             overlayPanel.Refresh();
 
-            overlayPanel.Refresh();
             victoryPanel.Visible = true;
-            victoryPanel.Refresh();
         }
 
         private void ClearLevel()
