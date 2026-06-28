@@ -11,6 +11,11 @@ namespace Bone_By_Bone
         public Form1()
         {
             InitializeComponent();
+
+            AudioSettings.InitMusic();
+
+            mainMenuForm1.StartGameClicked += MainMenu_StartGameClicked;
+            mainMenuForm1.SettingsClicked += (s, e) => OpenSettings();
             mainMenuForm1.StartGameClicked += MainMenu_StartGameClicked;
             mainMenuForm1.SettingsClicked += (s, e) => OpenSettings();
             settingForm1.BackClicked += SettingsForm1_BackClicked;
