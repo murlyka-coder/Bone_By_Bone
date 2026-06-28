@@ -812,6 +812,16 @@ namespace Bone_By_Bone.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cat_template {
+            get {
+                object obj = ResourceManager.GetObject("cat_template", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap dino {
             get {
                 object obj = ResourceManager.GetObject("dino", resourceCulture);
@@ -975,6 +985,16 @@ namespace Bone_By_Bone.Properties {
         internal static System.Drawing.Bitmap dino_taz_game {
             get {
                 object obj = ResourceManager.GetObject("dino_taz_game", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dino_template {
+            get {
+                object obj = ResourceManager.GetObject("dino_template", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1435,6 +1455,16 @@ namespace Bone_By_Bone.Properties {
         internal static System.Drawing.Bitmap men_taz_game {
             get {
                 object obj = ResourceManager.GetObject("men_taz_game", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap men_template {
+            get {
+                object obj = ResourceManager.GetObject("men_template", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
