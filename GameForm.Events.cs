@@ -62,6 +62,7 @@ namespace Bone_By_Bone
         {
             ClearLevel();
             BackToMenuClicked?.Invoke(this, EventArgs.Empty);
+
         }
 
         private void btnComplete_MouseEnter(object sender, EventArgs e)

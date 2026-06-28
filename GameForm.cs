@@ -177,6 +177,7 @@ namespace Bone_By_Bone
             choiceBoxes.Clear();
             availableNeighbors.Clear();
 
+            // Собираем все неразмещенные кости[cite: 3]
             foreach (var bone in skeleton.Bones)
             {
                 if (!placedBones.Contains(bone.Id))
@@ -189,20 +190,37 @@ namespace Bone_By_Bone
             int count = availableNeighbors.Count;
             if (count == 0) return;
 
-            int boneW = 150;
-            int boneH = 150;
-            int zoneY = ChoiceZone.Y + (ChoiceZone.Height - boneH) / 2 + 60;
-            int totalW = count * boneW + (count - 1) * 20;
-            int startX = (this.Width - totalW) / 2;
+            // 1. Адаптивный размер: если костей больше 8, делаем их мельче
+            int boneW = count > 8 ? 90 : 150;
+            int boneH = count > 8 ? 90 : 150;
+            int spacing = count > 8 ? 15 : 30;
+
+            // 2. Вычисляем, сколько костей влезет в один ряд по ширине экрана
+            int availableWidth = this.Width - 40; // Небольшой отступ от краев
+            int maxPerRow = availableWidth / (boneW + spacing);
+            if (maxPerRow < 1) maxPerRow = 1;
 
             for (int i = 0; i < count; i++)
             {
                 string boneId = availableNeighbors[i];
                 var boneDef = skeleton.GetBone(boneId);
 
+                // 3. Вычисляем строку (row) и столбец (col) для текущей кости
+                int row = i / maxPerRow;
+                int col = i % maxPerRow;
+
+                // 4. Центрируем кости в текущем ряду (чтобы последний ряд тоже выглядел ровно)
+                int itemsInThisRow = Math.Min(maxPerRow, count - row * maxPerRow);
+                int totalW = itemsInThisRow * boneW + (itemsInThisRow - 1) * spacing;
+                int startX = (this.Width - totalW) / 2;
+
+                // 5. Итоговые координаты X и Y с учетом переноса на новую строку
+                int x = startX + col * (boneW + spacing);
+                int y = ChoiceZone.Y + row * (boneH + spacing) + 170;
+
                 PictureBox pb = new PictureBox();
                 pb.Size = new Size(boneW, boneH);
-                pb.Location = new Point(startX + i * (boneW + 30), zoneY);
+                pb.Location = new Point(x, y);
                 pb.SizeMode = PictureBoxSizeMode.Zoom;
                 pb.BackColor = Color.Transparent;
                 pb.Image = GetBoneImage(boneDef.GameImageKey);
@@ -218,6 +236,7 @@ namespace Bone_By_Bone
                 choiceBoxes.Add(pb);
             }
 
+            // Возвращаем UI элементы на передний план, чтобы кости их не перекрывали[cite: 3]
             lblTime.BringToFront();
             lblMistakes.BringToFront();
             btnBackToMenu.BringToFront();
@@ -425,9 +444,9 @@ namespace Bone_By_Bone
             TimerGame.Stop();
             overlayPanel.Visible = false;
             pausePanel.Enabled = false;
+            victoryPanel.Visible = false;  // добавь это
             assemblyDrawList.Clear();
         }
-
         private Image GetBoneImage(string imageKey)
         {
             Image original = (Image)Properties.Resources.ResourceManager.GetObject(imageKey);
