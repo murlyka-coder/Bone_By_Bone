@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net;
+using System.Net.Mail;
 
 namespace Bone_By_Bone
 {
@@ -64,7 +66,44 @@ namespace Bone_By_Bone
 
         private void btnSendFeedback_Click(object sender, EventArgs e)
         {
-            txtFeedback.Clear();
+            // Проверяем, написал ли пользователь отзыв
+            if (string.IsNullOrWhiteSpace(txtFeedback.Text))
+            {
+                MessageBox.Show("Пожалуйста, введите текст отзыва перед отправкой.", "Внимание");
+                return;
+            }
+
+            // Ваши данные для отправки
+            string fromAddress = "slobanova070@gmail.com";
+            string fromPassword = "mzhihchsupynsmnq"; // Пароль приложения
+            string toAddress = "slobanova070@gmail.com";
+
+            try
+            {
+                // Создаем письмо
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress(fromAddress);
+                mail.To.Add(toAddress);
+                mail.Subject = "Новый отзыв: Bone by Bone";
+                mail.Body = $"Пользователь оставил отзыв:\n\n{txtFeedback.Text}";
+
+                // Настраиваем SMTP-сервер Google
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+                smtp.EnableSsl = true;
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new NetworkCredential(fromAddress, fromPassword);
+
+                // Отправляем
+                smtp.Send(mail);
+
+                MessageBox.Show("Спасибо за отзыв! Он успешно отправлен.", "Успех");
+                txtFeedback.Clear(); // Очищаем поле после отправки
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Не удалось отправить отзыв. Ошибка: " + ex.Message, "Ошибка");
+            }
         }
 
 
