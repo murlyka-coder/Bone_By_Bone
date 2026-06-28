@@ -36,8 +36,8 @@ namespace Bone_By_Bone
             switch (level)
             {
                 case 1: return Dinosaur();
-                case 2: return Human();
-                case 3: return Cat();
+                case 2: return Cat();
+                case 3: return Human();
                 default: return Dinosaur();
             }
         }
@@ -69,15 +69,30 @@ namespace Bone_By_Bone
             return new SkeletonDefinition
             {
                 Id = "human",
-                StartBoneId = "skull",
+                StartBoneId = "head",
                 Bones = new List<BoneDefinition>
                 {
-                    new BoneDefinition { Id = "skull",    ImageKey = "dino_skull",    SlotPosition = new Point(50,  100), Neighbors = new List<string> { "neck" } },
-                    new BoneDefinition { Id = "neck",     ImageKey = "dino_neck",     SlotPosition = new Point(180, 80),  Neighbors = new List<string> { "arms", "ribs" } },
-                    new BoneDefinition { Id = "arms",     ImageKey = "dino_arms",     SlotPosition = new Point(300, 50),  Neighbors = new List<string> { "ribs" } },
-                    new BoneDefinition { Id = "ribs",     ImageKey = "dino_ribs",     SlotPosition = new Point(420, 80),  Neighbors = new List<string> { "leg_back" } },
-                    new BoneDefinition { Id = "leg_back", ImageKey = "dino_leg_back", SlotPosition = new Point(580, 70),  Neighbors = new List<string> { "tail" } },
-                    new BoneDefinition { Id = "tail",     ImageKey = "dino_tail",     SlotPosition = new Point(730, 50),  Neighbors = new List<string> { } },
+                    new BoneDefinition { Id = "head",       ImageKey = "men_head",        GameImageKey = "men_head_game",        BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { "sheya" } },
+                    new BoneDefinition { Id = "sheya",      ImageKey = "men_sheya",       GameImageKey = "men_sheya_game",       BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { "lopat1", "lopat2", "cluchis1", "cluchis2", "ribs" } },
+                    new BoneDefinition { Id = "lopat1",     ImageKey = "men_lopat1",      GameImageKey = "men_lopat1_game",      BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { "plesho1" } },
+                    new BoneDefinition { Id = "lopat2",     ImageKey = "men_lopat2",      GameImageKey = "men_lopat2_game",      BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { "plesho2" } },
+                    new BoneDefinition { Id = "cluchis1",   ImageKey = "men_cluchis1",    GameImageKey = "men_cluchis1_game",    BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { "plesho1" } },
+                    new BoneDefinition { Id = "cluchis2",   ImageKey = "men_cluchis2",    GameImageKey = "men_cluchis2_game",    BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { "plesho2" } },
+                    new BoneDefinition { Id = "plesho1",    ImageKey = "men_plesho1",     GameImageKey = "men_plesho1_game",     BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { "predplesho1" } },
+                    new BoneDefinition { Id = "plesho2",    ImageKey = "men_plesho2",     GameImageKey = "men_plesho2_game",     BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { "predplesho2" } },
+                    new BoneDefinition { Id = "predplesho1",ImageKey = "men_predplesho1", GameImageKey = "men_predplesho1_game", BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { "ruka1" } },
+                    new BoneDefinition { Id = "predplesho2",ImageKey = "men_predplesho2", GameImageKey = "men_predplesho2_game", BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { "ruka2" } },
+                    new BoneDefinition { Id = "ruka1",      ImageKey = "men_ruka1",       GameImageKey = "men_ruka1_game",       BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { } },
+                    new BoneDefinition { Id = "ruka2",      ImageKey = "men_ruka2",       GameImageKey = "men_ruka2_game",       BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { } },
+                    new BoneDefinition { Id = "ribs",       ImageKey = "men_ribs",        GameImageKey = "men_ribs_game",        BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { "spina" } },
+                    new BoneDefinition { Id = "spina",      ImageKey = "men_spina",       GameImageKey = "men_spina_game",       BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { "taz" } },
+                    new BoneDefinition { Id = "taz",        ImageKey = "men_taz",         GameImageKey = "men_taz_game",         BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { "bedro1", "bedro2" } },
+                    new BoneDefinition { Id = "bedro1",     ImageKey = "men_bedro1",      GameImageKey = "men_bedro1_game",      BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { "golen1" } },
+                    new BoneDefinition { Id = "bedro2",     ImageKey = "men_bedro2",      GameImageKey = "men_bedro2_game",      BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { "golen2" } },
+                    new BoneDefinition { Id = "golen1",     ImageKey = "men_golen1",      GameImageKey = "men_golen1_game",      BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { "stopa1" } },
+                    new BoneDefinition { Id = "golen2",     ImageKey = "men_golen2",      GameImageKey = "men_golen2_game",      BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { "stopa2" } },
+                    new BoneDefinition { Id = "stopa1",     ImageKey = "men_stopa1",      GameImageKey = "men_stopa1_game",      BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { } },
+                    new BoneDefinition { Id = "stopa2",     ImageKey = "men_stopa2",      GameImageKey = "men_stopa2_game",      BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { } },
                 }
             };
         }
@@ -87,17 +102,18 @@ namespace Bone_By_Bone
             return new SkeletonDefinition
             {
                 Id = "cat",
-                StartBoneId = "skull",
+                StartBoneId = "head",
                 Bones = new List<BoneDefinition>
                 {
-                    new BoneDefinition { Id = "skull",        ImageKey = "cat_skull",        SlotPosition = new Point(180, 150), Neighbors = new List<string> { "neck" } },
-                    new BoneDefinition { Id = "neck",         ImageKey = "cat_neck",         SlotPosition = new Point(370, 100), Neighbors = new List<string> { "shoulder_blade" } },
-                    new BoneDefinition { Id = "shoulder_blade",ImageKey = "cat_shoulder",    SlotPosition = new Point(490, 80),  Neighbors = new List<string> { "ribs", "leg_front" } },
-                    new BoneDefinition { Id = "ribs",         ImageKey = "cat_ribs",         SlotPosition = new Point(620, 150), Neighbors = new List<string> { "pelvis" } },
-                    new BoneDefinition { Id = "leg_front",    ImageKey = "cat_leg_front",    SlotPosition = new Point(430, 300), Neighbors = new List<string> { "pelvis" } },
-                    new BoneDefinition { Id = "pelvis",       ImageKey = "cat_pelvis",       SlotPosition = new Point(820, 120), Neighbors = new List<string> { "tail", "leg_back" } },
-                    new BoneDefinition { Id = "tail",         ImageKey = "cat_tail",         SlotPosition = new Point(1000, 200),Neighbors = new List<string> { } },
-                    new BoneDefinition { Id = "leg_back",     ImageKey = "cat_leg_back",     SlotPosition = new Point(800, 350), Neighbors = new List<string> { } },
+                    new BoneDefinition { Id = "head",  ImageKey = "cat_head",  GameImageKey = "cat_head_game",  BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { "sheya" } },
+                    new BoneDefinition { Id = "sheya", ImageKey = "cat_sheya", GameImageKey = "cat_sheya_game", BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { "noga1", "ribs" } },
+                    new BoneDefinition { Id = "noga1", ImageKey = "cat_noga1", GameImageKey = "cat_noga1_game", BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { "noga2" } },
+                    new BoneDefinition { Id = "noga2", ImageKey = "cat_noga2", GameImageKey = "cat_noga2_game", BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { "ribs" } },
+                    new BoneDefinition { Id = "ribs",  ImageKey = "cat_ribs",  GameImageKey = "cat_ribs_game",  BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { "spina" } },
+                    new BoneDefinition { Id = "spina", ImageKey = "cat_spina", GameImageKey = "cat_spina_game", BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { "noga3", "tail" } },
+                    new BoneDefinition { Id = "noga3", ImageKey = "cat_noga3", GameImageKey = "cat_noga3_game", BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { "noga4" } },
+                    new BoneDefinition { Id = "noga4", ImageKey = "cat_noga4", GameImageKey = "cat_noga4_game", BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { } },
+                    new BoneDefinition { Id = "tail",  ImageKey = "cat_tail",  GameImageKey = "cat_tail_game",  BoneSize = new Size(1200,700), SlotPosition = new Point(0,0), Neighbors = new List<string> { } },
                 }
             };
         }

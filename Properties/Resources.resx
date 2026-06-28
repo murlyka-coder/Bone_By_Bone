@@ -427,4 +427,130 @@
   <data name="cat_noga4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\cat_noga4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="men_head_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_head_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_head" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_head.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_lopat1_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_lopat1_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_lopat1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_lopat1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_lopat2_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_lopat2_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_lopat2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_lopat2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_sheya_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_sheya_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_sheya" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_sheya.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_predplesho1_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_predplesho1_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_predplesho1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_predplesho1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_predplesho2_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_predplesho2_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_predplesho2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_predplesho2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_stopa1_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_stopa1_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_stopa2_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_stopa2_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_stopa2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_stopa2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_stopa1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_stopa1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_ruka1_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_ruka1_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_ruka1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_ruka1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_ruka2_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_ruka2_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_ruka2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_ruka2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_golen1_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_golen1_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_golen1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_golen1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_bedro1_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_bedro1_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_bedro1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_bedro1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_bedro2_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_bedro2_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_bedro2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_bedro2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_golen2_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_golen2_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_golen2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_golen2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_plesho1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_plesho1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_plesho1_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_plesho1_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_plesho2_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_plesho2_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_plesho2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_plesho2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_spina_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_spina_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_spina" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_spina.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_cluchis1_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_cluchis1_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_cluchis1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_cluchis1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_cluchis2_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_cluchis2_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_cluchis2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_cluchis2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_ribs_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_ribs_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_ribs" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_ribs.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_taz_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_taz_game.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="men_taz" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\men_taz.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
