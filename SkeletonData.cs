@@ -11,8 +11,9 @@ namespace Bone_By_Bone
     {
         public string Id;
         public string ImageKey;
+        public string GameImageKey;  // добавь сюда
+        public Size BoneSize;
         public Point SlotPosition;
-        public Size BoneSize;          // добавь это
         public List<string> Neighbors;
     }
 
@@ -48,15 +49,17 @@ namespace Bone_By_Bone
             return new SkeletonDefinition
             {
                 Id = "dinosaur",
-                StartBoneId = "skull",
+                StartBoneId = "head",
                 Bones = new List<BoneDefinition>
         {
-                    new BoneDefinition { Id = "skull",    ImageKey = "dino_skull",    BoneSize = new Size(200, 200), SlotPosition = new Point(30,  80),  Neighbors = new List<string> { "neck" } },
-                    new BoneDefinition { Id = "neck",     ImageKey = "dino_neck",     BoneSize = new Size(180, 180), SlotPosition = new Point(220, 60),  Neighbors = new List<string> { "arms", "ribs" } },
-                    new BoneDefinition { Id = "arms",     ImageKey = "dino_arms",     BoneSize = new Size(150, 200), SlotPosition = new Point(340, 200), Neighbors = new List<string> { "ribs" } },
-                    new BoneDefinition { Id = "ribs",     ImageKey = "dino_ribs",     BoneSize = new Size(250, 280), SlotPosition = new Point(360, 30),  Neighbors = new List<string> { "leg_back" } },
-                    new BoneDefinition { Id = "leg_back", ImageKey = "dino_leg_back", BoneSize = new Size(200, 320), SlotPosition = new Point(530, 80), Neighbors = new List<string> { "tail" } },
-                    new BoneDefinition { Id = "tail",     ImageKey = "dino_tail",     BoneSize = new Size(420, 160), SlotPosition = new Point(680, 50),  Neighbors = new List<string> { } },
+            new BoneDefinition { Id = "head", ImageKey = "dino_head", GameImageKey = "dino_head_game", BoneSize = new Size(1200, 700), SlotPosition = new Point(0, 0), Neighbors = new List<string> { "sheia" } },
+            new BoneDefinition { Id = "sheia", ImageKey = "dino_sheia", GameImageKey = "dino_sheia_game", BoneSize = new Size(1200, 700), SlotPosition = new Point(0, 0), Neighbors = new List<string> { "arms", "ribs" } },
+            new BoneDefinition { Id = "arms", ImageKey = "dino_arms", GameImageKey = "dino_arms_game", BoneSize = new Size(1200, 700), SlotPosition = new Point(0, 0), Neighbors = new List<string> { "ribs" } },
+            new BoneDefinition { Id = "ribs", ImageKey = "dino_ribs", GameImageKey = "dino_ribs_game", BoneSize = new Size(1200, 700), SlotPosition = new Point(0, 0), Neighbors = new List<string> { "taz" } },
+            new BoneDefinition { Id = "taz", ImageKey = "dino_taz", GameImageKey = "dino_taz_game", BoneSize = new Size(1200, 700), SlotPosition = new Point(0, 0), Neighbors = new List<string> { "leg_front", "leg_back", "tail" } },
+            new BoneDefinition { Id = "leg_front", ImageKey = "dino_leg_front", GameImageKey = "dino_leg_front_game", BoneSize = new Size(1200, 700), SlotPosition = new Point(0, 0), Neighbors = new List<string> { } },
+            new BoneDefinition { Id = "leg_back", ImageKey = "dino_leg_back", GameImageKey = "dino_leg_back_game", BoneSize = new Size(1200, 700), SlotPosition = new Point(0, 0), Neighbors = new List<string> { } },
+            new BoneDefinition { Id = "tail", ImageKey = "dino_tail", GameImageKey = "dino_tail_game", BoneSize = new Size(1200, 700), SlotPosition = new Point(0, 0), Neighbors = new List<string> { } },
         }
             };
         }

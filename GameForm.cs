@@ -158,8 +158,9 @@ namespace Bone_By_Bone
             var bone = skeleton.GetBone(boneId);
             if (bone == null) return;
 
-            assemblyDrawList.Add((GetBoneImage(bone.ImageKey), new Rectangle(bone.SlotPosition, bone.BoneSize)));
-            slotBoxes[boneId] = new PictureBox { Location = bone.SlotPosition, Size = bone.BoneSize };
+            assemblyDrawList.Add((GetBoneImage(bone.ImageKey),
+                new Rectangle(0, 0, AssemblyZone.Width, AssemblyZone.Height)));
+            slotBoxes[boneId] = new PictureBox { Location = new Point(130, 170), Size = new Size(1660, 470) };
             this.Invalidate();
         }
 
@@ -182,9 +183,9 @@ namespace Bone_By_Bone
             int count = availableNeighbors.Count;
             if (count == 0) return;
 
-            int boneW = 200;
-            int boneH = 200;
-            int zoneY = ChoiceZone.Y + (ChoiceZone.Height - boneH) / 2;
+            int boneW = 100;
+            int boneH = 100;
+            int zoneY = ChoiceZone.Y + (ChoiceZone.Height - boneH) / 2 + 30;
             int totalW = count * boneW + (count - 1) * 30;
             int startX = (this.Width - totalW) / 2;
 
@@ -198,7 +199,7 @@ namespace Bone_By_Bone
                 pb.Location = new Point(startX + i * (boneW + 30), zoneY);
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;
                 pb.BackColor = Color.Transparent;
-                pb.Image = GetBoneImage(boneDef.ImageKey);
+                pb.Image = GetBoneImage(boneDef.GameImageKey);
                 pb.Tag = boneId;
                 pb.Cursor = Cursors.Hand;
 
@@ -229,6 +230,7 @@ namespace Bone_By_Bone
             draggingBoneId = (string)pb.Tag;
             dragOffset = e.Location;
             dragOriginalLocation = pb.Location;
+            pb.Size = new Size(140, 140);
             pb.BringToFront();
         }
 
@@ -408,8 +410,11 @@ namespace Bone_By_Bone
 
         private void GameForm_Paint(object sender, PaintEventArgs e)
         {
-            foreach (var (img, rect) in assemblyDrawList)
-                e.Graphics.DrawImage(img, rect);
+            Rectangle assemblyRect = new Rectangle(130, 170, 1660, 470);
+            foreach (var item in assemblyDrawList)
+            {
+                e.Graphics.DrawImage(item.img, assemblyRect);
+            }
         }
 
 
