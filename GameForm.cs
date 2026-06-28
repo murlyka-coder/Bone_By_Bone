@@ -25,10 +25,11 @@ namespace Bone_By_Bone
         private List<PictureBox> choiceBoxes = new List<PictureBox>();
 
         private bool isDragging = false;
-        private PictureBox draggingBone = null;
         private string draggingBoneId = null;
+        private Image draggingImage = null; // Картинка, которая рисуется при перетаскивании
+        private Rectangle draggingRect;     // Координаты этой картинки
         private Point dragOffset;
-        private Point dragOriginalLocation;
+        private PictureBox hiddenSourcePb = null; // Ссылка на иконку внизу, чтобы вернуть ее при промахе
 
         private List<(Image img, Rectangle rect)> assemblyDrawList = new List<(Image, Rectangle)>();
 
@@ -158,9 +159,14 @@ namespace Bone_By_Bone
             var bone = skeleton.GetBone(boneId);
             if (bone == null) return;
 
-            assemblyDrawList.Add((GetBoneImage(bone.ImageKey),
-                new Rectangle(0, 0, AssemblyZone.Width, AssemblyZone.Height)));
-            slotBoxes[boneId] = new PictureBox { Location = new Point(130, 170), Size = new Size(1660, 470) };
+            // Настройте эти цифры под вашу текстуру фона
+            int paperX = 450;       // Сдвигаем правее (было 130)
+            int paperY = 270; // было 220, увеличь на сколько нужно
+            int paperWidth = 1200;  // Ширина холста сборки
+            int paperHeight = 550;  // Высота холста сборки
+
+            assemblyDrawList.Add((GetBoneImage(bone.ImageKey), new Rectangle(paperX, paperY, paperWidth, paperHeight)));
+
             this.Invalidate();
         }
 
@@ -183,10 +189,10 @@ namespace Bone_By_Bone
             int count = availableNeighbors.Count;
             if (count == 0) return;
 
-            int boneW = 100;
-            int boneH = 100;
-            int zoneY = ChoiceZone.Y + (ChoiceZone.Height - boneH) / 2 + 30;
-            int totalW = count * boneW + (count - 1) * 30;
+            int boneW = 150;
+            int boneH = 150;
+            int zoneY = ChoiceZone.Y + (ChoiceZone.Height - boneH) / 2 + 60;
+            int totalW = count * boneW + (count - 1) * 20;
             int startX = (this.Width - totalW) / 2;
 
             for (int i = 0; i < count; i++)
@@ -197,7 +203,7 @@ namespace Bone_By_Bone
                 PictureBox pb = new PictureBox();
                 pb.Size = new Size(boneW, boneH);
                 pb.Location = new Point(startX + i * (boneW + 30), zoneY);
-                pb.SizeMode = PictureBoxSizeMode.StretchImage;
+                pb.SizeMode = PictureBoxSizeMode.Zoom;
                 pb.BackColor = Color.Transparent;
                 pb.Image = GetBoneImage(boneDef.GameImageKey);
                 pb.Tag = boneId;
@@ -225,78 +231,106 @@ namespace Bone_By_Bone
         {
             if (e.Button != MouseButtons.Left) return;
             PictureBox pb = (PictureBox)sender;
+
             isDragging = true;
-            draggingBone = pb;
             draggingBoneId = (string)pb.Tag;
-            dragOffset = e.Location;
-            dragOriginalLocation = pb.Location;
-            pb.Size = new Size(140, 140);
-            pb.BringToFront();
+
+            // Берем вашу готовую маленькую картинку
+            draggingImage = pb.Image;
+
+            hiddenSourcePb = pb;
+            pb.Visible = false;
+
+            // Считываем реальные размеры вашей картинки "game"
+            int imgWidth = draggingImage.Width;
+            int imgHeight = draggingImage.Height;
+
+            // Центрируем захват ровно по середине вашей картинки
+            Point clientMousePos = this.PointToClient(Cursor.Position);
+            draggingRect = new Rectangle(clientMousePos.X - (imgWidth / 2), clientMousePos.Y - (imgHeight / 2), imgWidth, imgHeight);
+
+            this.Invalidate(draggingRect);
         }
 
         private void ChoiceBone_MouseMove(object sender, MouseEventArgs e)
         {
-            if (!isDragging || draggingBone == null) return;
-            draggingBone.Left += e.X - dragOffset.X;
-            draggingBone.Top += e.Y - dragOffset.Y;
+            if (!isDragging || draggingImage == null) return;
+
+            Rectangle oldRect = draggingRect;
+            oldRect.Inflate(5, 5);
+
+            // Снова берем реальные размеры
+            int imgWidth = draggingImage.Width;
+            int imgHeight = draggingImage.Height;
+
+            // Двигаем прямоугольник с родными пропорциями
+            Point clientMousePos = this.PointToClient(Cursor.Position);
+            draggingRect = new Rectangle(clientMousePos.X - (imgWidth / 2), clientMousePos.Y - (imgHeight / 2), imgWidth, imgHeight);
+
+            Rectangle newRect = draggingRect;
+            newRect.Inflate(5, 5);
+
+            this.Invalidate(oldRect);
+            this.Invalidate(newRect);
         }
 
         private void ChoiceBone_MouseUp(object sender, MouseEventArgs e)
         {
-            if (!isDragging || draggingBone == null) return;
+            if (!isDragging) return;
             isDragging = false;
 
-            Point center = new Point(
-                draggingBone.Left + draggingBone.Width / 2,
-                draggingBone.Top + draggingBone.Height / 2
-            );
+            // Узнаем, где игрок отпустил кнопку
+            Point dropPoint = this.PointToClient(Cursor.Position);
 
-            if (AssemblyZone.Contains(center))
+            // Проверяем, находится ли курсор в верхней половине экрана (AssemblyZone)
+            bool isInAssemblyZone = AssemblyZone.Contains(dropPoint);
+
+            // Проверяем соседей
+            bool isValidNeighbor = false;
+            foreach (var placedId in placedBones)
             {
-                bool isValidNeighbor = false;
-                foreach (var placedId in placedBones)
+                var placedBone = skeleton.GetBone(placedId);
+                if (placedBone.Neighbors.Contains(draggingBoneId))
                 {
-                    var placedBone = skeleton.GetBone(placedId);
-                    if (!placedBone.Neighbors.Contains(draggingBoneId)) continue;
-
-                    PictureBox slotPb = slotBoxes[placedId];
-                    Point slotCenter = new Point(
-                        slotPb.Left + slotPb.Width / 2,
-                        slotPb.Top + slotPb.Height / 2
-                    );
-                    int dx = Math.Abs(center.X - slotCenter.X);
-                    int dy = Math.Abs(center.Y - slotCenter.Y);
-
-                    if (dx < 150 && dy < 150)
-                    {
-                        isValidNeighbor = true;
-                        break;
-                    }
+                    isValidNeighbor = true;
+                    break;
                 }
+            }
 
-                if (isValidNeighbor)
-                {
-                    this.Controls.Remove(draggingBone);
-                    choiceBoxes.Remove(draggingBone);
-                    placedBones.Add(draggingBoneId);
-                    PlaceBoneInAssembly(draggingBoneId);
-                    RefreshChoicePanel();
-                    CheckVictory();
-                }
-                else
-                {
-                    draggingBone.Location = dragOriginalLocation;
-                    mistakesCount++;
-                    lblMistakes.Text = "" + mistakesCount;
-                }
+            // Если отпустили в нужной зоне и сосед правильный — кость "примагничивается"
+            if (isInAssemblyZone && isValidNeighbor)
+            {
+                placedBones.Add(draggingBoneId);
+
+                // Тут кость жестко встанет на 130, 170 в своем оригинальном размере 1660x470
+                PlaceBoneInAssembly(draggingBoneId);
+
+                this.Controls.Remove(hiddenSourcePb);
+                choiceBoxes.Remove(hiddenSourcePb);
+                hiddenSourcePb.Dispose();
+
+                RefreshChoicePanel();
+                CheckVictory();
             }
             else
             {
-                draggingBone.Location = dragOriginalLocation;
+                // Промах
+                hiddenSourcePb.Visible = true;
+                mistakesCount++;
+                lblMistakes.Text = mistakesCount.ToString();
             }
 
-            draggingBone = null;
+            // Запоминаем последнюю зону отрисовки перед очисткой
+            Rectangle clearRect = draggingRect;
+            clearRect.Inflate(5, 5);
+
+            // Сбрасываем переменные
+            draggingImage = null;
             draggingBoneId = null;
+            hiddenSourcePb = null;
+
+            // Стираем кость с курсора
+            this.Invalidate(clearRect);
         }
 
         private void CheckVictory()
@@ -410,10 +444,17 @@ namespace Bone_By_Bone
 
         private void GameForm_Paint(object sender, PaintEventArgs e)
         {
-            Rectangle assemblyRect = new Rectangle(130, 170, 1660, 470);
-            foreach (var item in assemblyDrawList)
+            // 1. Сначала фон скелета (все, что уже закреплено)
+            foreach (var (img, rect) in assemblyDrawList)
             {
-                e.Graphics.DrawImage(item.img, assemblyRect);
+                e.Graphics.DrawImage(img, rect);
+            }
+
+            // 2. В ПОСЛЕДНЮЮ ОЧЕРЕДЬ — перетаскиваемая кость.
+            // Она всегда будет рисоваться поверх всего, что нарисовано выше.
+            if (isDragging && draggingImage != null)
+            {
+                e.Graphics.DrawImage(draggingImage, draggingRect);
             }
         }
 
