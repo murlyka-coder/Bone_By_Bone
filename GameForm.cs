@@ -135,30 +135,44 @@ namespace Bone_By_Bone
 
             // Инициализация панели фактов
             panelInfo = new Panel();
-            panelInfo.Size = new Size(650, 85);
-            panelInfo.BackColor = Color.LightYellow; // Можно сменить цвет
-            panelInfo.BorderStyle = BorderStyle.FixedSingle;
-            panelInfo.Visible = false; // Изначально скрыта
 
-            // Кнопка закрытия (крестик)
+            // 1. Устанавливаем точный РАЗМЕР нарисованной рамки (ширина, высота)
+            panelInfo.Size = new Size(650, 100);
+
+            // 2. Точные КООРДИНАТЫ (X, Y) начала нарисованной рамки на экране
+            panelInfo.Location = new Point((this.Width - 650) / 2, 50);
+
+            // 3. Делаем панель полностью ПРОЗРАЧНОЙ, чтобы была видна нарисованная рамка
+            panelInfo.BackColor = Color.Transparent;
+            panelInfo.BorderStyle = BorderStyle.None; // Без рамок Windows
+            panelInfo.Visible = false;
+
+            // Кнопка закрытия (крестик) 
             lblClose = new Label();
             lblClose.Size = new Size(25, 25);
-            lblClose.Location = new Point(620, 5);
+            lblClose.Location = new Point(610, 10); // Идеальная позиция в углу вашей рамки
             lblClose.Text = "✕";
+            lblClose.ForeColor = Color.FromArgb(60, 30, 10); // Цвет крестика
+            lblClose.BackColor = Color.Transparent;
             lblClose.Font = new Font("Arial", 12, FontStyle.Bold);
             lblClose.Cursor = Cursors.Hand;
             lblClose.Click += (s, ev) => { panelInfo.Visible = false; };
 
-            // Текст факта
+            // Текст внутри баннера 
             lblInfoText = new Label();
-            lblInfoText.Location = new Point(30, 15);
-            lblInfoText.Size = new Size(590, 55);
+            lblInfoText.Location = new Point(30, 3); // Приподняли повыше к центру вашей рамки
+            lblInfoText.Size = new Size(590, 65);    // Увеличили высоту под крупный шрифт
+            lblInfoText.ForeColor = Color.FromArgb(60, 30, 10); // Темно-деревянный цвет букв под стиль игры
+            lblInfoText.BackColor = Color.Transparent;
+            lblInfoText.Font = new Font("Comic Sans MC", 15, FontStyle.Bold); // Крупный округлый шрифт
             lblInfoText.TextAlign = ContentAlignment.MiddleCenter;
 
+            // Собираем всё вместе (БЕЗ ДУБЛИКАТОВ)
             panelInfo.Controls.Add(lblClose);
             panelInfo.Controls.Add(lblInfoText);
             this.Controls.Add(panelInfo); // Добавляем на форму
         }
+        
 
         public void ShowPause()
         {
